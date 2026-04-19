@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>박진형 | AI Solution Engineer</title>
-  <meta name="description" content="AI 모델 학습/최적화부터 엣지 디바이스 배포까지 — 온프레미스 AI 솔루션 엔지니어 박진형의 포트폴리오">
+  <title>박진형 | AI Engineer</title>
+  <meta name="description" content="AI 모델 학습/최적화부터 엣지 디바이스 배포까지 — 온프레미스 AI 솔루션을 만드는 박진형의 포트폴리오. 공공기관(보훈부) 노인 케어 음성 비서 단독 개발 중.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=20260419b">
 </head>
 <body data-theme="dark">
   <!-- Navigation -->
@@ -25,7 +25,15 @@
         <li><a href="#career">Career</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-      <button class="theme-toggle" id="themeToggle" aria-label="테마 전환"></button>
+      <button class="theme-toggle" id="themeToggle" aria-label="테마 전환">
+        <svg class="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+        </svg>
+        <svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
     </div>
   </nav>
 
@@ -40,19 +48,21 @@
       <p class="hero-greeting reveal">안녕하세요, 저는</p>
       <h1 class="hero-name reveal">
         <span class="hero-name-line">박진형</span>
-        <span class="hero-title-line">AI Solution Engineer</span>
+        <span class="hero-title-line">AI Engineer</span>
       </h1>
       <p class="hero-desc reveal">
         AI 모델 학습/최적화부터 엣지 디바이스 배포까지<br>
-        온프레미스 환경에서의 <span class="accent">End-to-End AI 솔루션</span>을 만듭니다.
+        온프레미스 환경의 <span class="accent">End-to-End AI 솔루션</span>을 만듭니다.
       </p>
       <div class="hero-cta reveal">
         <a href="#projects" class="btn btn-primary">프로젝트 보기</a>
+        <a href="resume.html" target="_blank" rel="noopener" class="btn btn-ghost">이력서</a>
+        <a href="career.html" target="_blank" rel="noopener" class="btn btn-ghost">경력기술서</a>
         <a href="#contact" class="btn btn-ghost">연락하기</a>
       </div>
       <div class="hero-stats reveal">
         <div class="stat">
-          <span class="stat-num" data-count="12">0</span>
+          <span class="stat-num" data-count="6">0</span>
           <span class="stat-label">Projects</span>
         </div>
         <div class="stat">
@@ -63,14 +73,38 @@
           </span>
           <span class="stat-label">AI Experience</span>
         </div>
-        <div class="stat">
-          <span class="stat-num">5+</span>
-          <span class="stat-label">Edge Devices</span>
-        </div>
       </div>
     </div>
     <div class="scroll-indicator">
       <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- Featured Highlights -->
+  <section class="highlights-section">
+    <div class="container">
+      <div class="highlights-strip">
+        <div class="key-point reveal">
+          <div class="kp-num">01</div>
+          <h3>B2G 납품 직전</h3>
+          <p>공공기관(보훈부) 노인 케어 음성 비서 단독 개발</p>
+        </div>
+        <div class="key-point reveal">
+          <div class="kp-num">02</div>
+          <h3>Multi-NPU 포팅</h3>
+          <p>Kneron KL630 + Rockchip RK3588 양자화/변환</p>
+        </div>
+        <div class="key-point reveal">
+          <div class="kp-num">03</div>
+          <h3>LLM 풀 파이프라인</h3>
+          <p>합성 데이터 → LoRA → GGUF → Ollama 서빙</p>
+        </div>
+        <div class="key-point reveal">
+          <div class="kp-num">04</div>
+          <h3>OSS 분석·적합화</h3>
+          <p>xiaozhi fork → 단일 Python 리팩토링</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -84,13 +118,13 @@
             AI 모델을 학습하고 최적화하여 <strong>실제 하드웨어에 올리는 것</strong>까지가 제 일입니다.
           </p>
           <p>
-            Jetson Orin, Kneron KL630, Rockchip NPU 등 다양한 엣지 디바이스에서
+            Jetson Orin, Kneron KL630, Rockchip RK3588 등 다양한 엣지 디바이스에서
             YOLO 객체 탐지, 음성 합성(TTS), 대규모 언어 모델(LLM)을
             <strong>실시간으로 구동</strong>시킨 경험이 있습니다.
           </p>
           <p>
-            PyTorch로 모델을 학습하고, TensorRT/ONNX/RKNN으로 최적화하고,
-            FastAPI/Docker로 서빙하는 — <strong>학습에서 배포까지 전 과정</strong>을 다룹니다.
+            현재 <strong>공공기관(보훈부) 노인 케어 AI 음성 비서</strong>를 Jetson Orin 환경에서
+            단독 개발 중이며, 납품을 앞두고 있습니다 (2026.04).
           </p>
         </div>
         <div class="about-highlights reveal">
@@ -98,22 +132,22 @@
             <div class="highlight-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714a2.25 2.25 0 0 0 .659 1.591L19 14.5m-4.75-11.396c.25.023.5.05.75.082M5 14.5l-1.43 1.43a2.25 2.25 0 0 0 1.59 3.84h13.68a2.25 2.25 0 0 0 1.59-3.84L19 14.5"/></svg>
             </div>
-            <h3>Model Optimization</h3>
-            <p>FP16/INT8 양자화, LoRA 파인튜닝, GGUF 변환으로 엣지 환경에 맞게 최적화</p>
+            <h3>Quantization & Optimization</h3>
+            <p>LoRA 파인튜닝, GGUF Q4_K_M, NPU INT8/16 mix — 환경에 맞는 양자화 전략 선택</p>
           </div>
           <div class="highlight-card">
             <div class="highlight-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 0 0 2.25-2.25V6.75a2.25 2.25 0 0 0-2.25-2.25H6.75A2.25 2.25 0 0 0 4.5 6.75v10.5a2.25 2.25 0 0 0 2.25 2.25Z"/></svg>
             </div>
-            <h3>Edge Deployment</h3>
-            <p>Jetson, Kneron, Rockchip 등 다양한 엣지 디바이스에 AI 모델 배포</p>
+            <h3>Multi-NPU Deployment</h3>
+            <p>Jetson Orin, Kneron KL630, Rockchip RK3588 — ONNX → NPU별 toolchain 변환·배포</p>
           </div>
           <div class="highlight-card">
             <div class="highlight-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"/></svg>
             </div>
-            <h3>Full-Stack Serving</h3>
-            <p>FastAPI, WebSocket, Docker 기반 실시간 AI 서비스 구축</p>
+            <h3>End-to-End Pipeline</h3>
+            <p>합성 데이터 생성 → 학습 → 양자화 → 서빙 → 운영까지 전 과정 단독 구축</p>
           </div>
         </div>
       </div>
@@ -135,14 +169,16 @@
           <div class="skill-tags">
             <span class="tag tag-primary">PyTorch</span>
             <span class="tag tag-primary">YOLOv5/v8</span>
+            <span class="tag tag-primary">Hugging Face</span>
+            <span class="tag tag-primary">Qwen</span>
+            <span class="tag tag-primary">LoRA</span>
+            <span class="tag tag-primary">llama.cpp</span>
+            <span class="tag tag-primary">GGUF</span>
+            <span class="tag tag-primary">Ollama</span>
             <span class="tag tag-primary">Faster-Whisper</span>
-            <span class="tag tag-primary">GPT-SoVITS</span>
-            <span class="tag tag-primary">BERT-VITS2</span>
-            <span class="tag tag-primary">Piper TTS</span>
-            <span class="tag tag-primary">Qwen / Llama</span>
-            <span class="tag tag-primary">LoRA / Unsloth</span>
-            <span class="tag tag-primary">LangChain</span>
+            <span class="tag tag-primary">CTranslate2</span>
             <span class="tag tag-primary">Silero-VAD</span>
+            <span class="tag tag-primary">Piper TTS</span>
           </div>
         </div>
         <div class="skill-category reveal">
@@ -155,14 +191,16 @@
           <div class="skill-tags">
             <span class="tag tag-secondary">Python</span>
             <span class="tag tag-secondary">FastAPI</span>
+            <span class="tag tag-secondary">aiohttp</span>
             <span class="tag tag-secondary">Docker</span>
             <span class="tag tag-secondary">WebSocket</span>
             <span class="tag tag-secondary">MQTT</span>
-            <span class="tag tag-secondary">Kafka</span>
-            <span class="tag tag-secondary">MySQL</span>
+            <span class="tag tag-secondary">SQLite</span>
             <span class="tag tag-secondary">Nginx</span>
-            <span class="tag tag-secondary">Arch Linux</span>
-            <span class="tag tag-secondary">Ubuntu</span>
+            <span class="tag tag-secondary">PM2</span>
+            <span class="tag tag-secondary">OpenCV</span>
+            <span class="tag tag-secondary">Streamlit</span>
+            <span class="tag tag-secondary">FastMCP</span>
           </div>
         </div>
         <div class="skill-category reveal">
@@ -174,14 +212,13 @@
           </div>
           <div class="skill-tags">
             <span class="tag tag-accent">Jetson Orin/Nano</span>
-            <span class="tag tag-accent">TensorRT</span>
+            <span class="tag tag-accent">Kneron KL630</span>
+            <span class="tag tag-accent">Rockchip RK3588</span>
             <span class="tag tag-accent">CUDA</span>
             <span class="tag tag-accent">ONNX</span>
-            <span class="tag tag-accent">GGUF</span>
-            <span class="tag tag-accent">llama.cpp</span>
-            <span class="tag tag-accent">CTranslate2</span>
-            <span class="tag tag-accent">Kneron KL630</span>
+            <span class="tag tag-accent">onnx-graphsurgeon</span>
             <span class="tag tag-accent">RKNN</span>
+            <span class="tag tag-accent">ESP32 / ESP-IDF</span>
           </div>
         </div>
       </div>
@@ -197,250 +234,144 @@
         <button class="filter-btn" data-filter="edge-ai">Edge AI</button>
         <button class="filter-btn" data-filter="voice-ai">Voice AI</button>
         <button class="filter-btn" data-filter="model">Model Training</button>
+        <button class="filter-btn" data-filter="llm">LLM</button>
         <button class="filter-btn" data-filter="backend">Backend</button>
       </div>
       <div class="projects-grid">
 
-        <!-- 01 -->
-        <article class="project-card reveal" data-category="edge-ai">
-          <div class="project-number">01</div>
-          <div class="project-badge">Edge AI</div>
-          <h3 class="project-title">AIBOO Edge AI</h3>
-          <p class="project-subtitle">Jetson Orin 기반 음성 대화 시스템</p>
+        <!-- 01 AIBOO -->
+        <article class="project-card featured reveal" data-category="edge-ai">
+          <div class="project-number">01 <span class="featured-tag">FEATURED</span></div>
+          <div class="project-badge">Edge AI · Voice</div>
+          <h3 class="project-title">AIBOO Edge AI 음성 비서</h3>
+          <p class="project-subtitle">공공기관(보훈부) 노인 케어 — Jetson Orin</p>
           <p class="project-desc">
-            100% 온디바이스 STT/LLM/TTS 파이프라인 + ESP32 IoT 센서 연동.
-            Faster-Whisper FP16, Qwen3 4B Q4_K_M, 멀티 TTS 프로바이더 구성.
+            xiaozhi-esp32-server fork를 단일 Python으로 리팩토링한 production 시스템.
+            Docker 4컨테이너 → PM2 3서비스 통합, 센서·건강·스케줄·긴급·정서지원 도메인 기능 자체 구현.
+            <strong>단독 개발</strong>, B2G 납품 직전 (2026.04).
           </p>
           <div class="project-metrics">
-            <span class="metric"><strong>95%</strong> 음성 인식률</span>
-            <span class="metric"><strong>&lt;2s</strong> 응답 지연</span>
-            <span class="metric"><strong>750MB</strong> 메모리 최적화</span>
+            <span class="metric"><strong>단독</strong> 개발</span>
+            <span class="metric"><strong>~750MB</strong> 메모리 절감</span>
+            <span class="metric"><strong>도메인 8종</strong></span>
           </div>
           <div class="project-tech">
-            <span>Jetson Orin</span><span>Faster-Whisper</span><span>Qwen3</span><span>FastAPI</span><span>Docker</span>
+            <span>Jetson Orin</span><span>aiohttp</span><span>Faster-Whisper</span><span>Qwen</span><span>MQTT</span><span>PM2</span>
           </div>
         </article>
 
-        <!-- 02 -->
+        <!-- 02 Multi-NPU -->
         <article class="project-card reveal" data-category="edge-ai">
           <div class="project-number">02</div>
           <div class="project-badge">Edge AI</div>
-          <h3 class="project-title">Koobiss CatchCam</h3>
-          <p class="project-subtitle">NPU 화재 감지 AI 카메라</p>
+          <h3 class="project-title">Multi-NPU 모델 포팅</h3>
+          <p class="project-subtitle">Kneron KL630 + Rockchip RK3588</p>
           <p class="project-desc">
-            Kneron KL630 NPU 기반 실시간 화재/연기 감지 카메라.
-            YOLOv5s 모델을 ONNX → BIE → NEF 파이프라인으로 변환 배포.
+            서로 다른 NPU 아키텍처에 객체 탐지 모델 포팅.
+            ktc 양자화 비트폭 혼합 (int8/16), ONNX 그래프 편집 + 미지원 op는 호스트 측 C로 재구현하여 정확도 유지.
           </p>
           <div class="project-metrics">
-            <span class="metric"><strong>30+</strong> FPS 추론</span>
-            <span class="metric"><strong>94%</strong> 화재 탐지율</span>
-            <span class="metric"><strong>&lt;5W</strong> 소비 전력</span>
+            <span class="metric"><strong>2개 NPU</strong> 포팅</span>
+            <span class="metric"><strong>int8/16</strong> mix</span>
+            <span class="metric"><strong>C 후처리</strong></span>
           </div>
           <div class="project-tech">
-            <span>Kneron KL630</span><span>YOLOv5s</span><span>ONNX</span><span>RTSP</span>
+            <span>Kneron ktc</span><span>RKNN</span><span>ONNX</span><span>onnx-graphsurgeon</span>
           </div>
         </article>
 
-        <!-- 03 -->
-        <article class="project-card reveal" data-category="edge-ai">
+        <!-- 03 Piper TTS -->
+        <article class="project-card reveal" data-category="voice-ai">
           <div class="project-number">03</div>
-          <div class="project-badge">Edge AI</div>
-          <h3 class="project-title">RKNN Model Conversion</h3>
-          <p class="project-subtitle">Rockchip NPU 모델 최적화</p>
-          <p class="project-desc">
-            YOLO-World 모델을 ONNX → RKNN 포맷으로 변환.
-            INT8 양자화로 75% 모델 크기 축소, 실시간 객체 탐지 구현.
-          </p>
-          <div class="project-metrics">
-            <span class="metric"><strong>75%</strong> 크기 축소</span>
-            <span class="metric"><strong>INT8</strong> 양자화</span>
-            <span class="metric"><strong>실시간</strong> 추론</span>
-          </div>
-          <div class="project-tech">
-            <span>Rockchip</span><span>RKNN</span><span>YOLO-World</span><span>INT8</span>
-          </div>
-        </article>
-
-        <!-- 04 -->
-        <article class="project-card reveal" data-category="voice-ai">
-          <div class="project-number">04</div>
           <div class="project-badge">Voice AI</div>
-          <h3 class="project-title">GPT-SoVITS TTS</h3>
-          <p class="project-subtitle">한국어 음성 클로닝 서버</p>
+          <h3 class="project-title">Piper TTS 한국어 Fine-tuning</h3>
+          <p class="project-subtitle">사전학습 모델 적응 실험</p>
           <p class="project-desc">
-            GPT-SoVITS v3 기반 한국어 TTS 추론 서버.
-            3~10초 레퍼런스 오디오만으로 음성 클로닝. 다국어(ko/en/ja/zh) 지원.
+            Piper `ko_KR-korean-medium` 베이스에 자체 데이터로 추가 학습.
+            학습 재개 자동화 (epoch 119 → 20003) + 15개 체크포인트 정성 비교 평가.
           </p>
           <div class="project-metrics">
-            <span class="metric"><strong>&lt;5s</strong> API 응답</span>
-            <span class="metric"><strong>4</strong> 언어 지원</span>
-            <span class="metric"><strong>동적</strong> 모델 전환</span>
+            <span class="metric"><strong>20K</strong> epoch</span>
+            <span class="metric"><strong>15</strong> ckpt 비교</span>
+            <span class="metric"><strong>ONNX</strong> export</span>
           </div>
           <div class="project-tech">
-            <span>GPT-SoVITS</span><span>FastAPI</span><span>PyTorch</span><span>CUDA</span>
+            <span>PyTorch Lightning</span><span>espeak-ng</span><span>ONNX</span>
           </div>
         </article>
 
-        <!-- 05 -->
-        <article class="project-card reveal" data-category="voice-ai">
-          <div class="project-number">05</div>
-          <div class="project-badge">Voice AI</div>
-          <h3 class="project-title">BERT-VITS2 / Piper TTS</h3>
-          <p class="project-subtitle">한국어 TTS 모델 학습</p>
-          <p class="project-desc">
-            BERT 음소 임베딩 + VITS2 아키텍처로 253 에폭 학습.
-            ONNX 변환으로 CPU 추론 가능, Piper TTS로 엣지 배포.
-          </p>
-          <div class="project-metrics">
-            <span class="metric"><strong>4.2</strong>/5.0 MOS</span>
-            <span class="metric"><strong>75%</strong> 경량화</span>
-            <span class="metric"><strong>RTF</strong> &lt;0.5</span>
-          </div>
-          <div class="project-tech">
-            <span>BERT-VITS2</span><span>Piper TTS</span><span>ONNX</span><span>PyTorch</span>
-          </div>
-        </article>
-
-        <!-- 06 -->
-        <article class="project-card reveal" data-category="voice-ai">
-          <div class="project-number">06</div>
-          <div class="project-badge">Voice AI</div>
-          <h3 class="project-title">Realtime Voice Chatbot</h3>
-          <p class="project-subtitle">실시간 음성 대화 파이프라인</p>
-          <p class="project-desc">
-            RealtimeSTT + Ollama LLM + MeloTTS 통합 실시간 한국어 음성 챗봇.
-            Barge-in 지원으로 자연스러운 대화 흐름 구현.
-          </p>
-          <div class="project-metrics">
-            <span class="metric"><strong>1.5s</strong> 평균 응답</span>
-            <span class="metric"><strong>95%+</strong> Barge-in</span>
-            <span class="metric"><strong>4GB</strong> VRAM</span>
-          </div>
-          <div class="project-tech">
-            <span>RealtimeSTT</span><span>Ollama</span><span>MeloTTS</span><span>FastAPI</span>
-          </div>
-        </article>
-
-        <!-- 07 -->
+        <!-- 04 Fire/PPE -->
         <article class="project-card reveal" data-category="model">
-          <div class="project-number">07</div>
-          <div class="project-badge">Model Training</div>
-          <h3 class="project-title">Fire/PPE Detection</h3>
-          <p class="project-subtitle">화재/안전장비 6클래스 탐지</p>
+          <div class="project-number">04</div>
+          <div class="project-badge">Vision · Model Training</div>
+          <h3 class="project-title">Fire/PPE Detection + RTSP 모니터링</h3>
+          <p class="project-subtitle">YOLOv5s 6클래스 학습 + 실시간 대시보드</p>
           <p class="project-desc">
-            YOLOv5s 기반 화재·연기·안전모·안전조끼·사람·머리 6클래스 탐지.
-            TensorRT/Kneron/RKNN 멀티 포맷 내보내기.
+            화재·연기·안전모·조끼·사람·머리 6클래스 직접 학습.
+            다출처 데이터셋 통합·라벨 정합, 희소 클래스 복제+변형으로 불균형 처리.
+            RTSP 멀티 스트림 + Streamlit 실시간 대시보드.
           </p>
           <div class="project-metrics">
             <span class="metric"><strong>84.7%</strong> mAP@0.5</span>
-            <span class="metric"><strong>15ms</strong> TensorRT</span>
-            <span class="metric"><strong>48%</strong> 크기 축소</span>
+            <span class="metric"><strong>6 classes</strong></span>
+            <span class="metric"><strong>RTSP</strong> 모니터링</span>
           </div>
           <div class="project-tech">
-            <span>YOLOv5</span><span>TensorRT</span><span>Kneron NEF</span><span>RKNN</span>
+            <span>YOLOv5</span><span>OpenCV</span><span>Streamlit</span><span>A100/4090</span>
           </div>
         </article>
 
-        <!-- 08 -->
-        <article class="project-card reveal" data-category="model">
-          <div class="project-number">08</div>
-          <div class="project-badge">Model Training</div>
-          <h3 class="project-title">LLM Fine-tuning</h3>
-          <p class="project-subtitle">Qwen LoRA 학습 → GGUF → Ollama</p>
+        <!-- 05 LLM Finetuning -->
+        <article class="project-card reveal" data-category="llm">
+          <div class="project-number">05</div>
+          <div class="project-badge">LLM</div>
+          <h3 class="project-title">Qwen LoRA 파인튜닝</h3>
+          <p class="project-subtitle">합성 데이터 파이프라인 + Ollama 서빙</p>
           <p class="project-desc">
-            Unsloth 4-bit LoRA 파인튜닝 → GGUF Q4_K_M 양자화 → Ollama 로컬 서빙.
-            난이도 분류 + 챗봇 응답 생성 멀티 LoRA 학습.
+            ollama distillation으로 자체 합성 데이터 생성 (외부 API 미사용).
+            PEFT(LoRA) + TRL(SFTTrainer) 학습. 4가지 모델 크기 브랜치별 운용,
+            HF → GGUF Q4_K_M → Ollama 변환 파이프라인 구축.
           </p>
           <div class="project-metrics">
-            <span class="metric"><strong>8x</strong> 학습 가속</span>
-            <span class="metric"><strong>80%</strong> 메모리 절감</span>
-            <span class="metric"><strong>98%+</strong> 정확도 유지</span>
+            <span class="metric"><strong>4개</strong> 모델 크기</span>
+            <span class="metric"><strong>외부 API</strong> 미사용</span>
+            <span class="metric"><strong>Q4_K_M</strong> 양자화</span>
           </div>
           <div class="project-tech">
-            <span>Qwen</span><span>LoRA</span><span>Unsloth</span><span>GGUF</span><span>Ollama</span>
+            <span>Qwen</span><span>LoRA</span><span>TRL</span><span>GGUF</span><span>Ollama</span>
           </div>
         </article>
 
-        <!-- 09 -->
+        <!-- 06 MCP -->
         <article class="project-card reveal" data-category="backend">
-          <div class="project-number">09</div>
+          <div class="project-number">06</div>
           <div class="project-badge">Backend</div>
-          <h3 class="project-title">Telemedicine</h3>
-          <p class="project-subtitle">WebRTC 원격진료 플랫폼</p>
+          <h3 class="project-title">MCP 도구 릴레이 서버</h3>
+          <p class="project-subtitle">FastMCP 기반 3계층 WebSocket 릴레이</p>
           <p class="project-desc">
-            의사-환자 실시간 영상 상담 + 스마트폰 바이탈 센서 모니터링.
-            Jitsi, TURN/STUN, Socket.IO 기반 실시간 통신.
+            소비자 ↔ 서버 ↔ 파이프 ↔ stdio 도구 3계층 구조.
+            JSON-RPC ID 변환 + exponential backoff 자동 재연결 + AES 토큰 인증.
+            AI 에이전트로 53개 테스트 자동 생성.
           </p>
           <div class="project-metrics">
-            <span class="metric"><strong>WebRTC</strong> 영상통화</span>
-            <span class="metric"><strong>실시간</strong> 바이탈</span>
-            <span class="metric"><strong>WebPush</strong> 알림</span>
+            <span class="metric"><strong>3계층</strong> 릴레이</span>
+            <span class="metric"><strong>53</strong> 자동 테스트</span>
+            <span class="metric"><strong>AES</strong> 토큰</span>
           </div>
           <div class="project-tech">
-            <span>WebRTC</span><span>Jitsi</span><span>Socket.IO</span><span>Node.js</span>
+            <span>FastAPI</span><span>WebSocket</span><span>FastMCP</span><span>Gemini</span>
           </div>
         </article>
 
-        <!-- 10 -->
-        <article class="project-card reveal" data-category="backend">
-          <div class="project-number">10</div>
-          <div class="project-badge">Backend</div>
-          <h3 class="project-title">MCP Endpoint Server</h3>
-          <p class="project-subtitle">IoT ↔ LLM JSON-RPC 중계</p>
-          <p class="project-desc">
-            ESP32 디바이스와 LLM 서비스 간 WebSocket JSON-RPC 2.0 중계.
-            AES-GCM 암호화 + 토큰 인증, 멀티 디바이스 동시 지원.
-          </p>
-          <div class="project-metrics">
-            <span class="metric"><strong>E2E</strong> 암호화</span>
-            <span class="metric"><strong>4</strong> 외부 도구</span>
-            <span class="metric"><strong>RCE</strong> 취약점 제거</span>
-          </div>
-          <div class="project-tech">
-            <span>WebSocket</span><span>JSON-RPC</span><span>AES-GCM</span><span>ESP32</span>
-          </div>
-        </article>
+      </div>
 
-        <!-- 11 -->
-        <article class="project-card reveal" data-category="backend">
-          <div class="project-number">11</div>
-          <div class="project-badge">Backend</div>
-          <h3 class="project-title">LLM Report Maker</h3>
-          <p class="project-subtitle">AI 기반 보고서 자동 생성</p>
-          <p class="project-desc">
-            YOLO 감지 로그를 Gemini 2.0 Flash로 분석하여 6W1H 프레임워크 기반
-            전문 보고서(.docx)를 자동 생성.
-          </p>
-          <div class="project-metrics">
-            <span class="metric"><strong>6W1H</strong> 분석</span>
-            <span class="metric"><strong>자동</strong> docx 생성</span>
-            <span class="metric"><strong>Gemini</strong> 2.0</span>
-          </div>
-          <div class="project-tech">
-            <span>Gemini</span><span>YOLO</span><span>Python</span><span>docx</span>
-          </div>
-        </article>
-
-        <!-- 12 -->
-        <article class="project-card reveal" data-category="backend">
-          <div class="project-number">12</div>
-          <div class="project-badge">Backend</div>
-          <h3 class="project-title">Misc Services</h3>
-          <p class="project-subtitle">번역 · 카메라 로깅 · ESP-MCP · Jira</p>
-          <p class="project-desc">
-            다국어 번역 API, RTSP 멀티스트림 카메라 로깅, ESP-IDF MCP 통합,
-            Jira 태스크 자동화 등 실무 유틸리티 모음.
-          </p>
-          <div class="project-metrics">
-            <span class="metric"><strong>4</strong> 서비스</span>
-            <span class="metric"><strong>RTSP</strong> 멀티스트림</span>
-            <span class="metric"><strong>MCP</strong> 통합</span>
-          </div>
-          <div class="project-tech">
-            <span>Flask</span><span>FastAPI</span><span>OpenCV</span><span>ESP-IDF</span>
-          </div>
-        </article>
-
+      <!-- Other Projects -->
+      <div class="other-projects reveal">
+        <h3>Other Projects</h3>
+        <ul>
+          <li><strong>Telemedicine 백엔드</strong> (2025.07~09) — Python FastAPI + WebRTC 시그널링, Coturn TURN 서버 구축, OpenEMR 연동</li>
+          <li><strong>GPT-SoVITS 한국어 TTS 추론 서버</strong> (2025) — Few-shot 음성 클로닝, FastAPI + 다국어(ko/en/ja/zh) 지원</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -456,7 +387,7 @@
             <div class="timeline-date">2025.02 — 현재</div>
             <h3>루커스 (Lukus) AI연구소</h3>
             <p class="timeline-role">연구원</p>
-            <p>Edge AI 솔루션 개발 — Jetson/NPU 기반 AI 모델 최적화 및 배포, 음성 AI 파이프라인 구축, LLM 파인튜닝</p>
+            <p>Edge AI 솔루션 개발 — Jetson/NPU 기반 AI 모델 최적화·배포, 음성 AI 파이프라인 구축, LLM 파인튜닝. 공공기관(보훈부) 노인 케어 AI 음성 비서 단독 개발 중.</p>
           </div>
         </div>
         <div class="timeline-item reveal">
@@ -465,14 +396,14 @@
             <div class="timeline-date">2024</div>
             <h3>KDT AI 부트캠프</h3>
             <p class="timeline-role">이스트소프트 주관 · 한국디지털트레이닝원</p>
-            <p>최우수 수강생 & 프로젝트 대상 수상</p>
+            <p>최우수 수강생 &amp; 프로젝트 대상 수상</p>
           </div>
         </div>
         <div class="timeline-item reveal">
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <div class="timeline-date">2021.07 — 2024.01</div>
-            <h3>성한 디앤티 (Sunghan D&T)</h3>
+            <h3>성한 디앤티 (Sunghan D&amp;T)</h3>
             <p class="timeline-role">주임 · 설계팀</p>
             <p>건설기계 장비 설계 — 기계 설계 및 도면 작성, 생산 관리</p>
           </div>
@@ -525,6 +456,6 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=20260419b"></script>
 </body>
 </html>

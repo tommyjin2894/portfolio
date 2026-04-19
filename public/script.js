@@ -1,16 +1,14 @@
-// ========== Theme: auto by time (7~18 light, else dark) ==========
+// ========== Theme: default dark (toggle persists in localStorage) ==========
 var themeBtn = document.getElementById('themeToggle');
 
 function getAutoTheme() {
-  var hour = new Date().getHours();
-  return (hour >= 7 && hour < 18) ? 'light' : 'dark';
+  return 'dark';
 }
 
 function applyTheme(theme) {
   document.body.classList.add('theme-t');
   document.documentElement.setAttribute('data-theme', theme);
   document.body.setAttribute('data-theme', theme);
-  themeBtn.textContent = theme === 'dark' ? '\u2600' : '\u263D';
   setTimeout(function () { document.body.classList.remove('theme-t'); }, 500);
 }
 

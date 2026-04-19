@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>박진형 · 경력기술서</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --c-text: #1a1a30;
+    --c-muted: #4a4a60;
+    --c-dim: #6a6a84;
+    --c-accent: #5548d9;
+    --c-accent-soft: #e8e6f9;
+    --c-line: #d8d8e0;
+    --c-bg-soft: #f5f5fa;
+    --font-kr: 'Noto Sans KR', 'Pretendard', -apple-system, sans-serif;
+    --font-en: 'Inter', -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  @page {
+    size: A4;
+    margin: 16mm 14mm 14mm 14mm;
+  }
+  @page { @top-left { content: none; } @top-center { content: none; } @top-right { content: none; } @bottom-left { content: none; } @bottom-center { content: none; } @bottom-right { content: none; } }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    font-family: var(--font-kr);
+    color: var(--c-text);
+    background: white;
+    font-size: 10pt;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    word-break: keep-all;
+    orphans: 4;
+    widows: 4;
+  }
+
+  .doc {
+    max-width: 210mm;
+    margin: 0 auto;
+    padding: 18mm 16mm;
+    background: white;
+  }
+
+  /* ── Page break ── */
+  .page-break {
+    page-break-before: always;
+    break-before: page;
+  }
+  .avoid-break { page-break-inside: avoid; break-inside: avoid; }
+
+  /* ── Project section flow (no forced page break) ── */
+  .proj-section {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--c-line);
+  }
+  .proj-header { page-break-after: avoid; break-after: avoid; }
+
+  /* ── Prevent orphan headings ── */
+  h2.doc-h2, h3.doc-h3 {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+  .ascii { page-break-before: avoid; break-before: avoid; }
+  .svg-diagram { page-break-before: avoid; break-before: avoid; }
+
+  /* ── Project header/meta keep together ── */
+  .proj-header,
+  .proj-meta-table,
+  .proj-tagline {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  .proj-tagline { page-break-after: avoid; break-after: avoid; }
+  .proj-meta-table { page-break-after: avoid; break-after: avoid; }
+  table { page-break-inside: avoid; break-inside: avoid; }
+
+  /* ── Other Projects visual separator ── */
+  .other-projects-sep {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 2px solid var(--c-text);
+  }
+  .other-projects-sep h1 {
+    font-size: 16pt;
+    font-weight: 700;
+    color: var(--c-muted);
+    margin-bottom: 4px;
+  }
+  .other-projects-sep > p:first-of-type {
+    font-size: 9pt;
+    color: var(--c-dim);
+    margin-bottom: 14px;
+  }
+
+  /* ── Cover page ── */
+  .cover {
+    min-height: 240mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30mm 0;
+  }
+  .cover-top { }
+  .cover-label {
+    font-family: var(--font-mono);
+    font-size: 10pt;
+    color: var(--c-accent);
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    margin-bottom: 12px;
+  }
+  .cover-title {
+    font-size: 42pt;
+    font-weight: 800;
+    letter-spacing: -.03em;
+    line-height: 1.05;
+    margin-bottom: 8px;
+  }
+  .cover-sub {
+    font-family: var(--font-mono);
+    font-size: 13pt;
+    color: var(--c-muted);
+    margin-bottom: 32px;
+  }
+  .cover-tagline {
+    font-size: 12pt;
+    color: var(--c-muted);
+    line-height: 1.7;
+    max-width: 130mm;
+    border-left: 3px solid var(--c-accent);
+    padding-left: 16px;
+  }
+  .cover-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    font-size: 9pt;
+    color: var(--c-muted);
+  }
+  .cover-bottom .col h4 {
+    font-family: var(--font-mono);
+    font-size: 8pt;
+    color: var(--c-dim);
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    margin-bottom: 4px;
+  }
+  .cover-bottom .col div { margin-bottom: 2px; }
+
+  /* ── TOC ── */
+  .toc h2 {
+    font-size: 22pt;
+    font-weight: 800;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--c-text);
+  }
+  .toc ol {
+    list-style: none;
+    counter-reset: toc;
+  }
+  .toc li {
+    counter-increment: toc;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px dashed var(--c-line);
+    font-size: 11pt;
+  }
+  .toc li::before {
+    content: counter(toc, decimal-leading-zero) ". ";
+    color: var(--c-accent);
+    font-family: var(--font-mono);
+    font-weight: 700;
+    margin-right: 12px;
+  }
+  .toc li .title-text { flex: 1; }
+  .toc li .pg {
+    font-family: var(--font-mono);
+    color: var(--c-dim);
+  }
+
+  /* ── Section headers ── */
+  h1.doc-h1 {
+    font-size: 22pt;
+    font-weight: 800;
+    letter-spacing: -.02em;
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--c-text);
+  }
+  h2.doc-h2 {
+    font-size: 14pt;
+    font-weight: 700;
+    color: var(--c-text);
+    margin: 20px 0 8px;
+    padding-left: 10px;
+    border-left: 4px solid var(--c-accent);
+  }
+  h3.doc-h3 {
+    font-size: 11pt;
+    font-weight: 700;
+    color: var(--c-text);
+    margin: 14px 0 6px;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    font-family: var(--font-mono);
+  }
+
+  p { margin-bottom: 8px; color: var(--c-muted); }
+  p strong { color: var(--c-text); font-weight: 600; }
+
+  ul.bullet { padding-left: 18px; margin-bottom: 10px; }
+  ul.bullet li {
+    color: var(--c-muted);
+    margin-bottom: 5px;
+    line-height: 1.55;
+  }
+  ul.bullet li strong { color: var(--c-text); font-weight: 600; }
+  ul.bullet li::marker { color: var(--c-accent); }
+
+  /* ── Project header ── */
+  .proj-header {
+    margin-bottom: 12px;
+  }
+  .proj-num-large {
+    font-family: var(--font-mono);
+    font-size: 11pt;
+    color: var(--c-accent);
+    font-weight: 700;
+    letter-spacing: .05em;
+    margin-bottom: 4px;
+  }
+  .proj-h1 {
+    font-size: 20pt;
+    font-weight: 800;
+    letter-spacing: -.02em;
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+  .proj-tagline {
+    font-size: 10.5pt;
+    color: var(--c-muted);
+    line-height: 1.65;
+    margin-bottom: 12px;
+    border-left: 3px solid var(--c-accent);
+    padding-left: 12px;
+  }
+  .proj-meta-table {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 4px 12px;
+    font-size: 9pt;
+    margin-bottom: 12px;
+    padding: 10px 12px;
+    background: var(--c-bg-soft);
+    border-radius: 4px;
+  }
+  .proj-meta-table dt {
+    color: var(--c-accent);
+    font-weight: 700;
+    font-family: var(--font-mono);
+    font-size: 8.5pt;
+  }
+  .proj-meta-table dd {
+    color: var(--c-muted);
+  }
+  .proj-meta-table dd strong { color: var(--c-text); font-weight: 600; }
+
+  /* ── ASCII Diagram (legacy code blocks) ── */
+  .ascii {
+    font-family: var(--font-mono);
+    font-size: 8pt;
+    line-height: 1.45;
+    background: var(--c-bg-soft);
+    padding: 10px 12px;
+    border-radius: 4px;
+    border-left: 3px solid var(--c-accent);
+    color: var(--c-text);
+    white-space: pre;
+    overflow-x: auto;
+    margin-bottom: 12px;
+    page-break-inside: avoid;
+  }
+
+  /* ── SVG Diagram ── */
+  .svg-diagram {
+    display: block;
+    width: 100%;
+    max-width: 680px;
+    height: auto;
+    margin: 12px auto;
+    background: var(--c-bg-soft);
+    padding: 10px;
+    border-radius: 4px;
+    border-left: 3px solid var(--c-accent);
+    page-break-inside: avoid;
+  }
+  .svg-diagram .box { fill: #ffffff; stroke: #c8c8da; stroke-width: 1; }
+  .svg-diagram .box-accent { fill: #f5f3ff; stroke: #5548d9; stroke-width: 1.4; }
+  .svg-diagram .box-group { fill: none; stroke: #c8c8da; stroke-width: 1; stroke-dasharray: 3 3; }
+  .svg-diagram .label { font: 600 11px 'Noto Sans KR', sans-serif; fill: #1a1a30; }
+  .svg-diagram .label-sm { font: 600 9.5px 'Noto Sans KR', sans-serif; fill: #1a1a30; }
+  .svg-diagram .sub { font: 9px 'Noto Sans KR', sans-serif; fill: #4a4a60; }
+  .svg-diagram .mono { font: 9px 'JetBrains Mono', monospace; fill: #5548d9; }
+  .svg-diagram .group-title { font: 700 10px 'JetBrains Mono', monospace; fill: #5548d9; letter-spacing: 0.05em; }
+  .svg-diagram .conn { stroke: #6a6a84; stroke-width: 1.2; fill: none; }
+  .svg-diagram .conn-thick { stroke: #5548d9; stroke-width: 1.5; fill: none; }
+
+  /* ── Code/inline ── */
+  code {
+    font-family: var(--font-mono);
+    font-size: 8.5pt;
+    background: var(--c-bg-soft);
+    padding: 1px 5px;
+    border-radius: 3px;
+    color: var(--c-accent);
+  }
+
+  /* ── Tables (career/etc) ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 12px;
+    font-size: 9.5pt;
+  }
+  th, td {
+    text-align: left;
+    padding: 6px 8px;
+    border-bottom: 1px solid var(--c-line);
+    vertical-align: top;
+  }
+  th {
+    color: var(--c-text);
+    font-weight: 700;
+    font-size: 8.5pt;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    border-bottom: 2px solid var(--c-text);
+    background: var(--c-bg-soft);
+  }
+  td.when {
+    font-family: var(--font-mono);
+    color: var(--c-accent);
+    font-size: 9pt;
+    white-space: nowrap;
+    width: 110px;
+  }
+
+  /* ── Footer page number ── */
+  .page-footer {
+    position: running(footer);
+    text-align: right;
+    font-size: 8pt;
+    color: var(--c-dim);
+  }
+
+  /* ── Highlight box (key takeaway) ── */
+  .takeaway {
+    background: var(--c-accent-soft);
+    border-left: 3px solid var(--c-accent);
+    padding: 10px 14px;
+    margin: 10px 0;
+    font-size: 9.5pt;
+    color: var(--c-text);
+    border-radius: 4px;
+    page-break-inside: avoid;
+  }
+  .takeaway strong { color: var(--c-accent); }
+  .takeaway + h3, h3.doc-h3 + ul.bullet { page-break-before: avoid; }
+  ul.bullet { page-break-inside: avoid; }
+
+  /* ── Print ── */
+  @media print {
+    .no-print { display: none; }
+    .doc { padding: 0; max-width: none; }
+    a { color: inherit; text-decoration: none; }
+  }
+
+  .print-hint {
+    position: fixed;
+    top: 10px; right: 10px;
+    background: var(--c-accent);
+    color: white;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 9pt;
+    font-family: var(--font-mono);
+    box-shadow: 0 4px 12px rgba(85,72,217,.3);
+    z-index: 1000;
+  }
+</style>
+</head>
+<body>
+
+<div class="print-hint no-print">Ctrl+P → PDF로 저장 (배경 그래픽 켜기)</div>
+
+<div class="doc">
+
+  <!-- ============================== -->
+  <!-- HEADER (Mini)                    -->
+  <!-- ============================== -->
+  <header style="margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid var(--c-text);">
+    <div style="display: flex; justify-content: space-between; align-items: baseline;">
+      <div>
+        <h1 style="font-size: 18pt; font-weight: 800; letter-spacing: -.02em;">박진형 · 경력기술서</h1>
+        <p style="font-family: var(--font-mono); font-size: 9pt; color: var(--c-accent); margin-top: 2px;">AI Engineer · Edge AI / LLM / Voice</p>
+      </div>
+      <div style="text-align: right; font-size: 8.5pt; color: var(--c-muted); line-height: 1.6;">
+        <div>tommyjin2894@gmail.com · 010-2817-2894</div>
+        <div><a href="https://tmpark.space" style="color: inherit;">tmpark.space</a> · github.com/tommyjin2894</div>
+      </div>
+    </div>
+    <p style="margin-top: 8px; font-size: 9pt; color: var(--c-dim);">
+      인적사항 · 학력 · 경력 전체는 별첨 <strong>이력서</strong> 참조. 본 문서는 핵심 프로젝트 6개 + 보조 프로젝트 2개의 상세 설명입니다.
+    </p>
+  </header>
+
+  <!-- ============================== -->
+  <!-- PROJECT 01: AIBOO                -->
+  <!-- ============================== -->
+  <section>
+    <div class="proj-header">
+      <div class="proj-num-large">PROJECT 01</div>
+      <h1 class="proj-h1">AIBOO — Edge AI 음성 비서 (Jetson Orin)</h1>
+      <p class="proj-tagline">
+        Jetson Orin 기반 음성 비서. xiaozhi-esp32-server 계열 오픈소스 fork를 단일 Python 서버로 리팩토링하고,
+        센서·건강·스케줄·긴급·정서지원 도메인 기능을 추가.
+      </p>
+      <dl class="proj-meta-table">
+        <dt>기간</dt><dd>2025.02 ~ 현재 (2026.04 납품 예정)</dd>
+        <dt>역할</dt><dd>단독 개발</dd>
+        <dt>카테고리</dt><dd>Edge AI · Voice</dd>
+        <dt>Stack</dt><dd>Jetson Orin · aiohttp · Faster-Whisper · CTranslate2 · Qwen / Gemini · Silero-VAD · MQTT · PM2 · ESP-IDF</dd>
+      </dl>
+    </div>
+
+    <h3 class="doc-h3">프로젝트 배경</h3>
+    <p>
+      공공기관(보훈부)의 노인 케어 사업 일환으로, 시니어 사용자가 음성 대화만으로
+      건강 상태 점검 · 일정 관리 · 긴급 상황 알림 · 정서 지원 등을 받을 수 있는 AI 음성 비서.
+      개인정보 보호와 망 분리 환경 운영이 요구되어 <strong>모든 추론(ASR/LLM/TTS)을 온디바이스에서 수행</strong>하는 것을
+      설계 전제로 함. 단독 개발자로 기획부터 구현·운영·납품 준비까지 전 과정을 담당.
+    </p>
+
+    <h3 class="doc-h3">베이스 vs 본인 기여</h3>
+    <ul class="bullet">
+      <li><strong>베이스 — xiaozhi-esp32-server 계열 fork (m5chatbot-server):</strong>
+          x86 / Jetson 양 환경을 지원하는 <em>Docker 4컨테이너</em> 구성으로 ASR · LLM · TTS · orchestrator를 분리.
+          중국 커뮤니티에서 활발히 유지되는 음성 비서 오픈소스를 시작점으로 채택.</li>
+      <li><strong>본인 기여 — aiboo-server-lite:</strong>
+          Jetson Orin 단일 디바이스 환경에 맞춰 컨테이너를 <em>단일 Python 프로세스로 통합 리팩토링</em> + Jetson 전용 환경 셋업 +
+          도메인 기능 8종(센서·건강·스케줄·긴급·정서지원·i18n 등) 자체 구현 + ESP32 펌웨어 튜닝(빔포밍·암호화) 까지 단독 개발.</li>
+      <li><strong>브랜치 분리 — <code>main</code> / <code>bobo</code>:</strong>
+          <code>main</code>은 일반 음성 비서 코어, <code>bobo</code>는 공공기관 도메인 특화 hooks(긴급 메시지 자동 전송, 케어센터 연동 등)
+          분리하여 코어 재사용성 확보.</li>
+    </ul>
+
+    <h3 class="doc-h3">시스템 구성</h3>
+    <svg class="svg-diagram" viewBox="0 0 680 460" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arr1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+          <path d="M0,0 L10,5 L0,10 z" fill="#5548d9"/>
+        </marker>
+      </defs>
+
+      <text class="group-title" x="20" y="18">ESP32 (M5 ATOMS3R)</text>
+      <rect class="box-accent" x="20" y="26" width="290" height="120" rx="6"/>
+      <text class="label-sm" x="32" y="46">M5Stack AtomS3R 펌웨어</text>
+      <text class="sub" x="40" y="66">· I2S Split (RX Slave + TX Master)</text>
+      <text class="sub" x="40" y="83">· 빔포밍 (XVF3800 I2C 제어)</text>
+      <text class="sub" x="40" y="100">· AES-128-CTR 암호화</text>
+      <text class="sub" x="40" y="117">· 환경센서 6종</text>
+      <text class="sub" x="50" y="133">(온/습도/CO2/PM2.5/VOC/조도)</text>
+
+      <text class="group-title" x="380" y="18">EXTERNAL</text>
+      <rect class="box" x="380" y="26" width="280" height="120" rx="6"/>
+      <text class="label-sm" x="392" y="46">외부 연동</text>
+      <text class="sub" x="400" y="66">· MCP 도구 서버 (Project 06)</text>
+      <text class="sub" x="400" y="83">· 케어센터 API</text>
+      <text class="sub" x="400" y="100">· Gemini / 외부 LLM·TTS provider</text>
+
+      <path class="conn-thick" d="M 155 146 L 155 200" marker-end="url(#arr1)"/>
+      <path class="conn-thick" d="M 175 200 L 175 146" marker-end="url(#arr1)"/>
+      <text class="mono" x="185" y="170">WS /xiaozhi/v1/</text>
+      <text class="mono" x="185" y="185">MQTT · TTS 응답</text>
+
+      <path class="conn-thick" d="M 510 146 L 510 200" marker-end="url(#arr1)"/>
+      <path class="conn-thick" d="M 530 200 L 530 146" marker-end="url(#arr1)"/>
+      <text class="mono" x="540" y="178">/mcp_endpoint/ (양방향)</text>
+
+      <text class="group-title" x="20" y="218">AIBOO SERVER (JETSON ORIN · 단일 PYTHON · 포트 8003)</text>
+      <rect class="box-accent" x="20" y="226" width="640" height="160" rx="6"/>
+      <text class="label" x="38" y="248">HTTP + WebSocket 통합 서버 (aiohttp)</text>
+      <line class="conn" x1="38" y1="258" x2="642" y2="258"/>
+
+      <text class="label-sm" x="38" y="278">ScheduleManager</text>
+      <text class="sub" x="38" y="293">반복 + idle 대화</text>
+
+      <text class="label-sm" x="180" y="278">MQTTHandler</text>
+      <text class="sub" x="180" y="293">센서·장비·임계값 경보</text>
+
+      <text class="label-sm" x="345" y="278">providers</text>
+      <text class="sub" x="345" y="293">asr/llm/tts/vad/intent/...</text>
+
+      <text class="label-sm" x="510" y="278">handle</text>
+      <text class="sub" x="510" y="293">audio/text/abort/filter/...</text>
+
+      <line class="conn" x1="38" y1="312" x2="642" y2="312"/>
+
+      <text class="label-sm" x="38" y="330">SQLite WAL</text>
+      <text class="sub" x="125" y="330">aiboo_db.db (설정) · aiboo_logs.db (센서/채팅/건강)</text>
+
+      <text class="label-sm" x="38" y="355">관리·운영</text>
+      <text class="sub" x="125" y="355">Web 대시보드 + Admin (JWT) · PM2 3 서비스 (aiboo / mcp / homecare)</text>
+
+    </svg>
+
+    <h3 class="doc-h3">주요 기여</h3>
+    <ul class="bullet">
+      <li><strong>Docker 4컨테이너 → 단일 Python 통합 리팩토링</strong> — m5chatbot-server의 ASR/LLM/TTS/orchestrator 분리 컨테이너 구성을 단일 aiohttp 프로세스로 통합. PM2로 3개 핵심 서비스(aiboo/mcp/homecare)만 분리하여 장애 격리는 유지. 메모리 사용량 약 750MB 절감 (btop/htop/nvidia-smi 기준).</li>
+      <li><strong>Jetson Orin 환경 구축</strong> — JetPack 6 · CUDA 12.6 · Python 3.10 환경에서 PyTorch 2.9.1 (cuBLAS 충돌 회피 위해 2.11+ 사용 금지) + CTranslate2 4.7.1 CUDA 소스 빌드 + onnxruntime-gpu Jetson 전용 빌드 통합. PyPI 기본 패키지 미동작 이슈 해결.</li>
+      <li><strong>HTTP + WebSocket 통합 서버</strong> — 단일 포트 8003에서 대시보드 / Admin / OTA / 비전 분석(<code>/mcp/vision/explain</code>) / WebSocket(<code>/xiaozhi/v1/</code>) 모두 처리.</li>
+      <li><strong>도메인 기능 8종 자체 구현</strong> — 센서 모니터링 6종 (MQTT 임계값 경보) / 건강관리 (질문 수집 → sentiment 분석 → DB → 월간 달력 뷰) / 스케줄 알림 (daily/weekly/weekdays + 음성 CRUD) / 긴급 감지 (키워드 + 낙상 감지 → emergency 브로드캐스트) / 정서 지원 (시간대별 인사 + idle 대화 + 음악 재생) / i18n 84키 (ko/en).</li>
+      <li><strong>VAD/ASR 튜너 페이지</strong> (<code>/tuner</code>) — 환경별 임계값 휴리스틱 튜닝 + DB 저장.</li>
+      <li><strong>Barge-in 구현</strong> — LLM 토큰 스트리밍 cancel 대신 TTS 재생을 잘라내는 방식. LLM streaming cancel은 model state 관리 복잡도가 높아 회피 → 자연스러운 대화 흐름 + 구현 단순성 확보.</li>
+      <li><strong>SQLite WAL 모드 동시성 처리</strong> — 비동기 컴포넌트 (스케줄 / MQTT / WebSocket)가 동시 쓰기로 발생하던 락 충돌을 WAL 모드 전환으로 해결.</li>
+      <li><strong>ESP32 펌웨어 튜닝</strong> — m5chatbot-build 베이스에서 빔포밍 (XVF3800 I2C 제어) 적용, I2S Split (RX Slave + TX Master) 오디오 스트리밍, AES-128-CTR 암호화 통합.</li>
+    </ul>
+  </section>
+
+  <!-- AIBOO continued -->
+  <section class="proj-section">
+    <h3 class="doc-h3">기술적 판단</h3>
+
+    <h2 class="doc-h2" style="font-size:11pt;">Docker 4컨테이너 → 단일 Python</h2>
+    <p>
+      기존 m5chatbot-server는 ASR/LLM/TTS/orchestrator를 컨테이너 분리.
+      Jetson 환경에선 컨테이너 오버헤드와 GPU 리소스 분할이 비효율적이라 판단,
+      단일 프로세스 통합 + PM2 3서비스로 장애 격리는 유지하는 절충안 선택.
+    </p>
+
+    <h2 class="doc-h2" style="font-size:11pt;">Barge-in: TTS cut 전략</h2>
+    <p>
+      사용자 발화 감지 시 LLM 토큰 스트리밍 cancel은 model state 관리 복잡도가 높음.
+      LLM은 그대로 두고 TTS 재생만 잘라내는 방식 채택 → 자연스러운 대화 흐름 확보 + 구현 단순화.
+    </p>
+
+    <h2 class="doc-h2" style="font-size:11pt;">마이크 echo 처리 (AEC 미적용)</h2>
+    <p>
+      VAD threshold 동적 조정만으로 TTS 출력 시 self-trigger 회피 가능.
+      AEC(Acoustic Echo Cancellation)는 단일 디바이스 환경에서 알고리즘 복잡도 대비 이득이 작다고 판단.
+    </p>
+
+    <h2 class="doc-h2" style="font-size:11pt;">응답 지연</h2>
+    <p>
+      발화 종료(VAD silence) → STT 결과 반환 약 1.5초 (Faster-Whisper FP16 기준).
+      LLM TTFT는 provider별 상이 (Gemini 클라우드 / 로컬 Qwen).
+      정밀 측정 및 최적화는 운영 안정화 우선으로 후순위.
+    </p>
+
+    <h3 class="doc-h3">트러블슈팅 (예시)</h3>
+    <p><strong>PyTorch 2.11 + CTranslate2 cuBLAS 충돌</strong></p>
+    <ul class="bullet">
+      <li>증상: Faster-Whisper 추론에서 CUDA 에러 발생, STT 동작 불가</li>
+      <li>분석: onnxruntime 의심 → 격리 테스트로 PyTorch 단독 cuBLAS 호출 시 충돌 확인 → CTranslate2와의 cuBLAS 버전 호환성 이슈로 좁힘</li>
+      <li>해결: PyTorch 2.11 → 2.9.1 다운그레이드 (Jetson 전용 wheel 채널)</li>
+      <li>결과: 추론 정상 동작, 환경 셋업 가이드에 "PyTorch 2.11+ 사용 금지" 박제</li>
+    </ul>
+
+    <h3 class="doc-h3">한계 및 회고</h3>
+    <ul class="bullet">
+      <li>LLM TTFT, 종단 지연 정밀 측정 미실시 (안정화 우선)</li>
+      <li>다중 디바이스 동시 호출 시 자원 경합 미검증 (단일 디바이스 환경 가정)</li>
+    </ul>
+  </section>
+
+  <!-- ============================== -->
+  <!-- PROJECT 02: Multi-NPU            -->
+  <!-- ============================== -->
+  <section class="proj-section">
+    <div class="proj-header">
+      <div class="proj-num-large">PROJECT 02</div>
+      <h1 class="proj-h1">Multi-NPU 모델 포팅 (Kneron KL630 + Rockchip RK3588)</h1>
+      <p class="proj-tagline">
+        서로 다른 NPU 아키텍처에 객체 탐지 모델을 포팅하기 위한
+        양자화 및 그래프 변환 파이프라인 작업.
+      </p>
+      <dl class="proj-meta-table">
+        <dt>기간</dt><dd>2025.02 ~ 2025.09</dd>
+        <dt>역할</dt><dd>NPU 포팅 / 모델 변환 담당</dd>
+        <dt>연계</dt><dd>Project 04 (Fire/PPE Detection 모델 학습 측)</dd>
+        <dt>카테고리</dt><dd>Edge AI</dd>
+        <dt>Stack</dt><dd>Kneron Toolchain (ktc) · RKNN Toolkit · ONNX · onnx-graphsurgeon · Docker</dd>
+      </dl>
+    </div>
+
+    <h3 class="doc-h3">공통 파이프라인</h3>
+    <svg class="svg-diagram" viewBox="0 0 680 320" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+          <path d="M0,0 L10,5 L0,10 z" fill="#5548d9"/>
+        </marker>
+      </defs>
+
+      <rect class="box-accent" x="270" y="20" width="140" height="36" rx="6"/>
+      <text class="label-sm" x="340" y="43" text-anchor="middle">PyTorch 학습 모델</text>
+
+      <path class="conn-thick" d="M 340 56 L 340 80" marker-end="url(#arr2)"/>
+
+      <rect class="box-accent" x="270" y="84" width="140" height="36" rx="6"/>
+      <text class="label-sm" x="340" y="107" text-anchor="middle">ONNX export</text>
+
+      <line class="conn-thick" x1="340" y1="120" x2="340" y2="138"/>
+      <line class="conn-thick" x1="120" y1="138" x2="560" y2="138"/>
+
+      <text class="group-title" x="20" y="170">KNERON KL630 (CATCHCAM)</text>
+      <line class="conn-thick" x1="120" y1="138" x2="120" y2="178" marker-end="url(#arr2)"/>
+      <line class="conn-thick" x1="560" y1="138" x2="560" y2="178" marker-end="url(#arr2)"/>
+
+      <rect class="box" x="20" y="180" width="180" height="48" rx="6"/>
+      <text class="label-sm" x="110" y="200" text-anchor="middle">ONNX 그래프 편집</text>
+      <text class="sub" x="110" y="218" text-anchor="middle">미지원 op 제거</text>
+
+      <path class="conn" d="M 200 204 L 232 204" marker-end="url(#arr2)"/>
+
+      <rect class="box" x="234" y="180" width="158" height="48" rx="6"/>
+      <text class="label-sm" x="313" y="200" text-anchor="middle">ktc 양자화</text>
+      <text class="sub" x="313" y="218" text-anchor="middle">datapath/weight bitwidth, mix</text>
+
+      <path class="conn" d="M 392 204 L 424 204" marker-end="url(#arr2)"/>
+
+      <rect class="box" x="426" y="180" width="100" height="48" rx="6"/>
+      <text class="label-sm" x="476" y="200" text-anchor="middle">BIE 변환</text>
+      <text class="sub" x="476" y="218" text-anchor="middle">→ NEF 패킹</text>
+
+      <path class="conn" d="M 526 204 L 558 204" marker-end="url(#arr2)"/>
+
+      <rect class="box-accent" x="560" y="180" width="100" height="48" rx="6"/>
+      <text class="label-sm" x="610" y="208" text-anchor="middle">KL630 NPU</text>
+
+      <text class="group-title" x="20" y="262">ROCKCHIP RK3588</text>
+
+      <rect class="box" x="20" y="270" width="180" height="40" rx="6"/>
+      <text class="label-sm" x="110" y="294" text-anchor="middle">RKNN Toolkit 변환</text>
+
+      <path class="conn" d="M 200 290 L 232 290" marker-end="url(#arr2)"/>
+
+      <rect class="box" x="234" y="270" width="158" height="40" rx="6"/>
+      <text class="label-sm" x="313" y="294" text-anchor="middle">INT8 양자화</text>
+
+      <path class="conn" d="M 392 290 L 558 290" marker-end="url(#arr2)"/>
+
+      <rect class="box-accent" x="560" y="270" width="100" height="40" rx="6"/>
+      <text class="label-sm" x="610" y="294" text-anchor="middle">AIO3588Q NPU</text>
+    </svg>
+
+    <h3 class="doc-h3">1. Kneron KL630 (CatchCam — 화재 감지 카메라)</h3>
+    <p><strong>대상 모델:</strong> YOLOv5s 6클래스 (Project 04에서 학습)</p>
+    <p><strong>변환 파이프라인:</strong> ONNX → BIE → NEF</p>
+    <p><strong>Kneron Toolchain (ktc) 양자화 파라미터 튜닝:</strong>
+    <code>quantize_mode</code> (default / post_sigmoid), datapath/weight bitwidth (int8/16/int4 mix),
+    input/output bitwidth, <code>compiler_tiling</code>, <code>optimize</code> 등 8개 주요 파라미터를
+    모델 특성에 맞춰 조합.</p>
+
+    <h3 class="doc-h3">ONNX 그래프 편집</h3>
+    <p>
+      KL630 미지원 op (NMS 등 후처리 영역)는 onnx 툴킷으로 노드 제거 후,
+      <strong>제거된 후처리 연산을 호스트 측 C 애플리케이션에서 재구현</strong>하여 정확도 유지.
+    </p>
+
+    <h3 class="doc-h3">2. Rockchip RK3588 (AIO3588Q)</h3>
+    <ul class="bullet">
+      <li>대상 모델: YOLO-World (Open-Vocabulary 객체 탐지)</li>
+      <li>변환 파이프라인: ONNX → RKNN, INT8 양자화로 모델 크기 축소</li>
+      <li>AIO3588Q에서 실시간 객체 탐지 추론 검증</li>
+    </ul>
+
+    <h3 class="doc-h3">Kneron vs Rockchip — 난이도 비교</h3>
+    <p>
+      두 NPU 모두 PyTorch → ONNX → 자체 toolchain 변환이라는 공통 패턴을 따르지만, 실제 작업 난이도는 크게 달랐습니다.
+      <strong>Kneron KL630이 훨씬 까다로웠습니다.</strong>
+      RKNN은 toolkit이 비교적 잘 정리되어 있고 미지원 op도 적어 변환 자체는 1~2일이면 충분했지만,
+      Kneron은 BIE → NEF로 이어지는 변환 단계가 많고, 양자화 비트폭을 노드별로 세밀히 조정해야 했으며,
+      미지원 op는 호스트 CPU 측에서 별도 후처리로 옮겨야 하는 복잡성이 있었습니다.
+    </p>
+
+    <h3 class="doc-h3">트러블슈팅 (예시) — KL630 미지원 op 처리</h3>
+    <ul class="bullet">
+      <li>증상: YOLOv5s를 BIE 변환할 때 NMS 등 후처리 영역의 특정 op가 KL630에서 미지원으로 fail</li>
+      <li>분석: ONNX 그래프를 살펴보니 출력 헤드의 후처리 부분(detect 레이어, NMS)이 KL630 NPU에서 실행 불가능</li>
+      <li>해결: onnx 툴킷으로 해당 노드들을 그래프에서 제거 (모델 본체만 NPU 변환) +
+          잘려나간 후처리 연산을 <strong>호스트 측 C 애플리케이션에서 직접 재구현</strong>하여 정확도 보존</li>
+      <li>결과: NPU 추론 + CPU 후처리 조합으로 정상 동작, 변환된 모델 크기/성능 모두 만족</li>
+    </ul>
+
+    <h3 class="doc-h3">환경</h3>
+    <p>Docker 기반 KL630 전용 크로스 컴파일 환경 — 재현성 확보, 팀 간 일관성.</p>
+
+    <h3 class="doc-h3">한계 및 회고</h3>
+    <ul class="bullet">
+      <li>양자화 전후 mAP 손실 정량 비교 데이터 미보존 (이후 W&amp;B 등 실험 추적 도구 필요성 인지)</li>
+      <li>KL630 calibration dataset 구성에 대한 체계적 비교 미실시</li>
+    </ul>
+  </section>
+
+  <!-- ============================== -->
+  <!-- PROJECT 03: Piper TTS            -->
+  <!-- ============================== -->
+  <section class="proj-section">
+    <div class="proj-header">
+      <div class="proj-num-large">PROJECT 03</div>
+      <h1 class="proj-h1">Piper TTS 한국어 Fine-tuning 실험</h1>
+      <p class="proj-tagline">
+        사전학습 Piper TTS 한국어 medium 모델에 자체 데이터셋으로 추가 학습하여
+        음질을 개선하는 실험 프로젝트. 학습 자동화 + 다중 체크포인트 정성 비교 평가.
+      </p>
+      <dl class="proj-meta-table">
+        <dt>기간</dt><dd>2025.11 부근</dd>
+        <dt>상태</dt><dd>실험 종료 (실제 배포 전 단계)</dd>
+        <dt>카테고리</dt><dd>Voice AI</dd>
+        <dt>Stack</dt><dd>PyTorch Lightning · espeak-ng · ONNX · subprocess 일괄 처리</dd>
+      </dl>
+    </div>
+
+    <h3 class="doc-h3">작업 범위</h3>
+    <ul class="bullet">
+      <li><strong>베이스 모델:</strong> rhasspy/piper의 <code>ko_KR-korean-medium</code> 사전학습 체크포인트</li>
+      <li>자체 한국어 음성 데이터셋으로 fine-tuning</li>
+      <li>학습 재개 자동화 (체크포인트 체이닝)</li>
+      <li>다중 체크포인트 일괄 ONNX export → 동일 텍스트 합성 → 정성 비교</li>
+    </ul>
+
+    <h3 class="doc-h3">학습 설정</h3>
+    <ul class="bullet">
+      <li>프레임워크: PyTorch Lightning (<code>piper.train</code>)</li>
+      <li>음소화: espeak-ng</li>
+      <li>샘플레이트: 16kHz, batch size: 32</li>
+      <li>학습 재개: <code>--ckpt_path</code> 체이닝 (epoch 119 → 391 → 7616 → 17410 → 20003)</li>
+    </ul>
+
+    <h3 class="doc-h3">파이프라인</h3>
+    <svg class="svg-diagram" viewBox="0 0 680 320" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arr3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+          <path d="M0,0 L10,5 L0,10 z" fill="#5548d9"/>
+        </marker>
+      </defs>
+
+      <text class="group-title" x="20" y="18">학습</text>
+
+      <rect class="box" x="20" y="26" width="220" height="36" rx="6"/>
+      <text class="label-sm" x="130" y="50" text-anchor="middle">사전학습 ko_KR-korean-medium</text>
+
+      <rect class="box" x="20" y="68" width="220" height="36" rx="6"/>
+      <text class="label-sm" x="130" y="92" text-anchor="middle">자체 한국어 데이터셋</text>
+
+      <path class="conn-thick" d="M 240 44 L 280 44 L 280 65 L 320 65" marker-end="url(#arr3)"/>
+      <path class="conn-thick" d="M 240 86 L 280 86 L 280 65" />
+
+      <rect class="box-accent" x="320" y="44" width="280" height="42" rx="6"/>
+      <text class="label-sm" x="460" y="62" text-anchor="middle">piper.train fit (PyTorch Lightning)</text>
+      <text class="sub" x="460" y="78" text-anchor="middle">batch=32, 16kHz, espeak-ng</text>
+
+      <path class="conn-thick" d="M 460 86 L 460 116" marker-end="url(#arr3)"/>
+
+      <rect class="box" x="320" y="118" width="280" height="42" rx="6"/>
+      <text class="label-sm" x="460" y="136" text-anchor="middle">체크포인트 체이닝</text>
+      <text class="sub" x="460" y="152" text-anchor="middle">119 → 391 → ... → 20003</text>
+
+      <text class="group-title" x="20" y="190">평가 자동화</text>
+
+      <rect class="box" x="20" y="200" width="280" height="42" rx="6"/>
+      <text class="label-sm" x="160" y="218" text-anchor="middle">모든 .ckpt → ONNX export</text>
+      <text class="sub" x="160" y="234" text-anchor="middle">subprocess 일괄 처리</text>
+
+      <path class="conn" d="M 300 220 L 332 220" marker-end="url(#arr3)"/>
+
+      <rect class="box" x="334" y="200" width="180" height="42" rx="6"/>
+      <text class="label-sm" x="424" y="218" text-anchor="middle">동일 문장 합성</text>
+      <text class="sub" x="424" y="234" text-anchor="middle">15개 모델 비교</text>
+
+      <path class="conn" d="M 514 220 L 546 220" marker-end="url(#arr3)"/>
+
+      <rect class="box-accent" x="548" y="200" width="112" height="42" rx="6"/>
+      <text class="label-sm" x="604" y="226" text-anchor="middle">청취 정성 평가</text>
+    </svg>
+
+    <h3 class="doc-h3">평가 자동화 (코드 발췌)</h3>
+    <pre class="ascii">for ckpt in glob("lightning_logs/version_2/checkpoints/*.ckpt"):
+    subprocess.run(["python3", "-m", "piper.train.export_onnx",
+                    "--checkpoint", ckpt, "--output-file", onnx_out])
+
+for model in glob("voices/*.onnx"):
+    voice = PiperVoice.load(model)
+    voice.synthesize_wav(test_text, wav_file)</pre>
+
+    <h3 class="doc-h3">결과</h3>
+    <ul class="bullet">
+      <li>한국어 합성 가능한 ONNX 체크포인트 15개 확보</li>
+      <li>평가는 본인 청취 기준 정성 평가 (공식 MOS 미실시)</li>
+      <li>실제 배포는 이루어지지 않음</li>
+    </ul>
+
+    <h3 class="doc-h3">한계 및 회고</h3>
+    <ul class="bullet">
+      <li>MOS, RTF 등 정량 평가 미실시 (시간 제약)</li>
+      <li>한국어 전용 phonemizer 검토 미완 (espeak-ng <code>en-us</code> voice 사용)</li>
+      <li>데이터셋 규모/품질 통제 변수 부족 — 동일 문장 합성 청취만으로 비교</li>
+    </ul>
+  </section>
+
+  <!-- ============================== -->
+  <!-- PROJECT 04: Fire/PPE             -->
+  <!-- ============================== -->
+  <section class="proj-section">
+    <div class="proj-header">
+      <div class="proj-num-large">PROJECT 04</div>
+      <h1 class="proj-h1">Fire/PPE 6클래스 객체 탐지 + RTSP 모니터링</h1>
+      <p class="proj-tagline">
+        산업 현장 안전을 위한 YOLOv5s 6클래스 객체 탐지 모델 학습 +
+        RTSP 카메라 연동 실시간 모니터링 시스템 구축.
+      </p>
+      <dl class="proj-meta-table">
+        <dt>기간</dt><dd>2025.02 ~ 2025.09</dd>
+        <dt>역할</dt><dd>모델 학습 + 모니터링 시스템 구축</dd>
+        <dt>연계</dt><dd>Project 02 (Multi-NPU 포팅 — Kneron KL630 배포 측)</dd>
+        <dt>카테고리</dt><dd>Vision · Model Training</dd>
+        <dt>Stack</dt><dd>YOLOv5 · PyTorch · CUDA · OpenCV · Albumentations · Streamlit · TensorBoard · W&amp;B</dd>
+      </dl>
+    </div>
+
+    <h3 class="doc-h3">시스템 구성</h3>
+    <svg class="svg-diagram" viewBox="0 0 680 350" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arr4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+          <path d="M0,0 L10,5 L0,10 z" fill="#5548d9"/>
+        </marker>
+      </defs>
+
+      <text class="group-title" x="20" y="18">데이터</text>
+
+      <rect class="box" x="20" y="26" width="180" height="42" rx="6"/>
+      <text class="label-sm" x="110" y="44" text-anchor="middle">캐글 등 다출처 수집</text>
+
+      <path class="conn" d="M 200 47 L 232 47" marker-end="url(#arr4)"/>
+
+      <rect class="box" x="234" y="26" width="200" height="42" rx="6"/>
+      <text class="label-sm" x="334" y="44" text-anchor="middle">라벨 정합 (6클래스 통일)</text>
+      <text class="sub" x="334" y="60" text-anchor="middle">화재/연기/안전모/조끼/사람/머리</text>
+
+      <path class="conn" d="M 434 47 L 466 47" marker-end="url(#arr4)"/>
+
+      <rect class="box" x="468" y="26" width="192" height="42" rx="6"/>
+      <text class="label-sm" x="564" y="44" text-anchor="middle">희소 클래스 복제 + 변형</text>
+
+      <path class="conn-thick" d="M 340 70 L 340 100" marker-end="url(#arr4)"/>
+
+      <text class="group-title" x="20" y="118">학습</text>
+
+      <rect class="box-accent" x="200" y="124" width="280" height="50" rx="6"/>
+      <text class="label-sm" x="340" y="143" text-anchor="middle">YOLOv5s · 416×416</text>
+      <text class="sub" x="340" y="160" text-anchor="middle">A100 / RTX 4090</text>
+
+      <path class="conn-thick" d="M 340 174 L 340 200" marker-end="url(#arr4)"/>
+      <text class="mono" x="350" y="192">mAP@0.5 = 84.7%</text>
+
+      <text class="group-title" x="20" y="225">배포 — RTSP 모니터링</text>
+
+      <rect class="box" x="20" y="235" width="160" height="42" rx="6"/>
+      <text class="label-sm" x="100" y="258" text-anchor="middle">RTSP 멀티 스트림</text>
+
+      <path class="conn" d="M 180 256 L 212 256" marker-end="url(#arr4)"/>
+
+      <rect class="box" x="214" y="235" width="200" height="42" rx="6"/>
+      <text class="label-sm" x="314" y="253" text-anchor="middle">OpenCV 추론</text>
+      <text class="sub" x="314" y="269" text-anchor="middle">+ 감지 박스 오버레이</text>
+
+      <path class="conn" d="M 414 256 L 446 256" marker-end="url(#arr4)"/>
+
+      <rect class="box-accent" x="448" y="235" width="212" height="42" rx="6"/>
+      <text class="label-sm" x="554" y="253" text-anchor="middle">Streamlit 대시보드</text>
+      <text class="sub" x="554" y="269" text-anchor="middle">실시간 영상 + 감지 로그</text>
+
+      <path class="conn" d="M 100 290 L 100 305 L 314 305 L 314 285" stroke-dasharray="3 3" marker-end="url(#arr4)"/>
+      <text class="mono" x="200" y="322" text-anchor="middle">Telnet ─ 카메라 원격 제어</text>
+    </svg>
+
+    <h3 class="doc-h3">모델 학습</h3>
+
+    <h2 class="doc-h2" style="font-size:11pt;">클래스 (6개)</h2>
+    <p>화재, 연기, 안전모, 안전조끼, 사람, 머리</p>
+
+    <h2 class="doc-h2" style="font-size:11pt;">데이터셋</h2>
+    <ul class="bullet">
+      <li>캐글 등 여러 공개 데이터셋 직접 수집·통합</li>
+      <li>출처별 라벨 정의 차이를 통일된 6클래스로 매핑</li>
+    </ul>
+
+    <h2 class="doc-h2" style="font-size:11pt;">클래스 불균형 처리</h2>
+    <ul class="bullet">
+      <li>희소 클래스(예: 안전조끼) 데이터를 복제 + 간단한 변형으로 균형 보정</li>
+      <li>어드밴스드 기법(focal loss, weighted sampler 등)은 미적용 — 단순 복제로 충분한 효과 확인</li>
+    </ul>
+
+    <h2 class="doc-h2" style="font-size:11pt;">학습 환경</h2>
+    <ul class="bullet">
+      <li>모델: YOLOv5s, 입력 해상도: 416×416</li>
+      <li>GPU: NVIDIA A100 / RTX 4090</li>
+      <li>모니터링: TensorBoard, Weights &amp; Biases</li>
+    </ul>
+
+    <h2 class="doc-h2" style="font-size:11pt;">결과</h2>
+    <p><strong>mAP@0.5: 84.7%</strong> (YOLOv5 학습 출력 기준)</p>
+  </section>
+
+  <!-- Fire/PPE continued -->
+  <section class="proj-section">
+    <h3 class="doc-h3">RTSP 카메라 연동 모니터링</h3>
+
+    <ul class="bullet">
+      <li>학습한 YOLO 모델을 RTSP 멀티 스트림에 연결</li>
+      <li>OpenCV로 영상 캡처 → 추론 → 감지 박스 오버레이</li>
+      <li>Streamlit 기반 실시간 영상 + 감지 로그 대시보드 구축</li>
+      <li>Telnet 기반 카메라 원격 제어</li>
+    </ul>
+
+    <h3 class="doc-h3">기능</h3>
+    <ul class="bullet">
+      <li>다중 IP 카메라 동시 모니터링</li>
+      <li>감지 이벤트 히스토리 저장 / 검색</li>
+      <li>실시간 영상 + 로그 동기화 표시</li>
+    </ul>
+
+    <h3 class="doc-h3">한계 및 회고</h3>
+    <ul class="bullet">
+      <li>클래스 불균형 처리에 focal loss / weighted sampler 등 표준 기법 비교 실험은 미실시</li>
+      <li>TensorRT/RKNN 등 엣지 디바이스 변환은 별도 프로젝트(Multi-NPU 포팅)에서 다룸</li>
+    </ul>
+  </section>
+
+  <!-- ============================== -->
+  <!-- PROJECT 05: Qwen LoRA            -->
+  <!-- ============================== -->
+  <section class="proj-section">
+    <div class="proj-header">
+      <div class="proj-num-large">PROJECT 05</div>
+      <h1 class="proj-h1">Qwen LoRA 파인튜닝 + 합성 데이터 파이프라인</h1>
+      <p class="proj-tagline">
+        AIBOO 음성 비서의 LLM 모듈 후보로 Qwen 시리즈를 LoRA 파인튜닝.
+        외부 LLM API 미사용 — ollama 기반 자체 합성 데이터 생성 파이프라인.
+      </p>
+      <dl class="proj-meta-table">
+        <dt>기간</dt><dd>2025.12 ~ 현재</dd>
+        <dt>역할</dt><dd>합성 데이터 + LoRA 학습 + GGUF 양자화 + Ollama 서빙</dd>
+        <dt>연계</dt><dd>Project 01 (AIBOO LLM 모듈)</dd>
+        <dt>카테고리</dt><dd>LLM</dd>
+        <dt>Stack</dt><dd>Qwen · PEFT (LoRA) · TRL (SFTTrainer) · llama.cpp · GGUF · Ollama</dd>
+      </dl>
+    </div>
+
+    <h3 class="doc-h3">전체 파이프라인</h3>
+    <svg class="svg-diagram" viewBox="0 0 680 460" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arr5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+          <path d="M0,0 L10,5 L0,10 z" fill="#5548d9"/>
+        </marker>
+      </defs>
+
+      <text class="group-title" x="20" y="18">합성 데이터</text>
+
+      <rect class="box" x="20" y="26" width="180" height="38" rx="6"/>
+      <text class="label-sm" x="110" y="50" text-anchor="middle">로컬 OSS LLM (ollama)</text>
+
+      <path class="conn-thick" d="M 110 64 L 110 86" marker-end="url(#arr5)"/>
+      <text class="mono" x="118" y="80">distillation</text>
+
+      <rect class="box" x="20" y="90" width="280" height="42" rx="6"/>
+      <text class="label-sm" x="160" y="108" text-anchor="middle">distillation 생성</text>
+      <text class="sub" x="160" y="124" text-anchor="middle">15 카테고리 × 8 감정 톤 랜덤 조합</text>
+
+      <path class="conn" d="M 160 132 L 160 152" marker-end="url(#arr5)"/>
+
+      <rect class="box" x="20" y="156" width="280" height="42" rx="6"/>
+      <text class="label-sm" x="160" y="174" text-anchor="middle">중복 필터링 + STT 스타일 강제</text>
+      <text class="sub" x="160" y="190" text-anchor="middle">구두점 최소, 구어체</text>
+
+      <path class="conn" d="M 160 198 L 160 218" marker-end="url(#arr5)"/>
+
+      <rect class="box-accent" x="20" y="222" width="280" height="42" rx="6"/>
+      <text class="label-sm" x="160" y="240" text-anchor="middle">JSONL 데이터셋 (Alpaca 포맷)</text>
+      <text class="sub" x="160" y="256" text-anchor="middle">instruction / input / output</text>
+
+      <text class="group-title" x="380" y="18">학습</text>
+
+      <rect class="box" x="380" y="26" width="280" height="38" rx="6"/>
+      <text class="label-sm" x="520" y="50" text-anchor="middle">Qwen 베이스 (0.5B / 1.5B / 3-1.7B / 3-4B)</text>
+
+      <rect class="box" x="380" y="68" width="280" height="42" rx="6"/>
+      <text class="label-sm" x="520" y="86" text-anchor="middle">+ LoRA (r=8, alpha=16)</text>
+      <text class="sub" x="520" y="102" text-anchor="middle">target = q/k/v/o/gate_proj</text>
+
+      <rect class="box" x="380" y="114" width="280" height="42" rx="6"/>
+      <text class="label-sm" x="520" y="132" text-anchor="middle">+ TRL SFTTrainer</text>
+      <text class="sub" x="520" y="148" text-anchor="middle">fp16, lr=2e-4, ChatML 포맷</text>
+
+      <path class="conn-thick" d="M 520 156 L 520 178" marker-end="url(#arr5)"/>
+
+      <rect class="box-accent" x="380" y="180" width="280" height="42" rx="6"/>
+      <text class="label-sm" x="520" y="208" text-anchor="middle">LoRA 어댑터</text>
+
+      <path class="conn-thick" d="M 300 243 L 380 243" stroke-dasharray="3 3" marker-end="url(#arr5)"/>
+
+      <text class="group-title" x="20" y="290">양자화 · 배포</text>
+
+      <rect class="box" x="20" y="298" width="180" height="42" rx="6"/>
+      <text class="label-sm" x="110" y="316" text-anchor="middle">adapter merge</text>
+      <text class="sub" x="110" y="332" text-anchor="middle">HF 모델로 통합</text>
+
+      <path class="conn" d="M 200 320 L 232 320" marker-end="url(#arr5)"/>
+
+      <rect class="box" x="234" y="298" width="200" height="42" rx="6"/>
+      <text class="label-sm" x="334" y="316" text-anchor="middle">GGUF 변환</text>
+      <text class="sub" x="334" y="332" text-anchor="middle">convert_hf_to_gguf.py</text>
+
+      <path class="conn" d="M 434 320 L 466 320" marker-end="url(#arr5)"/>
+
+      <rect class="box" x="468" y="298" width="192" height="42" rx="6"/>
+      <text class="label-sm" x="564" y="316" text-anchor="middle">llama-quantize Q4_K_M</text>
+
+      <path class="conn-thick" d="M 564 340 L 564 360" marker-end="url(#arr5)"/>
+
+      <rect class="box-accent" x="380" y="364" width="280" height="42" rx="6"/>
+      <text class="label-sm" x="520" y="382" text-anchor="middle">Ollama 등록</text>
+      <text class="sub" x="520" y="398" text-anchor="middle">Modelfile + ChatML stop tokens</text>
+
+      <path class="conn" d="M 380 385 L 220 385" stroke-dasharray="3 3" marker-end="url(#arr5)"/>
+
+      <rect class="box" x="20" y="364" width="200" height="42" rx="6"/>
+      <text class="label-sm" x="120" y="390" text-anchor="middle">AIBOO LLM 후보 (Project 01)</text>
+    </svg>
+
+    <h3 class="doc-h3">1. 합성 데이터 생성 파이프라인</h3>
+    <ul class="bullet">
+      <li><strong>방식:</strong> 로컬 오픈소스 LLM(ollama 기반) 응답을 distillation해서 학습 데이터 생성</li>
+      <li><strong>외부 API 미사용</strong> — 학습 데이터셋 구축에 외부 LLM API를 쓰지 않음 (정책/비용 회피)</li>
+      <li><strong>다양성 확보 장치:</strong> 15개 상황 카테고리 + 8개 감정 톤 배치마다 랜덤 조합 / 중복 instruction 자동 필터링 / 길이·표현·이모지 다양성 강제 프롬프트</li>
+      <li><strong>STT 스타일 강제:</strong> 구두점 최소, 구어체, 간투사("어/음/그/아"), 띄어쓰기 불완전 등 — 음성 입력에 최적화</li>
+    </ul>
+
+    <h3 class="doc-h3">2. 페르소나 학습 — "아이부"</h3>
+    <ul class="bullet">
+      <li>200% 과몰입 공감 캐릭터 (감정 우선, 반말, 이모지 적극)</li>
+      <li><strong>도메인 적용(노인 케어)은 시스템 프롬프트 단계에서 처리</strong> — 페르소나는 학습으로, 도메인은 프롬프트로 분리하여 재사용성 확보</li>
+      <li>학습 데이터 example: <code>{"instruction": "어 오늘 회사에서 완전 깨졌어", "output": "아 진짜? ㅠㅠ 고생한 너 생각하니까 내가 다 속상하고 화난다 진짜!"}</code></li>
+    </ul>
+  </section>
+
+  <!-- Qwen LoRA continued -->
+  <section class="proj-section">
+    <h3 class="doc-h3">3. 모델 학습 (src/train_qwen.py)</h3>
+    <ul class="bullet">
+      <li><strong>베이스:</strong> Qwen2.5-0.5B-Instruct (master), 브랜치별 다른 크기 학습 (Qwen 1.5B / Qwen3 1.7B / Qwen3 4B Q4_K_M)</li>
+      <li><strong>방식:</strong> 표준 LoRA + SFTTrainer (TRL 라이브러리)</li>
+      <li><strong>LoRA 설정:</strong> <code>r=8</code>, <code>lora_alpha=16</code>, <code>lora_dropout=0.1</code>, target_modules: <code>q_proj, k_proj, v_proj, o_proj, gate_proj</code></li>
+      <li><strong>학습 설정:</strong> batch=1 + gradient_accumulation=4 (effective batch=4), lr=2e-4, weight_decay=0.001, fp16=True, max_grad_norm=0.3, lr_scheduler=constant, warmup_ratio=0.03, optim=adamw_torch</li>
+      <li><strong>포맷:</strong> ChatML (<code>&lt;|im_start|&gt;</code> / <code>&lt;|im_end|&gt;</code>)</li>
+      <li><strong>모니터링:</strong> TensorBoard</li>
+    </ul>
+
+    <h3 class="doc-h3">4. 양자화 및 로컬 서빙</h3>
+    <pre class="ascii"># HF → GGUF
+python llama.cpp/convert_hf_to_gguf.py outputs/merged \
+    --outfile outputs/qwen.gguf
+
+# Q4_K_M 양자화
+llama.cpp/build/bin/llama-quantize \
+    outputs/qwen.gguf outputs/qwen_q4km.gguf q4_k_m
+
+# Ollama 등록
+ollama create aiboo_q4km -f Modelfile</pre>
+    <p>Modelfile에 ChatML stop tokens (<code>&lt;|im_start|&gt;</code>, <code>&lt;|im_end|&gt;</code>) 명시 — 추론 시 토큰 누수 방지.</p>
+
+    <h3 class="doc-h3">브랜치 구조 (4가지 모델 크기)</h3>
+    <table>
+      <thead>
+        <tr><th>브랜치</th><th>베이스 모델</th><th>크기</th><th>양자화</th><th>비고</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>master</code></td><td>Qwen2.5</td><td>0.5B</td><td>—</td><td>레퍼런스</td></tr>
+        <tr><td><code>model/qwen05</code></td><td>Qwen2.5</td><td>0.5B</td><td>—</td><td>variant</td></tr>
+        <tr><td><code>model/qwen15</code></td><td>Qwen2.5</td><td>1.5B</td><td>—</td><td>—</td></tr>
+        <tr><td><code>model/qwen3_1.7b_q4km</code></td><td>Qwen3</td><td>1.7B</td><td>Q4_K_M</td><td>—</td></tr>
+        <tr><td><code>model/qwen3_4b_q4km</code></td><td>Qwen3</td><td>4B</td><td>Q4_K_M</td><td><strong>AIBOO 후보</strong></td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="doc-h3">평가</h3>
+    <ul class="bullet">
+      <li>인간 청취 기반 정성 평가 (시간 제약으로 정량 metric 미실시)</li>
+      <li>9:1 train/test 분리</li>
+    </ul>
+
+    <h3 class="doc-h3">향후 계획</h3>
+    <ul class="bullet">
+      <li><strong>Multi-LoRA:</strong> 질의 난이도 분류 어댑터를 별도 학습하여 응답 어댑터와 동적 라우팅 (현재는 단일 어댑터)</li>
+      <li>정량 평가 도입 (perplexity, 자체 eval set의 LLM-as-judge)</li>
+    </ul>
+
+    <h3 class="doc-h3">한계 및 회고</h3>
+    <ul class="bullet">
+      <li>QLoRA(4bit) 시도했으나 메모리 환경 문제로 일반 LoRA로 전환 — 더 큰 베이스 모델 학습은 보류</li>
+      <li>정량 평가 부재 — 모델 간 우열 정량 비교 데이터 없음</li>
+    </ul>
+  </section>
+
+  <!-- ============================== -->
+  <!-- PROJECT 06: MCP                  -->
+  <!-- ============================== -->
+  <section class="proj-section">
+    <div class="proj-header">
+      <div class="proj-num-large">PROJECT 06</div>
+      <h1 class="proj-h1">MCP 도구 릴레이 서버 (FastMCP 기반)</h1>
+      <p class="proj-tagline">
+        FastMCP 도구를 WebSocket으로 외부에 서빙하는 3계층 릴레이.
+        AIBOO 시스템의 도구 통합 모듈로 사용.
+      </p>
+      <dl class="proj-meta-table">
+        <dt>기간</dt><dd>2026.03 ~ 현재</dd>
+        <dt>역할</dt><dd>아키텍처 설계 + 자체 MCP 도구 구현 + 테스트 자동화</dd>
+        <dt>연계</dt><dd>Project 01 (AIBOO 시스템 일부)</dd>
+        <dt>카테고리</dt><dd>Backend</dd>
+        <dt>Stack</dt><dd>FastAPI · WebSocket · FastMCP · pytest · Gemini 2.5 Flash · Kakao Local</dd>
+      </dl>
+    </div>
+
+    <h3 class="doc-h3">아키텍처</h3>
+    <svg class="svg-diagram" viewBox="0 0 680 380" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arr6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+          <path d="M0,0 L10,5 L0,10 z" fill="#5548d9"/>
+        </marker>
+      </defs>
+
+      <rect class="box-accent" x="220" y="20" width="240" height="40" rx="6"/>
+      <text class="label" x="340" y="44" text-anchor="middle">소비자 (AIBOO 등)</text>
+
+      <path class="conn-thick" d="M 340 60 L 340 92" marker-end="url(#arr6)"/>
+      <text class="mono" x="348" y="80">WS /call/ + AES 토큰</text>
+
+      <rect class="box" x="180" y="96" width="320" height="50" rx="6"/>
+      <text class="label" x="340" y="116" text-anchor="middle">서버: FastAPI WebSocket</text>
+      <text class="sub" x="340" y="134" text-anchor="middle">JSON-RPC 2.0 ID 변환</text>
+
+      <path class="conn-thick" d="M 340 146 L 340 178" marker-end="url(#arr6)"/>
+      <text class="mono" x="348" y="166">WS /mcp/</text>
+
+      <rect class="box" x="180" y="182" width="320" height="50" rx="6"/>
+      <text class="label" x="340" y="202" text-anchor="middle">파이프: stdio ↔ WebSocket</text>
+      <text class="sub" x="340" y="220" text-anchor="middle">exponential backoff 자동 재연결 (1초 → 30초 cap)</text>
+
+      <path class="conn-thick" d="M 340 232 L 340 264" marker-end="url(#arr6)"/>
+      <text class="mono" x="348" y="252">stdio</text>
+
+      <rect class="box-accent" x="60" y="268" width="560" height="100" rx="6"/>
+      <text class="label" x="340" y="290" text-anchor="middle">도구: MCP subprocess</text>
+      <line class="conn" x1="80" y1="300" x2="600" y2="300"/>
+
+      <text class="label-sm" x="80" y="320">calculator</text>
+      <text class="sub" x="180" y="320">Python math · random 모듈 기반 수식 계산</text>
+
+      <text class="label-sm" x="80" y="345">recommend_what_to_do</text>
+      <text class="sub" x="220" y="345">Gemini 2.5 Flash + Kakao Local API · 위치 기반 추천</text>
+    </svg>
+
+    <h3 class="doc-h3">주요 기여</h3>
+    <ul class="bullet">
+      <li><strong>3계층 WebSocket 릴레이 아키텍처 설계</strong> — 소비자 ↔ 서버 ↔ 파이프 ↔ stdio 도구</li>
+      <li><strong>JSON-RPC 2.0 ID 변환 + 양방향 메시지 라우팅</strong></li>
+      <li><strong>stdio ↔ WebSocket 자동 재연결 로직</strong> — exponential backoff 기반 (1초 → 최대 30초 cap), max_retries 이후 상위 핸들러에 에러 전파</li>
+      <li><strong>AES 토큰 인증</strong> — 서버 키 자동 생성, <code>agentId=&lt;name&gt;</code> 형태 토큰 암호화</li>
+      <li><strong>자체 MCP 도구 구현</strong> — <code>calculator</code> (Python math/random 수식), <code>recommend_what_to_do</code> (Gemini 2.5 Flash + Kakao Local API로 위치 기반 음식·숙박·관광·활동 추천)</li>
+      <li><strong>테스트 자동화</strong> — Claude CLI agent 병렬 실행으로 53개 테스트 케이스 자동 생성 (전 계층 커버: 서버/도구/파이프/유틸)</li>
+    </ul>
+
+    <h3 class="doc-h3">API 엔드포인트</h3>
+    <ul class="bullet">
+      <li><code>GET /mcp_endpoint/</code> — 서버 상태 · <code>GET /mcp_endpoint/health?key=&lt;key&gt;</code> — 헬스 체크</li>
+      <li><code>WS /mcp_endpoint/mcp/?token=&lt;token&gt;</code> — 파이프 연결 · <code>WS /mcp_endpoint/call/?token=&lt;token&gt;</code> — 소비자 연결</li>
+    </ul>
+
+    <h3 class="doc-h3">한계 및 회고</h3>
+    <ul class="bullet">
+      <li>자동 생성 테스트의 정량 커버리지는 빠르게 확보되지만, 핵심 시나리오의 의도성은 별도 검증 필요</li>
+      <li>AES 암호화 모드 강화 (CTR → GCM) 검토는 후속 과제 — 현재는 내부망 + 짧은 세션 가정</li>
+    </ul>
+  </section>
+
+  <!-- ============================== -->
+  <!-- OTHER PROJECTS                   -->
+  <!-- ============================== -->
+  <section class="proj-section">
+    <div class="other-projects-sep">
+      <h1>Other Projects</h1>
+      <p>핵심 프로젝트 6개 외에 보조적으로 진행한 프로젝트 (참고용).</p>
+    </div>
+
+    <h2 class="doc-h2">Telemedicine 백엔드</h2>
+    <dl class="proj-meta-table">
+      <dt>기간</dt><dd>2025.07 ~ 09</dd>
+      <dt>역할</dt><dd>백엔드 + TURN 서버 구축</dd>
+      <dt>Stack</dt><dd>Python · FastAPI · WebRTC · Coturn · Socket.IO · OpenEMR</dd>
+    </dl>
+    <ul class="bullet">
+      <li>WebRTC 기반 의사-환자 실시간 영상 진료 + 스마트폰 센서 바이탈 모니터링 시스템 백엔드 담당</li>
+      <li>FastAPI + Socket.IO 시그널링 서버 + Coturn TURN/STUN 서버 셋업 (NAT 트래버설)</li>
+      <li>OpenEMR 인증 연동, WebPush 알림</li>
+    </ul>
+
+    <h2 class="doc-h2">GPT-SoVITS 한국어 TTS 추론 서버</h2>
+    <dl class="proj-meta-table">
+      <dt>기간</dt><dd>2025</dd>
+      <dt>역할</dt><dd>FastAPI 서빙 인프라 구축</dd>
+      <dt>Stack</dt><dd>GPT-SoVITS v3 · FastAPI · PyTorch · CUDA</dd>
+    </dl>
+    <ul class="bullet">
+      <li>GPT-SoVITS v3 기반 한국어 TTS 추론 서버 — 3~10초 레퍼런스 오디오로 few-shot 음성 클로닝</li>
+      <li>FastAPI 기반 다국어(ko/en/ja/zh) 지원, 모델 동적 스위칭</li>
+      <li>모델 자체는 사전학습 활용, 서빙 인프라가 본인 기여</li>
+    </ul>
+
+    <p style="margin-top: 30px; font-size: 9pt; color: var(--c-muted);">
+      각 프로젝트의 시각적 요약은 포트폴리오 사이트(<a href="https://tmpark.space"><code>tmpark.space</code></a>),
+      GitHub README(<a href="https://github.com/tommyjin2894/portfolio"><code>github.com/tommyjin2894/portfolio</code></a>)에서도 확인 가능합니다.
+      인적사항 및 연락처는 별첨 이력서 참조.
+    </p>
+
+    <p style="margin-top: 30px; font-size: 8.5pt; color: var(--c-dim); text-align: center;">
+      박진형 · 경력기술서 · Last updated 2026.04
+    </p>
+  </section>
+
+</div>
+
+</body>
+</html>
