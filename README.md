@@ -526,7 +526,7 @@ graph LR
 
 ### Other Projects
 
-- **Telemedicine 백엔드** (2024.08 ~ 09) — Python FastAPI + WebRTC 시그널링, Coturn TURN 서버 구축, OpenEMR 연동. 백엔드 위주 기여.
+- **Telemedicine 백엔드** (2025.07 ~ 09) — Python FastAPI + WebRTC 시그널링, Coturn TURN 서버 구축, OpenEMR 연동. 백엔드 위주 기여.
 - **GPT-SoVITS 한국어 TTS 추론 서버** (2025) — Few-shot 음성 클로닝, FastAPI + 다국어(ko/en/ja/zh) 지원. 모델은 사전학습 활용, 서빙 인프라 구축.
 
 ---
