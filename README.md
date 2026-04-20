@@ -48,12 +48,12 @@
 - **VAD/ASR 튜너 페이지** — 환경별 임계값 휴리스틱 튜닝 + DB 저장
 - **SQLite WAL 모드 동시성 처리** — 비동기 컴포넌트(스케줄/MQTT/WS) 동시 쓰기 락 충돌 회피
 - **Barge-in 구현** — LLM streaming cancel 대신 TTS 재생을 잘라내는 방식 (구현 단순성 + 자연스러운 흐름)
-- **ESP32 펌웨어 튜닝** — 빔포밍 (XVF3800 I2C 제어), I2S Split (RX Slave + TX Master), AES-128-CTR
+- **ESP32 펌웨어 튜닝** — 빔포밍 (XVF3800 I2C 제어), I2S Split (RX Slave + TX Master)
 
 ```mermaid
 graph TB
     subgraph "엣지 디바이스 (ESP32)"
-        ESP32["M5Stack AtomS3R 펌웨어<br/>I2S Split + 빔포밍 (XVF3800)<br/>AES-128-CTR"]
+        ESP32["M5Stack AtomS3R 펌웨어<br/>I2S Split + 빔포밍 (XVF3800)"]
         SENSORS["환경센서 6종<br/>온/습도·CO2·PM2.5·VOC·조도"]
     end
 
@@ -134,7 +134,7 @@ graph TB
 
 #### ESP32 펌웨어
 - 베이스: 오픈소스 m5chatbot-build (ESP-IDF) 활용
-- 본인이 환경/도메인에 맞게 튜닝 (빔포밍, I2S, AES)
+- 본인이 환경/도메인에 맞게 튜닝 (빔포밍, I2S)
 - 펌웨어 배포는 USB/시리얼 직접 업로드 (ESP32 측 OTA 미사용)
 - 서버 측 OTA endpoint(`/xiaozhi/ota/`)는 Jetson 펌웨어/설정 배포용
 
@@ -158,7 +158,7 @@ graph TB
 
 **핵심 기여**
 - **Kneron KL630 변환 파이프라인** — ONNX → BIE → NEF, ktc 양자화 파라미터 튜닝 (`quantize_mode`, `datapath_bitwidth_mode`, `weight_bitwidth_mode` 등 비트폭 혼합)
-- **ONNX 그래프 편집** — KL630 미지원 op (NMS 등 후처리 영역)는 onnx 툴킷으로 노드 제거 → 호스트 측 C 애플리케이션에서 재구현하여 정확도 유지
+- **ONNX 그래프 편집** — 미지원 연산(NMS 등 후처리)은 ONNX 그래프에서 노드 제거 → 호스트 측 C 애플리케이션에서 재구현하여 정확도 유지
 - **출력 레이어 정확도 보존** — softmax/logits 영역은 int16 또는 post_sigmoid 모드 적용
 - **Rockchip RK3588 변환** — RKNN Toolkit으로 YOLO-World 포팅, INT8 양자화
 - **Docker 기반 KL630 크로스 컴파일 환경** — 재현성 확보
@@ -171,7 +171,7 @@ graph LR
     end
 
     subgraph "Kneron KL630"
-        K_GRAPH["ONNX 그래프 편집<br/>(미지원 op 제거)"]
+        K_GRAPH["ONNX 그래프 편집<br/>(미지원 연산 제거)"]
         K_QUANT["ktc 양자화<br/>quantize_mode<br/>datapath/weight bitwidth"]
         K_BIE["BIE 변환"]
         K_NEF["NEF 패킹"]
@@ -214,7 +214,7 @@ graph LR
 #### 학습 포인트
 - 다양한 NPU 환경 경험 (Kneron BIE/NEF, Rockchip RKNN)
 - 양자화 비트폭 혼합 (mix int8 / int16) 전략 — 정확도 vs 추론 속도/메모리 트레이드오프
-- ONNX 중간 포맷의 역할과 한계 — NPU 미지원 op 처리 방법론
+- ONNX 중간 포맷의 역할과 한계 — NPU 미지원 연산 처리 방법론
 - 그래프 편집 vs 후처리 분리 판단
 
 #### 한계
@@ -309,7 +309,7 @@ for model in glob("voices/*.onnx"):
 - **6클래스 직접 학습** — 화재, 연기, 안전모, 안전조끼, 사람, 머리
 - **다출처 데이터셋 통합** — 캐글 등에서 수집, 출처별 라벨 정의 차이를 통일된 6클래스로 매핑
 - **클래스 불균형 처리** — 희소 클래스 데이터 복제 + 변형 (단순 복제로 충분한 효과 확인)
-- **mAP@0.5 84.7% 달성** (YOLOv5 학습 출력 기준, A100/4090)
+- **mAP@0.5 84.7% 달성** (YOLOv5 학습 출력 기준, RTX 4090)
 - **RTSP 멀티 스트림 연동** — OpenCV 추론 + Streamlit 대시보드 실시간 영상/로그 시각화
 - **Telnet 카메라 원격 제어**
 
@@ -322,7 +322,7 @@ graph TB
     end
 
     subgraph "학습"
-        TRAIN["YOLOv5s 학습<br/>416×416<br/>A100 / RTX 4090"]
+        TRAIN["YOLOv5s 학습<br/>416×416<br/>RTX 4090"]
         OUT["mAP@0.5 84.7%"]
     end
 
@@ -369,7 +369,7 @@ graph TB
 **Stack:** Qwen · LoRA · TRL (SFTTrainer) · ollama · llama.cpp · GGUF · Ollama
 
 **핵심 기여**
-- **합성 데이터 자체 생성 파이프라인** — 로컬 OSS LLM(ollama)을 distillation해서 데이터 생성. 외부 LLM API 미사용 (정책/비용 회피)
+- **합성 데이터 자체 생성 파이프라인** — 로컬 OSS LLM(ollama)에 다양한 프롬프트를 샘플링해 데이터 생성. 외부 LLM API 미사용 (정책/비용 회피)
 - **다양성 강제 장치** — 15개 카테고리 × 8개 감정 톤 랜덤 조합, 중복 instruction 자동 필터링, STT 스타일 강제(구두점 최소, 구어체)
 - **페르소나 vs 도메인 분리** — "아이부" 페르소나는 학습으로, 노인 케어 도메인은 시스템 프롬프트로 분리 → 재사용성 확보
 - **모델 학습 (TRL SFTTrainer)** — LoRA r=8/alpha=16, target `q/k/v/o/gate_proj`, fp16, lr=2e-4, ChatML 포맷
@@ -380,7 +380,7 @@ graph TB
 graph TB
     subgraph "합성 데이터"
         OSS["로컬 OSS LLM<br/>(ollama)"]
-        DISTILL["distillation<br/>15 카테고리 × 8 감정"]
+        DISTILL["합성 데이터 생성<br/>15 카테고리 × 8 감정"]
         DEDUP["중복 필터링<br/>+ STT 스타일 강제"]
         JSONL["JSONL 데이터셋<br/>Alpaca 포맷"]
     end
@@ -475,7 +475,7 @@ ollama create aiboo_q4km -f Modelfile
 - **3계층 WebSocket 릴레이 아키텍처** — 소비자 ↔ 서버 ↔ 파이프 ↔ stdio 도구
 - **JSON-RPC 2.0 ID 변환 + 양방향 메시지 라우팅**
 - **stdio ↔ WebSocket 자동 재연결** — exponential backoff 기반, 도구 프로세스 비정상 종료 대응
-- **AES 토큰 인증** — 서버 키 자동 생성, `agentId=<name>` 토큰 암호화
+- **토큰 기반 인증** — 서버 키 자동 생성, `agentId=<name>` 토큰 발급
 - **자체 MCP 도구 2종 구현**:
   - `calculator` — Python `math`, `random` 모듈 기반 수식 계산
   - `recommend_what_to_do` — Gemini + Kakao Local API 위치 기반 추천 (음식/숙박/관광/활동)
@@ -489,7 +489,7 @@ graph LR
     TOOLS["MCP 도구 (subprocess)<br/>· calculator<br/>· recommend_what_to_do"]
     EXT["외부 API<br/>Gemini 2.5 Flash<br/>Kakao Local"]
 
-    CONSUMER -->|WS /call/<br/>AES 토큰| SERVER
+    CONSUMER -->|WS /call/<br/>토큰 인증| SERVER
     SERVER <-->|WS /mcp/| PIPE
     PIPE <-->|stdio| TOOLS
     TOOLS -.HTTP.-> EXT
@@ -518,7 +518,6 @@ graph LR
 
 #### 한계
 - 자동 생성 테스트는 정량적 커버리지는 빠르게 확보되지만, 핵심 시나리오의 의도성은 별도 검증 필요
-- AES 암호화 모드 강화(GCM 등)는 후속 과제
 
 </details>
 

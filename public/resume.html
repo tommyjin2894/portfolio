@@ -381,7 +381,7 @@
       </div>
       <div class="proj-desc">
         서로 다른 NPU 아키텍처에 객체 탐지 모델 포팅. Kneron Toolchain 양자화 비트폭 혼합 (int8/16),
-        ONNX 그래프 편집 + 미지원 op는 호스트 측 C 애플리케이션에서 재구현하여 정확도 유지.
+        ONNX 그래프 편집 + 미지원 연산은 호스트 측 C 애플리케이션에서 재구현하여 정확도 유지.
         Rockchip RKNN INT8 변환.
       </div>
       <div class="proj-tech">Stack: Kneron Toolchain (ktc) · RKNN Toolkit · ONNX · onnx-graphsurgeon · Docker</div>
@@ -394,7 +394,7 @@
         <span class="proj-meta">2025.12 ~ 현재 · AIBOO LLM 모듈</span>
       </div>
       <div class="proj-desc">
-        ollama distillation 기반 자체 합성 데이터 생성 파이프라인 (외부 LLM API 미사용 — 정책/비용 회피).
+        ollama 기반 로컬 LLM 샘플링으로 자체 합성 데이터 생성 파이프라인 구축 (외부 LLM API 미사용 — 정책/비용 회피).
         PEFT(LoRA) + TRL(SFTTrainer)로 Qwen 4가지 크기(0.5B / 1.5B / 3-1.7B / 3-4B) 학습.
         HuggingFace → GGUF Q4_K_M → Ollama 변환 자동화.
       </div>
@@ -410,7 +410,7 @@
       <div class="proj-desc">
         YOLOv5s 6클래스 객체 탐지 학습 mAP@0.5 84.7%, RTSP 카메라 연동 Streamlit 실시간 모니터링.
       </div>
-      <div class="proj-tech">Stack: YOLOv5 · OpenCV · Streamlit · A100 / RTX 4090</div>
+      <div class="proj-tech">Stack: YOLOv5 · OpenCV · Streamlit · RTX 4090</div>
     </div>
 
     <div class="proj">
@@ -432,7 +432,7 @@
         <span class="proj-meta">2026.03 ~ 현재</span>
       </div>
       <div class="proj-desc">
-        FastMCP 기반 3계층 WebSocket 릴레이 (소비자 ↔ 서버 ↔ 파이프 ↔ stdio), JSON-RPC 2.0 라우팅, AES 토큰 인증.
+        FastMCP 기반 3계층 WebSocket 릴레이 (소비자 ↔ 서버 ↔ 파이프 ↔ stdio), JSON-RPC 2.0 라우팅, 토큰 기반 인증.
         Claude CLI agent 병렬 활용한 테스트 53개 자동 생성.
       </div>
       <div class="proj-tech">Stack: FastAPI · WebSocket · FastMCP · Gemini · Kakao Local</div>

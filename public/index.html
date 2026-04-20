@@ -268,7 +268,7 @@
           <p class="project-subtitle">Kneron KL630 + Rockchip RK3588</p>
           <p class="project-desc">
             서로 다른 NPU 아키텍처에 객체 탐지 모델 포팅.
-            ktc 양자화 비트폭 혼합 (int8/16), ONNX 그래프 편집 + 미지원 op는 호스트 측 C로 재구현하여 정확도 유지.
+            ktc 양자화 비트폭 혼합 (int8/16), ONNX 그래프 편집 + 미지원 연산은 호스트 측 C로 재구현하여 정확도 유지.
           </p>
           <div class="project-metrics">
             <span class="metric"><strong>2개 NPU</strong> 포팅</span>
@@ -317,7 +317,7 @@
             <span class="metric"><strong>RTSP</strong> 모니터링</span>
           </div>
           <div class="project-tech">
-            <span>YOLOv5</span><span>OpenCV</span><span>Streamlit</span><span>A100/4090</span>
+            <span>YOLOv5</span><span>OpenCV</span><span>Streamlit</span><span>RTX 4090</span>
           </div>
         </article>
 
@@ -328,7 +328,7 @@
           <h3 class="project-title">Qwen LoRA 파인튜닝</h3>
           <p class="project-subtitle">합성 데이터 파이프라인 + Ollama 서빙</p>
           <p class="project-desc">
-            ollama distillation으로 자체 합성 데이터 생성 (외부 API 미사용).
+            ollama 기반 로컬 LLM 샘플링으로 자체 합성 데이터 생성 (외부 API 미사용).
             PEFT(LoRA) + TRL(SFTTrainer) 학습. 4가지 모델 크기 브랜치별 운용,
             HF → GGUF Q4_K_M → Ollama 변환 파이프라인 구축.
           </p>
@@ -350,13 +350,13 @@
           <p class="project-subtitle">FastMCP 기반 3계층 WebSocket 릴레이</p>
           <p class="project-desc">
             소비자 ↔ 서버 ↔ 파이프 ↔ stdio 도구 3계층 구조.
-            JSON-RPC ID 변환 + exponential backoff 자동 재연결 + AES 토큰 인증.
+            JSON-RPC ID 변환 + exponential backoff 자동 재연결 + 토큰 기반 인증.
             AI 에이전트로 53개 테스트 자동 생성.
           </p>
           <div class="project-metrics">
             <span class="metric"><strong>3계층</strong> 릴레이</span>
             <span class="metric"><strong>53</strong> 자동 테스트</span>
-            <span class="metric"><strong>AES</strong> 토큰</span>
+            <span class="metric"><strong>토큰</strong> 인증</span>
           </div>
           <div class="project-tech">
             <span>FastAPI</span><span>WebSocket</span><span>FastMCP</span><span>Gemini</span>

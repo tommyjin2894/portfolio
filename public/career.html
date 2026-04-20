@@ -457,7 +457,7 @@
           중국 커뮤니티에서 활발히 유지되는 음성 비서 오픈소스를 시작점으로 채택.</li>
       <li><strong>본인 기여 — aiboo-server-lite:</strong>
           Jetson Orin 단일 디바이스 환경에 맞춰 컨테이너를 <em>단일 Python 프로세스로 통합 리팩토링</em> + Jetson 전용 환경 셋업 +
-          도메인 기능 8종(센서·건강·스케줄·긴급·정서지원·i18n 등) 자체 구현 + ESP32 펌웨어 튜닝(빔포밍·암호화) 까지 단독 개발.</li>
+          도메인 기능 8종(센서·건강·스케줄·긴급·정서지원·i18n 등) 자체 구현 + ESP32 펌웨어 튜닝(빔포밍·I2S) 까지 단독 개발.
       <li><strong>브랜치 분리 — <code>main</code> / <code>bobo</code>:</strong>
           <code>main</code>은 일반 음성 비서 코어, <code>bobo</code>는 공공기관 도메인 특화 hooks(긴급 메시지 자동 전송, 케어센터 연동 등)
           분리하여 코어 재사용성 확보.</li>
@@ -476,9 +476,8 @@
       <text class="label-sm" x="32" y="46">M5Stack AtomS3R 펌웨어</text>
       <text class="sub" x="40" y="66">· I2S Split (RX Slave + TX Master)</text>
       <text class="sub" x="40" y="83">· 빔포밍 (XVF3800 I2C 제어)</text>
-      <text class="sub" x="40" y="100">· AES-128-CTR 암호화</text>
-      <text class="sub" x="40" y="117">· 환경센서 6종</text>
-      <text class="sub" x="50" y="133">(온/습도/CO2/PM2.5/VOC/조도)</text>
+      <text class="sub" x="40" y="100">· 환경센서 6종</text>
+      <text class="sub" x="50" y="117">(온/습도/CO2/PM2.5/VOC/조도)</text>
 
       <text class="group-title" x="380" y="18">EXTERNAL</text>
       <rect class="box" x="380" y="26" width="280" height="120" rx="6"/>
@@ -532,7 +531,7 @@
       <li><strong>VAD/ASR 튜너 페이지</strong> (<code>/tuner</code>) — 환경별 임계값 휴리스틱 튜닝 + DB 저장.</li>
       <li><strong>Barge-in 구현</strong> — LLM 토큰 스트리밍 cancel 대신 TTS 재생을 잘라내는 방식. LLM streaming cancel은 model state 관리 복잡도가 높아 회피 → 자연스러운 대화 흐름 + 구현 단순성 확보.</li>
       <li><strong>SQLite WAL 모드 동시성 처리</strong> — 비동기 컴포넌트 (스케줄 / MQTT / WebSocket)가 동시 쓰기로 발생하던 락 충돌을 WAL 모드 전환으로 해결.</li>
-      <li><strong>ESP32 펌웨어 튜닝</strong> — m5chatbot-build 베이스에서 빔포밍 (XVF3800 I2C 제어) 적용, I2S Split (RX Slave + TX Master) 오디오 스트리밍, AES-128-CTR 암호화 통합.</li>
+      <li><strong>ESP32 펌웨어 튜닝</strong> — m5chatbot-build 베이스에서 빔포밍 (XVF3800 I2C 제어) 적용, I2S Split (RX Slave + TX Master) 오디오 스트리밍 통합.</li>
     </ul>
   </section>
 
@@ -627,7 +626,7 @@
 
       <rect class="box" x="20" y="180" width="180" height="48" rx="6"/>
       <text class="label-sm" x="110" y="200" text-anchor="middle">ONNX 그래프 편집</text>
-      <text class="sub" x="110" y="218" text-anchor="middle">미지원 op 제거</text>
+      <text class="sub" x="110" y="218" text-anchor="middle">미지원 연산 제거</text>
 
       <path class="conn" d="M 200 204 L 232 204" marker-end="url(#arr2)"/>
 
@@ -672,7 +671,7 @@
 
     <h3 class="doc-h3">ONNX 그래프 편집</h3>
     <p>
-      KL630 미지원 op (NMS 등 후처리 영역)는 onnx 툴킷으로 노드 제거 후,
+      미지원 연산(NMS 등 후처리)은 ONNX 그래프에서 노드 제거 후,
       <strong>제거된 후처리 연산을 호스트 측 C 애플리케이션에서 재구현</strong>하여 정확도 유지.
     </p>
 
@@ -687,15 +686,15 @@
     <p>
       두 NPU 모두 PyTorch → ONNX → 자체 toolchain 변환이라는 공통 패턴을 따르지만, 실제 작업 난이도는 크게 달랐습니다.
       <strong>Kneron KL630이 훨씬 까다로웠습니다.</strong>
-      RKNN은 toolkit이 비교적 잘 정리되어 있고 미지원 op도 적어 변환 자체는 1~2일이면 충분했지만,
+      RKNN은 toolkit이 비교적 잘 정리되어 있고 미지원 연산도 적어 변환 자체는 1~2일이면 충분했지만,
       Kneron은 BIE → NEF로 이어지는 변환 단계가 많고, 양자화 비트폭을 노드별로 세밀히 조정해야 했으며,
-      미지원 op는 호스트 CPU 측에서 별도 후처리로 옮겨야 하는 복잡성이 있었습니다.
+      미지원 연산은 호스트 CPU 측에서 별도 후처리로 옮겨야 하는 복잡성이 있었습니다.
     </p>
 
-    <h3 class="doc-h3">트러블슈팅 (예시) — KL630 미지원 op 처리</h3>
+    <h3 class="doc-h3">트러블슈팅 (예시) — KL630 미지원 연산 처리</h3>
     <ul class="bullet">
-      <li>증상: YOLOv5s를 BIE 변환할 때 NMS 등 후처리 영역의 특정 op가 KL630에서 미지원으로 fail</li>
-      <li>분석: ONNX 그래프를 살펴보니 출력 헤드의 후처리 부분(detect 레이어, NMS)이 KL630 NPU에서 실행 불가능</li>
+      <li>증상: YOLOv5s를 BIE로 변환하는 과정에서 출력 헤드의 후처리 영역(NMS 등)에 KL630 미지원 연산이 포함되어 변환 실패</li>
+      <li>분석: ONNX 그래프 상 출력 헤드의 후처리 부분(detect 레이어, NMS)이 KL630 NPU에서 미지원 연산으로 구성되어 있음을 확인</li>
       <li>해결: onnx 툴킷으로 해당 노드들을 그래프에서 제거 (모델 본체만 NPU 변환) +
           잘려나간 후처리 연산을 <strong>호스트 측 C 애플리케이션에서 직접 재구현</strong>하여 정확도 보존</li>
       <li>결과: NPU 추론 + CPU 후처리 조합으로 정상 동작, 변환된 모델 크기/성능 모두 만족</li>
@@ -867,7 +866,7 @@ for model in glob("voices/*.onnx"):
 
       <rect class="box-accent" x="200" y="124" width="280" height="50" rx="6"/>
       <text class="label-sm" x="340" y="143" text-anchor="middle">YOLOv5s · 416×416</text>
-      <text class="sub" x="340" y="160" text-anchor="middle">A100 / RTX 4090</text>
+      <text class="sub" x="340" y="160" text-anchor="middle">RTX 4090</text>
 
       <path class="conn-thick" d="M 340 174 L 340 200" marker-end="url(#arr4)"/>
       <text class="mono" x="350" y="192">mAP@0.5 = 84.7%</text>
@@ -913,7 +912,7 @@ for model in glob("voices/*.onnx"):
     <h2 class="doc-h2" style="font-size:11pt;">학습 환경</h2>
     <ul class="bullet">
       <li>모델: YOLOv5s, 입력 해상도: 416×416</li>
-      <li>GPU: NVIDIA A100 / RTX 4090</li>
+      <li>GPU: NVIDIA RTX 4090</li>
       <li>모니터링: TensorBoard, Weights &amp; Biases</li>
     </ul>
 
@@ -980,10 +979,10 @@ for model in glob("voices/*.onnx"):
       <text class="label-sm" x="110" y="50" text-anchor="middle">로컬 OSS LLM (ollama)</text>
 
       <path class="conn-thick" d="M 110 64 L 110 86" marker-end="url(#arr5)"/>
-      <text class="mono" x="118" y="80">distillation</text>
+      <text class="mono" x="118" y="80">샘플링</text>
 
       <rect class="box" x="20" y="90" width="280" height="42" rx="6"/>
-      <text class="label-sm" x="160" y="108" text-anchor="middle">distillation 생성</text>
+      <text class="label-sm" x="160" y="108" text-anchor="middle">합성 데이터 생성</text>
       <text class="sub" x="160" y="124" text-anchor="middle">15 카테고리 × 8 감정 톤 랜덤 조합</text>
 
       <path class="conn" d="M 160 132 L 160 152" marker-end="url(#arr5)"/>
@@ -1049,7 +1048,7 @@ for model in glob("voices/*.onnx"):
 
     <h3 class="doc-h3">1. 합성 데이터 생성 파이프라인</h3>
     <ul class="bullet">
-      <li><strong>방식:</strong> 로컬 오픈소스 LLM(ollama 기반) 응답을 distillation해서 학습 데이터 생성</li>
+      <li><strong>방식:</strong> 로컬 오픈소스 LLM(ollama 기반)에 다양한 프롬프트를 샘플링해 합성 학습 데이터 생성</li>
       <li><strong>외부 API 미사용</strong> — 학습 데이터셋 구축에 외부 LLM API를 쓰지 않음 (정책/비용 회피)</li>
       <li><strong>다양성 확보 장치:</strong> 15개 상황 카테고리 + 8개 감정 톤 배치마다 랜덤 조합 / 중복 instruction 자동 필터링 / 길이·표현·이모지 다양성 강제 프롬프트</li>
       <li><strong>STT 스타일 강제:</strong> 구두점 최소, 구어체, 간투사("어/음/그/아"), 띄어쓰기 불완전 등 — 음성 입력에 최적화</li>
@@ -1153,7 +1152,7 @@ ollama create aiboo_q4km -f Modelfile</pre>
       <text class="label" x="340" y="44" text-anchor="middle">소비자 (AIBOO 등)</text>
 
       <path class="conn-thick" d="M 340 60 L 340 92" marker-end="url(#arr6)"/>
-      <text class="mono" x="348" y="80">WS /call/ + AES 토큰</text>
+      <text class="mono" x="348" y="80">WS /call/ + 토큰 인증</text>
 
       <rect class="box" x="180" y="96" width="320" height="50" rx="6"/>
       <text class="label" x="340" y="116" text-anchor="middle">서버: FastAPI WebSocket</text>
@@ -1185,7 +1184,7 @@ ollama create aiboo_q4km -f Modelfile</pre>
       <li><strong>3계층 WebSocket 릴레이 아키텍처 설계</strong> — 소비자 ↔ 서버 ↔ 파이프 ↔ stdio 도구</li>
       <li><strong>JSON-RPC 2.0 ID 변환 + 양방향 메시지 라우팅</strong></li>
       <li><strong>stdio ↔ WebSocket 자동 재연결 로직</strong> — exponential backoff 기반 (1초 → 최대 30초 cap), max_retries 이후 상위 핸들러에 에러 전파</li>
-      <li><strong>AES 토큰 인증</strong> — 서버 키 자동 생성, <code>agentId=&lt;name&gt;</code> 형태 토큰 암호화</li>
+      <li><strong>토큰 기반 인증</strong> — 서버 키 자동 생성, <code>agentId=&lt;name&gt;</code> 형태 토큰 발급</li>
       <li><strong>자체 MCP 도구 구현</strong> — <code>calculator</code> (Python math/random 수식), <code>recommend_what_to_do</code> (Gemini 2.5 Flash + Kakao Local API로 위치 기반 음식·숙박·관광·활동 추천)</li>
       <li><strong>테스트 자동화</strong> — Claude CLI agent 병렬 실행으로 53개 테스트 케이스 자동 생성 (전 계층 커버: 서버/도구/파이프/유틸)</li>
     </ul>
@@ -1199,7 +1198,6 @@ ollama create aiboo_q4km -f Modelfile</pre>
     <h3 class="doc-h3">한계 및 회고</h3>
     <ul class="bullet">
       <li>자동 생성 테스트의 정량 커버리지는 빠르게 확보되지만, 핵심 시나리오의 의도성은 별도 검증 필요</li>
-      <li>AES 암호화 모드 강화 (CTR → GCM) 검토는 후속 과제 — 현재는 내부망 + 짧은 세션 가정</li>
     </ul>
   </section>
 
