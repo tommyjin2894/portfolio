@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>박진형 — 이력서</title>
+<title>박진형 — 이력서 (LLM / Agent)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -46,7 +46,6 @@
     background: white;
   }
 
-  /* ── Header ── */
   header {
     display: flex;
     justify-content: space-between;
@@ -84,7 +83,6 @@
     letter-spacing: .05em;
   }
 
-  /* ── Section ── */
   section { margin-bottom: 9px; page-break-inside: avoid; }
   h2 {
     font-size: 10pt;
@@ -107,7 +105,6 @@
     display: inline-block;
   }
 
-  /* ── Summary ── */
   .summary {
     font-size: 9pt;
     color: var(--c-muted);
@@ -118,7 +115,6 @@
     font-weight: 600;
   }
 
-  /* ── Tech Stack ── */
   .stack-grid {
     display: grid;
     grid-template-columns: 90px 1fr;
@@ -137,7 +133,6 @@
     line-height: 1.6;
   }
 
-  /* ── Timeline (Career / Education) ── */
   .entry {
     display: grid;
     grid-template-columns: 100px 1fr;
@@ -172,7 +167,6 @@
     font-weight: 600;
   }
 
-  /* ── Projects ── */
   .proj {
     display: grid;
     grid-template-columns: 1fr;
@@ -217,7 +211,6 @@
     margin-top: 1px;
   }
 
-  /* ── Footer ── */
   footer {
     margin-top: 12px;
     padding-top: 8px;
@@ -228,7 +221,6 @@
     justify-content: space-between;
   }
 
-  /* ── Print ── */
   @media print {
     .no-print { display: none; }
     body { font-size: 9.5pt; }
@@ -236,7 +228,6 @@
     a { color: inherit; }
   }
 
-  /* ── Print toggle helper (visible on screen only) ── */
   .print-hint {
     position: fixed;
     top: 10px; right: 10px;
@@ -260,7 +251,7 @@
   <header>
     <div class="name-block">
       <h1>박진형</h1>
-      <div class="role">AI Engineer · Edge AI / Model Optimization</div>
+      <div class="role">AI Engineer · LLM Fine-tuning / Agent Infra</div>
     </div>
     <div class="contact">
       <div><span class="label">Email</span><a href="mailto:tommyjin2894@gmail.com">tommyjin2894@gmail.com</a></div>
@@ -275,9 +266,10 @@
   <section>
     <h2>Summary</h2>
     <p class="summary">
-      Edge AI 영역에서 <strong>모델 양자화·NPU 포팅·Jetson 환경 셋업</strong> 담당.
-      Kneron KL630 / Rockchip RK3588 두 NPU에 객체 탐지 모델 포팅,
-      Qwen LoRA → GGUF → Ollama 서빙 파이프라인을 실제 제품(공공기관 납품 예정)에 적용.
+      합성 데이터 생성 → LoRA 파인튜닝 → GGUF 변환 → Ollama 서빙까지 온디바이스 LLM 파이프라인을 실제 제품에 적용.
+      Qwen 0.5B~4B 4가지 크기 운용, PEFT(LoRA) + TRL(SFTTrainer), HF → GGUF Q4_K_M → Ollama 변환 스크립트 자동화.
+      FastMCP 기반 3계층 WebSocket 에이전트 릴레이 구성.
+      외부 API 사용 불가 환경에서 로컬 LLM 샘플링으로 합성 데이터 생성하는 방식 채택.
     </p>
   </section>
 
@@ -291,14 +283,14 @@
       <div class="stack-cat">OS</div>
       <div class="stack-items">Linux (Arch · Ubuntu)</div>
 
-      <div class="stack-cat">AI / ML</div>
-      <div class="stack-items">PyTorch · LoRA · GGUF · Ollama · YOLOv5 · ONNX</div>
+      <div class="stack-cat">LLM</div>
+      <div class="stack-items">PyTorch · Hugging Face · LoRA (PEFT) · TRL · llama.cpp · GGUF · Ollama</div>
 
-      <div class="stack-cat">Voice</div>
-      <div class="stack-items">Faster-Whisper · Silero-VAD · Piper TTS</div>
+      <div class="stack-cat">Agent</div>
+      <div class="stack-items">FastMCP · WebSocket</div>
 
-      <div class="stack-cat">Hardware</div>
-      <div class="stack-items">Jetson Orin · Kneron KL630 · Rockchip RK3588 · ESP32</div>
+      <div class="stack-cat">Edge</div>
+      <div class="stack-items">Jetson Orin · Kneron KL630 · Rockchip RK3588 · Faster-Whisper · ONNX</div>
 
       <div class="stack-cat">Backend</div>
       <div class="stack-items">FastAPI · aiohttp · Docker · PM2 · Nginx</div>
@@ -316,7 +308,7 @@
         <div class="role">연구원</div>
         <div class="desc">
           <strong>공공기관(보훈부) 노인 케어 AI 음성 비서</strong> Jetson Orin 환경 단독 개발 (2026.04 납품 예정).
-          NPU 모델 포팅, Qwen LoRA 파인튜닝, MCP 도구 릴레이 담당.
+          Qwen LoRA, MCP 도구 릴레이, NPU 포팅 담당.
         </div>
       </div>
     </div>
@@ -368,56 +360,54 @@
     <div class="proj">
       <div class="proj-head">
         <span class="proj-num">01</span>
-        <span class="proj-title">AIBOO — Edge AI 음성 비서 (Jetson Orin)</span>
-        <span class="proj-meta">2025.02 ~ 현재 · 단독 개발</span>
+        <span class="proj-title">Qwen LoRA 파인튜닝 + 합성 데이터 파이프라인</span>
+        <span class="proj-meta">2025.12 ~ 현재</span>
       </div>
       <div class="proj-desc">
-        공공기관(보훈부) 노인 케어 사업용 음성 비서.
-        xiaozhi-esp32-server fork를 단일 Python 프로세스로 리팩토링 — 메모리 약 750MB 절감, PM2로 서비스 3개 분리해 장애 격리 유지.
-        Jetson Orin은 CTranslate2 CUDA 버전 맞춰 소스 빌드.
-        도메인 기능 8종(센서·건강·스케줄·긴급·정서지원·i18n 등) 구현,
-        ESP32 펌웨어 빔포밍(XVF3800) 설정, Barge-in은 TTS cut 방식으로 구현.
+        외부 API 사용 불가 환경 → ollama 로컬 LLM 샘플링으로 합성 데이터 생성.
+        PEFT(LoRA) + TRL(SFTTrainer), Qwen 4가지 크기(0.5B / 1.5B / 3-1.7B / 3-4B) 브랜치별 운용.
+        HF → GGUF Q4_K_M → Ollama 변환 스크립트 자동화 — 학습 산출물이 온디바이스 서빙까지 연결되는 파이프라인 구성.
       </div>
-      <div class="proj-tech">Stack: Jetson Orin · aiohttp · Faster-Whisper · Qwen / Gemini · MQTT · PM2 · ESP-IDF</div>
+      <div class="proj-tech">Stack: Qwen · PEFT (LoRA) · TRL · llama.cpp · GGUF · Ollama</div>
     </div>
 
     <div class="proj">
       <div class="proj-head">
         <span class="proj-num">02</span>
-        <span class="proj-title">Multi-NPU 모델 포팅 (Kneron KL630 + Rockchip RK3588)</span>
-        <span class="proj-meta">2025.02 ~ 09</span>
+        <span class="proj-title">MCP 도구 릴레이 서버 (FastMCP 기반)</span>
+        <span class="proj-meta">2026.03 ~ 현재</span>
       </div>
       <div class="proj-desc">
-        서로 다른 NPU 아키텍처에 객체 탐지 모델 포팅. Kneron Toolchain(ktc) 양자화·컴파일, Rockchip RKNN INT8 변환.
-        NPU 미지원 연산은 호스트 전/후처리로 분리.
+        기존 서버 결합도 완화 + 관심사 분리 목적으로 3계층 WebSocket 릴레이 분리 (소비자 ↔ 서버 ↔ 파이프 ↔ stdio).
+        JSON-RPC 2.0 ID 변환, exponential backoff 자동 재연결, AES 토큰 인증.
+        Claude CLI agent 병렬 활용해 테스트 53개 자동 생성.
       </div>
-      <div class="proj-tech">Stack: Kneron Toolchain (ktc) · RKNN Toolkit · ONNX · Docker</div>
+      <div class="proj-tech">Stack: FastAPI · WebSocket · FastMCP</div>
     </div>
 
     <div class="proj">
       <div class="proj-head">
         <span class="proj-num">03</span>
-        <span class="proj-title">Qwen LoRA 파인튜닝 + 합성 데이터 파이프라인</span>
-        <span class="proj-meta">2025.12 ~ 현재 · AIBOO LLM 모듈</span>
+        <span class="proj-title">AIBOO — 온디바이스 LLM 통합 (Jetson Orin)</span>
+        <span class="proj-meta">2025.02 ~ 현재 · 단독 개발</span>
       </div>
       <div class="proj-desc">
-        외부 API 사용 불가 환경 → ollama 기반 로컬 LLM 샘플링으로 합성 데이터 생성.
-        PEFT(LoRA) + TRL(SFTTrainer)로 Qwen 4가지 크기(0.5B / 1.5B / 3-1.7B / 3-4B) 학습,
-        HuggingFace → GGUF Q4_K_M → Ollama 변환 스크립트 자동화.
+        파인튜닝한 Qwen 모델 GGUF 변환 → Jetson Orin Ollama 서빙 → 음성 비서 대화 엔진 통합.
+        Jetson 환경 PyTorch / CTranslate2 CUDA 버전 맞춰 소스 빌드, 도메인 8종(센서·건강·스케줄·긴급·정서지원·i18n 등) 구현. 공공기관 납품 예정.
       </div>
-      <div class="proj-tech">Stack: Qwen · PEFT (LoRA) · TRL (SFTTrainer) · llama.cpp · GGUF · Ollama</div>
+      <div class="proj-tech">Stack: Jetson Orin · aiohttp · Qwen · Faster-Whisper · MQTT · PM2</div>
     </div>
 
     <div class="proj">
       <div class="proj-head">
         <span class="proj-num">04</span>
-        <span class="proj-title">Fire/PPE Detection + RTSP 모니터링</span>
+        <span class="proj-title">Multi-NPU 모델 포팅 (Kneron KL630 + Rockchip RK3588)</span>
         <span class="proj-meta">2025.02 ~ 09</span>
       </div>
       <div class="proj-desc">
-        YOLOv5s 6클래스 학습 mAP@0.5 84.7%, RTSP 카메라 연동 Streamlit 실시간 모니터링.
+        객체 탐지 모델을 이종 NPU에 포팅. Kneron Toolchain(ktc) 양자화·컴파일, RKNN INT8 변환. NPU 미지원 연산은 호스트 전/후처리로 분리.
       </div>
-      <div class="proj-tech">Stack: YOLOv5 · OpenCV · Streamlit · RTX 4090</div>
+      <div class="proj-tech">Stack: Kneron ktc · RKNN · ONNX</div>
     </div>
 
     <div class="proj">
@@ -427,7 +417,7 @@
         <span class="proj-meta">2025.11</span>
       </div>
       <div class="proj-desc">
-        사전학습 한국어 medium 모델에 자체 데이터 추가 학습. 체크포인트 15개 일괄 ONNX export + 동일 문장 wav 일괄 합성 파이프라인 (청취 비교용).
+        사전학습 한국어 모델에 자체 데이터 추가 학습. 체크포인트 15개 일괄 ONNX export + 동일 문장 wav 일괄 합성 파이프라인 (청취 비교용).
       </div>
       <div class="proj-tech">Stack: PyTorch Lightning · espeak-ng · ONNX</div>
     </div>
@@ -435,14 +425,13 @@
     <div class="proj">
       <div class="proj-head">
         <span class="proj-num">06</span>
-        <span class="proj-title">MCP 도구 릴레이 서버 (FastMCP 기반)</span>
-        <span class="proj-meta">2026.03 ~ 현재</span>
+        <span class="proj-title">Fire/PPE Detection + RTSP</span>
+        <span class="proj-meta">2025.02 ~ 09</span>
       </div>
       <div class="proj-desc">
-        기존 서버 재사용성·관심사 분리 목적으로 FastMCP 기반 3계층 WebSocket 릴레이(소비자 ↔ 서버 ↔ 파이프 ↔ stdio) 구성.
-        JSON-RPC 2.0 라우팅, 토큰 기반 인증. Claude CLI agent 병렬 활용해 테스트 53개 자동 생성.
+        YOLOv5s 6클래스 학습 mAP@0.5 84.7%, RTSP + Streamlit 실시간 모니터링.
       </div>
-      <div class="proj-tech">Stack: FastAPI · WebSocket · FastMCP · Gemini · Kakao Local</div>
+      <div class="proj-tech">Stack: YOLOv5 · OpenCV · Streamlit</div>
     </div>
 
     <p style="margin-top: 8px; font-size: 8pt; color: var(--c-dim); text-align: right;">상세 내용은 별첨 <strong>경력기술서</strong> 참조.</p>
@@ -451,7 +440,7 @@
 
   <!-- Footer -->
   <footer>
-    <span>박진형 · AI Engineer · 이력서 (Edge / Optimization)</span>
+    <span>박진형 · AI Engineer · 이력서 (LLM / Agent)</span>
     <span>Last updated: 2026.04</span>
   </footer>
 

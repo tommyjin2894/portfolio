@@ -51,8 +51,8 @@
         <span class="hero-title-line">AI Engineer</span>
       </h1>
       <p class="hero-desc reveal">
-        AI 모델 학습/최적화부터 엣지 디바이스 배포까지<br>
-        온프레미스 환경의 <span class="accent">End-to-End AI 솔루션</span>을 만듭니다.
+        AI 모델 학습·최적화부터 엣지 디바이스 배포까지<br>
+        온프레미스 환경의 <span class="accent">End-to-End AI 파이프라인</span>을 다룹니다.
       </p>
       <div class="hero-cta reveal">
         <a href="#projects" class="btn btn-primary">프로젝트 보기</a>
@@ -216,7 +216,6 @@
             <span class="tag tag-accent">Rockchip RK3588</span>
             <span class="tag tag-accent">CUDA</span>
             <span class="tag tag-accent">ONNX</span>
-            <span class="tag tag-accent">onnx-graphsurgeon</span>
             <span class="tag tag-accent">RKNN</span>
             <span class="tag tag-accent">ESP32 / ESP-IDF</span>
           </div>
@@ -267,16 +266,16 @@
           <h3 class="project-title">Multi-NPU 모델 포팅</h3>
           <p class="project-subtitle">Kneron KL630 + Rockchip RK3588</p>
           <p class="project-desc">
-            서로 다른 NPU 아키텍처에 객체 탐지 모델 포팅.
-            ktc 양자화 비트폭 혼합 (int8/16), ONNX 그래프 편집 + 미지원 연산은 호스트 측 C로 재구현하여 정확도 유지.
+            서로 다른 NPU 아키텍처에 객체 탐지 모델 포팅 파이프라인 구성.
+            Kneron Toolchain(ktc) 양자화·컴파일, RKNN INT8 변환. 미지원 연산은 호스트 전/후처리로 분리.
           </p>
           <div class="project-metrics">
             <span class="metric"><strong>2개 NPU</strong> 포팅</span>
-            <span class="metric"><strong>int8/16</strong> mix</span>
-            <span class="metric"><strong>C 후처리</strong></span>
+            <span class="metric"><strong>KL630 + RK3588</strong></span>
+            <span class="metric"><strong>호스트 후처리</strong></span>
           </div>
           <div class="project-tech">
-            <span>Kneron ktc</span><span>RKNN</span><span>ONNX</span><span>onnx-graphsurgeon</span>
+            <span>Kneron ktc</span><span>RKNN</span><span>ONNX</span>
           </div>
         </article>
 
@@ -288,7 +287,7 @@
           <p class="project-subtitle">사전학습 모델 적응 실험</p>
           <p class="project-desc">
             Piper `ko_KR-korean-medium` 베이스에 자체 데이터로 추가 학습.
-            학습 재개 자동화 (epoch 119 → 20003) + 15개 체크포인트 정성 비교 평가.
+            학습 재개 자동화 (epoch 119 → 20003) + 15개 체크포인트 동일 문장 wav 일괄 합성 파이프라인.
           </p>
           <div class="project-metrics">
             <span class="metric"><strong>20K</strong> epoch</span>

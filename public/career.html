@@ -597,7 +597,7 @@
         <dt>역할</dt><dd>NPU 포팅 / 모델 변환 담당</dd>
         <dt>연계</dt><dd>Project 04 (Fire/PPE Detection 모델 학습 측)</dd>
         <dt>카테고리</dt><dd>Edge AI</dd>
-        <dt>Stack</dt><dd>Kneron Toolchain (ktc) · RKNN Toolkit · ONNX · onnx-graphsurgeon · Docker</dd>
+        <dt>Stack</dt><dd>Kneron Toolchain (ktc) · RKNN Toolkit · ONNX · Docker</dd>
       </dl>
     </div>
 
@@ -664,15 +664,14 @@
     <h3 class="doc-h3">1. Kneron KL630 (CatchCam — 화재 감지 카메라)</h3>
     <p><strong>대상 모델:</strong> YOLOv5s 6클래스 (Project 04에서 학습)</p>
     <p><strong>변환 파이프라인:</strong> ONNX → BIE → NEF</p>
-    <p><strong>Kneron Toolchain (ktc) 양자화 파라미터 튜닝:</strong>
-    <code>quantize_mode</code> (default / post_sigmoid), datapath/weight bitwidth (int8/16/int4 mix),
-    input/output bitwidth, <code>compiler_tiling</code>, <code>optimize</code> 등 8개 주요 파라미터를
-    모델 특성에 맞춰 조합.</p>
+    <p><strong>Kneron Toolchain (ktc) 양자화 파이프라인 구성:</strong>
+    <code>quantize_mode</code>, datapath/weight bitwidth, input/output bitwidth,
+    <code>compiler_tiling</code>, <code>optimize</code> 등 주요 파라미터는 공식 문서 권장 조합 기반으로 세팅.</p>
 
-    <h3 class="doc-h3">ONNX 그래프 편집</h3>
+    <h3 class="doc-h3">미지원 연산 처리</h3>
     <p>
-      미지원 연산(NMS 등 후처리)은 ONNX 그래프에서 노드 제거 후,
-      <strong>제거된 후처리 연산을 호스트 측 C 애플리케이션에서 재구현</strong>하여 정확도 유지.
+      미지원 연산(NMS 등 후처리)은 ONNX 그래프에서 해당 노드를 제거하여 모델 본체만 NPU로 포팅하고,
+      <strong>제거된 후처리 로직은 호스트 측 C 기반 파이프라인으로 분리</strong>하여 정확도 유지.
     </p>
 
     <h3 class="doc-h3">2. Rockchip RK3588 (AIO3588Q)</h3>
@@ -695,8 +694,8 @@
     <ul class="bullet">
       <li>증상: YOLOv5s를 BIE로 변환하는 과정에서 출력 헤드의 후처리 영역(NMS 등)에 KL630 미지원 연산이 포함되어 변환 실패</li>
       <li>분석: ONNX 그래프 상 출력 헤드의 후처리 부분(detect 레이어, NMS)이 KL630 NPU에서 미지원 연산으로 구성되어 있음을 확인</li>
-      <li>해결: onnx 툴킷으로 해당 노드들을 그래프에서 제거 (모델 본체만 NPU 변환) +
-          잘려나간 후처리 연산을 <strong>호스트 측 C 애플리케이션에서 직접 재구현</strong>하여 정확도 보존</li>
+      <li>해결: ONNX 툴로 해당 노드들을 그래프에서 제거 (모델 본체만 NPU 변환) +
+          잘려나간 후처리 로직을 <strong>호스트 측 C 파이프라인에 분리</strong>하여 정확도 보존</li>
       <li>결과: NPU 추론 + CPU 후처리 조합으로 정상 동작, 변환된 모델 크기/성능 모두 만족</li>
     </ul>
 
