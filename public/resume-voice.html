@@ -251,20 +251,20 @@
   <header>
     <div class="name-block">
       <h1>박진형</h1>
-      <div class="role">AI Engineer · Voice AI / On-device Speech</div>
+      <div class="role">AI 엔지니어 · 음성 AI / 온디바이스 스피치</div>
     </div>
     <div class="contact">
-      <div><span class="label">Email</span><a href="mailto:tommyjin2894@gmail.com">tommyjin2894@gmail.com</a></div>
-      <div><span class="label">Phone</span>010-2817-2894</div>
+      <div><span class="label">이메일</span><a href="mailto:tommyjin2894@gmail.com">tommyjin2894@gmail.com</a></div>
+      <div><span class="label">전화</span>010-2817-2894</div>
       <div><span class="label">GitHub</span><a href="https://github.com/tommyjin2894">github.com/tommyjin2894</a></div>
-      <div><span class="label">Site</span><a href="https://portfolio.tmpark.space">portfolio.tmpark.space</a></div>
-      <div><span class="label">Loc</span>경기도 성남</div>
+      <div><span class="label">사이트</span><a href="https://portfolio.tmpark.space">portfolio.tmpark.space</a></div>
+      <div><span class="label">지역</span>경기도 성남</div>
     </div>
   </header>
 
   <!-- Summary -->
   <section>
-    <h2>Summary</h2>
+    <h2>요약</h2>
     <p class="summary">
       온디바이스 음성 AI 영역에서 VAD → STT → LLM → TTS 전 구간 Jetson Orin 환경 통합 담당.
       Piper TTS 한국어 추가 학습, Faster-Whisper / CTranslate2 CUDA 소스 빌드,
@@ -274,34 +274,34 @@
 
   <!-- Tech Stack -->
   <section>
-    <h2>Tech Stack</h2>
+    <h2>기술 스택</h2>
     <div class="stack-grid">
-      <div class="stack-cat">Language</div>
+      <div class="stack-cat">언어</div>
       <div class="stack-items">Python</div>
 
-      <div class="stack-cat">OS</div>
+      <div class="stack-cat">운영체제</div>
       <div class="stack-items">Linux (Arch · Ubuntu)</div>
 
-      <div class="stack-cat">Voice</div>
+      <div class="stack-cat">음성</div>
       <div class="stack-items">Faster-Whisper · CTranslate2 · Silero-VAD · Piper TTS · espeak-ng</div>
 
-      <div class="stack-cat">Embedded</div>
+      <div class="stack-cat">임베디드</div>
       <div class="stack-items">ESP32 / ESP-IDF · XVF3800 빔포밍 · I2S</div>
 
       <div class="stack-cat">AI / ML</div>
-      <div class="stack-items">PyTorch · LoRA · GGUF · Ollama · YOLOv5</div>
+      <div class="stack-items">PyTorch · LoRA · GGUF · Ollama</div>
 
-      <div class="stack-cat">Hardware</div>
+      <div class="stack-cat">하드웨어</div>
       <div class="stack-items">Jetson Orin · Kneron KL630 · Rockchip RK3588</div>
 
-      <div class="stack-cat">Backend</div>
-      <div class="stack-items">FastAPI · aiohttp · Docker · PM2 · Nginx · MQTT</div>
+      <div class="stack-cat">백엔드</div>
+      <div class="stack-items">FastAPI · Docker · Nginx · MQTT</div>
     </div>
   </section>
 
   <!-- Career -->
   <section>
-    <h2>Career</h2>
+    <h2>경력</h2>
 
     <div class="entry">
       <div class="when">2025.02 — 현재</div>
@@ -327,7 +327,7 @@
 
   <!-- Education -->
   <section>
-    <h2>Education</h2>
+    <h2>학력</h2>
     <div class="entry">
       <div class="when">~ 졸업</div>
       <div class="body">
@@ -346,7 +346,7 @@
 
   <!-- Awards -->
   <section>
-    <h2>Awards</h2>
+    <h2>수상</h2>
     <div class="entry">
       <div class="when">2024</div>
       <div class="body">
@@ -357,7 +357,7 @@
 
   <!-- Featured Projects -->
   <section>
-    <h2>Featured Projects</h2>
+    <h2>주요 프로젝트</h2>
 
     <div class="proj">
       <div class="proj-head">
@@ -372,7 +372,7 @@
         Barge-in은 LLM streaming cancel 대신 TTS 재생 cut 방식 채택 (구현 단순성 + 자연스러운 흐름).
         ESP32 펌웨어: XVF3800 빔포밍 I2C 제어, I2S Split(RX Slave + TX Master), AES-128-CTR.
       </div>
-      <div class="proj-tech">Stack: Jetson Orin · aiohttp · Faster-Whisper · CTranslate2 · Silero-VAD · Piper TTS · MQTT · ESP-IDF</div>
+      <div class="proj-tech">스택: aiohttp · MQTT · ESP-IDF</div>
     </div>
 
     <div class="proj">
@@ -385,7 +385,7 @@
         사전학습 <code>ko_KR-korean-medium</code>에 자체 데이터 추가 학습. 학습 재개 자동화(epoch 119 → 20003),
         체크포인트 15개 일괄 ONNX export + 동일 문장 wav 일괄 합성 파이프라인 (청취 비교용). 최종 ckpt AIBOO TTS 모듈 투입.
       </div>
-      <div class="proj-tech">Stack: PyTorch Lightning · espeak-ng · ONNX</div>
+      <div class="proj-tech">스택: PyTorch Lightning · espeak-ng</div>
     </div>
 
     <div class="proj">
@@ -399,7 +399,7 @@
         외부 API 사용 불가 환경 → ollama 로컬 LLM 샘플링으로 합성 데이터 생성.
         PEFT(LoRA) + TRL(SFTTrainer), HF → GGUF Q4_K_M → Ollama 변환 스크립트 자동화. Qwen 0.5B~4B 4가지 크기 운용.
       </div>
-      <div class="proj-tech">Stack: Qwen · PEFT (LoRA) · TRL · llama.cpp · GGUF · Ollama</div>
+      <div class="proj-tech">스택: PEFT · TRL · llama.cpp</div>
     </div>
 
     <div class="proj">
@@ -410,9 +410,9 @@
       </div>
       <div class="proj-desc">
         AIBOO 음성 인텐트 → 외부 도구 라우팅. 기존 서버 결합도 완화 + 관심사 분리 목적으로 3계층 WebSocket 릴레이 분리
-        (소비자 ↔ 서버 ↔ 파이프 ↔ stdio). JSON-RPC 2.0, 토큰 인증. Claude CLI agent 병렬 활용해 테스트 53개 자동 생성.
+        (소비자 ↔ 서버 ↔ 파이프 ↔ stdio). 요청 ID 라우팅, 토큰 인증. Claude CLI agent 병렬 활용해 테스트 53개 자동 생성.
       </div>
-      <div class="proj-tech">Stack: FastAPI · WebSocket · FastMCP</div>
+      <div class="proj-tech">스택: FastMCP · WebSocket</div>
     </div>
 
     <div class="proj">
@@ -424,7 +424,7 @@
       <div class="proj-desc">
         객체 탐지 모델을 이종 NPU에 포팅. Kneron Toolchain(ktc) 양자화·컴파일, RKNN INT8 변환. NPU 미지원 연산은 호스트 전/후처리로 분리.
       </div>
-      <div class="proj-tech">Stack: Kneron ktc · RKNN · ONNX</div>
+      <div class="proj-tech">스택: Kneron Toolchain · RKNN Toolkit</div>
     </div>
 
     <div class="proj">
@@ -436,7 +436,7 @@
       <div class="proj-desc">
         YOLOv5s 6클래스 학습 mAP@0.5 84.7%, RTSP + Streamlit 실시간 모니터링.
       </div>
-      <div class="proj-tech">Stack: YOLOv5 · OpenCV · Streamlit</div>
+      <div class="proj-tech">스택: OpenCV · Streamlit</div>
     </div>
 
     <p style="margin-top: 8px; font-size: 8pt; color: var(--c-dim); text-align: right;">상세 내용은 별첨 <strong>경력기술서</strong> 참조.</p>
@@ -445,8 +445,8 @@
 
   <!-- Footer -->
   <footer>
-    <span>박진형 · AI Engineer · 이력서 (Voice AI)</span>
-    <span>Last updated: 2026.04</span>
+    <span>박진형 · AI 엔지니어 · 이력서 (음성 AI)</span>
+    <span>최종 수정: 2026.04</span>
   </footer>
 
 </div>

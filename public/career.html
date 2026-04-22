@@ -411,7 +411,7 @@
     <div style="display: flex; justify-content: space-between; align-items: baseline;">
       <div>
         <h1 style="font-size: 18pt; font-weight: 800; letter-spacing: -.02em;">박진형 · 경력기술서</h1>
-        <p style="font-family: var(--font-mono); font-size: 9pt; color: var(--c-accent); margin-top: 2px;">AI Engineer · Edge AI / LLM / Voice</p>
+        <p style="font-family: var(--font-mono); font-size: 9pt; color: var(--c-accent); margin-top: 2px;">AI 엔지니어 · 엣지 AI / LLM / 음성</p>
       </div>
       <div style="text-align: right; font-size: 8.5pt; color: var(--c-muted); line-height: 1.6;">
         <div>tommyjin2894@gmail.com · 010-2817-2894</div>
@@ -437,8 +437,8 @@
       <dl class="proj-meta-table">
         <dt>기간</dt><dd>2025.02 ~ 현재 (2026.04 납품 예정)</dd>
         <dt>역할</dt><dd>단독 개발</dd>
-        <dt>카테고리</dt><dd>Edge AI · Voice</dd>
-        <dt>Stack</dt><dd>Jetson Orin · aiohttp · Faster-Whisper · CTranslate2 · Qwen / Gemini · Silero-VAD · MQTT · PM2 · ESP-IDF</dd>
+        <dt>카테고리</dt><dd>엣지 AI · 음성</dd>
+        <dt>스택</dt><dd>Jetson Orin · Faster-Whisper · Silero-VAD · Piper TTS · ESP-IDF</dd>
       </dl>
     </div>
 
@@ -450,12 +450,12 @@
       설계 전제로 함. 단독 개발자로 기획부터 구현·운영·납품 준비까지 전 과정을 담당.
     </p>
 
-    <h3 class="doc-h3">베이스 vs 본인 기여</h3>
+    <h3 class="doc-h3">베이스 vs 주요 기여</h3>
     <ul class="bullet">
       <li><strong>베이스 — xiaozhi-esp32-server 계열 fork (m5chatbot-server):</strong>
           x86 / Jetson 양 환경을 지원하는 <em>Docker 4컨테이너</em> 구성으로 ASR · LLM · TTS · orchestrator를 분리.
           중국 커뮤니티에서 활발히 유지되는 음성 비서 오픈소스를 시작점으로 채택.</li>
-      <li><strong>본인 기여 — aiboo-server-lite:</strong>
+      <li><strong>주요 기여 — aiboo-server-lite:</strong>
           Jetson Orin 단일 디바이스 환경에 맞춰 컨테이너를 <em>단일 Python 프로세스로 통합 리팩토링</em> + Jetson 전용 환경 셋업 +
           도메인 기능 8종(센서·건강·스케줄·긴급·정서지원·i18n 등) 자체 구현 + ESP32 펌웨어 튜닝(빔포밍·I2S) 까지 단독 개발.
       <li><strong>브랜치 분리 — <code>main</code> / <code>bobo</code>:</strong>
@@ -530,14 +530,14 @@
       <li><strong>도메인 기능 8종 자체 구현</strong> — 센서 모니터링 6종 (MQTT 임계값 경보) / 건강관리 (질문 수집 → sentiment 분석 → DB → 월간 달력 뷰) / 스케줄 알림 (daily/weekly/weekdays + 음성 CRUD) / 긴급 감지 (키워드 + 낙상 감지 → emergency 브로드캐스트) / 정서 지원 (시간대별 인사 + idle 대화 + 음악 재생) / i18n 84키 (ko/en).</li>
       <li><strong>VAD/ASR 튜너 페이지</strong> (<code>/tuner</code>) — 환경별 임계값 휴리스틱 튜닝 + DB 저장.</li>
       <li><strong>Barge-in 구현</strong> — LLM 토큰 스트리밍 cancel 대신 TTS 재생을 잘라내는 방식. LLM streaming cancel은 model state 관리 복잡도가 높아 회피 → 자연스러운 대화 흐름 + 구현 단순성 확보.</li>
-      <li><strong>SQLite WAL 모드 동시성 처리</strong> — 비동기 컴포넌트 (스케줄 / MQTT / WebSocket)가 동시 쓰기로 발생하던 락 충돌을 WAL 모드 전환으로 해결.</li>
+      <li><strong>SQLite WAL 모드 적용</strong> — 비동기 컴포넌트(스케줄 / MQTT / WebSocket) 동시 쓰기 상황에서 기본 journal 모드 락 충돌이 발생, WAL 모드 전환으로 완화.</li>
       <li><strong>ESP32 펌웨어 튜닝</strong> — m5chatbot-build 베이스에서 빔포밍 (XVF3800 I2C 제어) 적용, I2S Split (RX Slave + TX Master) 오디오 스트리밍 통합.</li>
     </ul>
   </section>
 
   <!-- AIBOO continued -->
   <section class="proj-section">
-    <h3 class="doc-h3">기술적 판단</h3>
+    <h3 class="doc-h3">기술 선택</h3>
 
     <h2 class="doc-h2" style="font-size:11pt;">Docker 4컨테이너 → 단일 Python</h2>
     <p>
@@ -548,14 +548,14 @@
 
     <h2 class="doc-h2" style="font-size:11pt;">Barge-in: TTS cut 전략</h2>
     <p>
-      사용자 발화 감지 시 LLM 토큰 스트리밍 cancel은 model state 관리 복잡도가 높음.
+      사용자 발화 감지 시 LLM 토큰 스트리밍 cancel은 구현 복잡도가 커 보여 회피.
       LLM은 그대로 두고 TTS 재생만 잘라내는 방식 채택 → 자연스러운 대화 흐름 확보 + 구현 단순화.
     </p>
 
     <h2 class="doc-h2" style="font-size:11pt;">마이크 echo 처리 (AEC 미적용)</h2>
     <p>
       VAD threshold 동적 조정만으로 TTS 출력 시 self-trigger 회피 가능.
-      AEC(Acoustic Echo Cancellation)는 단일 디바이스 환경에서 알고리즘 복잡도 대비 이득이 작다고 판단.
+      AEC(Acoustic Echo Cancellation)는 추가 구현 보류 — VAD 조정으로 충분히 동작했고, 단일 디바이스 환경에서 실효성 대비 구현 부담이 커 보여 후순위.
     </p>
 
     <h2 class="doc-h2" style="font-size:11pt;">응답 지연</h2>
@@ -596,8 +596,8 @@
         <dt>기간</dt><dd>2025.02 ~ 2025.09</dd>
         <dt>역할</dt><dd>NPU 포팅 / 모델 변환 담당</dd>
         <dt>연계</dt><dd>Project 04 (Fire/PPE Detection 모델 학습 측)</dd>
-        <dt>카테고리</dt><dd>Edge AI</dd>
-        <dt>Stack</dt><dd>Kneron Toolchain (ktc) · RKNN Toolkit · ONNX · Docker</dd>
+        <dt>카테고리</dt><dd>엣지 AI</dd>
+        <dt>스택</dt><dd>Kneron Toolchain · RKNN Toolkit · ONNX</dd>
       </dl>
     </div>
 
@@ -632,7 +632,7 @@
 
       <rect class="box" x="234" y="180" width="158" height="48" rx="6"/>
       <text class="label-sm" x="313" y="200" text-anchor="middle">ktc 양자화</text>
-      <text class="sub" x="313" y="218" text-anchor="middle">datapath/weight bitwidth, mix</text>
+      <text class="sub" x="313" y="218" text-anchor="middle">datapath/weight bitwidth</text>
 
       <path class="conn" d="M 392 204 L 424 204" marker-end="url(#arr2)"/>
 
@@ -686,7 +686,7 @@
       두 NPU 모두 PyTorch → ONNX → 자체 toolchain 변환이라는 공통 패턴을 따르지만, 실제 작업 난이도는 크게 달랐습니다.
       <strong>Kneron KL630이 훨씬 까다로웠습니다.</strong>
       RKNN은 toolkit이 비교적 잘 정리되어 있고 미지원 연산도 적어 변환 자체는 1~2일이면 충분했지만,
-      Kneron은 BIE → NEF로 이어지는 변환 단계가 많고, 양자화 비트폭을 노드별로 세밀히 조정해야 했으며,
+      Kneron은 BIE → NEF로 이어지는 변환 단계가 많고, 변환 실패 시 공식 문서 기반으로 설정을 여러 번 조정해야 했으며,
       미지원 연산은 호스트 CPU 측에서 별도 후처리로 옮겨야 하는 복잡성이 있었습니다.
     </p>
 
@@ -723,8 +723,8 @@
       <dl class="proj-meta-table">
         <dt>기간</dt><dd>2025.11 부근</dd>
         <dt>상태</dt><dd>실험 종료 (실제 배포 전 단계)</dd>
-        <dt>카테고리</dt><dd>Voice AI</dd>
-        <dt>Stack</dt><dd>PyTorch Lightning · espeak-ng · ONNX · subprocess 일괄 처리</dd>
+        <dt>카테고리</dt><dd>음성 AI</dd>
+        <dt>스택</dt><dd>PyTorch Lightning · espeak-ng · ONNX</dd>
       </dl>
     </div>
 
@@ -830,8 +830,8 @@ for model in glob("voices/*.onnx"):
         <dt>기간</dt><dd>2025.02 ~ 2025.09</dd>
         <dt>역할</dt><dd>모델 학습 + 모니터링 시스템 구축</dd>
         <dt>연계</dt><dd>Project 02 (Multi-NPU 포팅 — Kneron KL630 배포 측)</dd>
-        <dt>카테고리</dt><dd>Vision · Model Training</dd>
-        <dt>Stack</dt><dd>YOLOv5 · PyTorch · CUDA · OpenCV · Albumentations · Streamlit · TensorBoard · W&amp;B</dd>
+        <dt>카테고리</dt><dd>비전 · 모델 학습</dd>
+        <dt>스택</dt><dd>YOLOv5 · OpenCV · Streamlit · W&amp;B</dd>
       </dl>
     </div>
 
@@ -960,7 +960,7 @@ for model in glob("voices/*.onnx"):
         <dt>역할</dt><dd>합성 데이터 + LoRA 학습 + GGUF 양자화 + Ollama 서빙</dd>
         <dt>연계</dt><dd>Project 01 (AIBOO LLM 모듈)</dd>
         <dt>카테고리</dt><dd>LLM</dd>
-        <dt>Stack</dt><dd>Qwen · PEFT (LoRA) · TRL (SFTTrainer) · llama.cpp · GGUF · Ollama</dd>
+        <dt>스택</dt><dd>Qwen · PEFT · TRL · llama.cpp · Ollama</dd>
       </dl>
     </div>
 
@@ -1132,10 +1132,10 @@ ollama create aiboo_q4km -f Modelfile</pre>
       </p>
       <dl class="proj-meta-table">
         <dt>기간</dt><dd>2026.03 ~ 현재</dd>
-        <dt>역할</dt><dd>아키텍처 설계 + 자체 MCP 도구 구현 + 테스트 자동화</dd>
+        <dt>역할</dt><dd>구조 설계 + 자체 MCP 도구 구현 + 테스트 자동화</dd>
         <dt>연계</dt><dd>Project 01 (AIBOO 시스템 일부)</dd>
-        <dt>카테고리</dt><dd>Backend</dd>
-        <dt>Stack</dt><dd>FastAPI · WebSocket · FastMCP · pytest · Gemini 2.5 Flash · Kakao Local</dd>
+        <dt>카테고리</dt><dd>백엔드</dd>
+        <dt>스택</dt><dd>FastAPI · FastMCP · WebSocket · Gemini · Kakao Local</dd>
       </dl>
     </div>
 
@@ -1155,7 +1155,7 @@ ollama create aiboo_q4km -f Modelfile</pre>
 
       <rect class="box" x="180" y="96" width="320" height="50" rx="6"/>
       <text class="label" x="340" y="116" text-anchor="middle">서버: FastAPI WebSocket</text>
-      <text class="sub" x="340" y="134" text-anchor="middle">JSON-RPC 2.0 ID 변환</text>
+      <text class="sub" x="340" y="134" text-anchor="middle">요청 ID 매핑 · 양방향 라우팅</text>
 
       <path class="conn-thick" d="M 340 146 L 340 178" marker-end="url(#arr6)"/>
       <text class="mono" x="348" y="166">WS /mcp/</text>
@@ -1180,12 +1180,12 @@ ollama create aiboo_q4km -f Modelfile</pre>
 
     <h3 class="doc-h3">주요 기여</h3>
     <ul class="bullet">
-      <li><strong>3계층 WebSocket 릴레이 아키텍처 설계</strong> — 소비자 ↔ 서버 ↔ 파이프 ↔ stdio 도구</li>
-      <li><strong>JSON-RPC 2.0 ID 변환 + 양방향 메시지 라우팅</strong></li>
+      <li><strong>3계층 WebSocket 릴레이 구성</strong> — 소비자 ↔ 서버 ↔ 파이프 ↔ stdio 도구</li>
+      <li><strong>요청 ID 매핑 + 양방향 메시지 라우팅</strong> — 여러 소비자가 동시에 보낸 요청 ID를 릴레이 내부 ID로 바꿔 도구에 전달, 응답 돌아올 때 원래 ID로 복구</li>
       <li><strong>stdio ↔ WebSocket 자동 재연결 로직</strong> — exponential backoff 기반 (1초 → 최대 30초 cap), max_retries 이후 상위 핸들러에 에러 전파</li>
       <li><strong>토큰 기반 인증</strong> — 서버 키 자동 생성, <code>agentId=&lt;name&gt;</code> 형태 토큰 발급</li>
       <li><strong>자체 MCP 도구 구현</strong> — <code>calculator</code> (Python math/random 수식), <code>recommend_what_to_do</code> (Gemini 2.5 Flash + Kakao Local API로 위치 기반 음식·숙박·관광·활동 추천)</li>
-      <li><strong>테스트 자동화</strong> — Claude CLI agent 병렬 실행으로 53개 테스트 케이스 자동 생성 (전 계층 커버: 서버/도구/파이프/유틸)</li>
+      <li><strong>테스트 자동화</strong> — Claude CLI agent 병렬 실행으로 53개 테스트 케이스 자동 생성 (서버/도구/파이프/유틸 모듈 대상)</li>
     </ul>
 
     <h3 class="doc-h3">API 엔드포인트</h3>
@@ -1205,7 +1205,7 @@ ollama create aiboo_q4km -f Modelfile</pre>
   <!-- ============================== -->
   <section class="proj-section">
     <div class="other-projects-sep">
-      <h1>Other Projects</h1>
+      <h1>기타 프로젝트</h1>
       <p>핵심 프로젝트 6개 외에 보조적으로 진행한 프로젝트 (참고용).</p>
     </div>
 
@@ -1213,7 +1213,7 @@ ollama create aiboo_q4km -f Modelfile</pre>
     <dl class="proj-meta-table">
       <dt>기간</dt><dd>2025.07 ~ 09</dd>
       <dt>역할</dt><dd>백엔드 + TURN 서버 구축</dd>
-      <dt>Stack</dt><dd>Python · FastAPI · WebRTC · Coturn · Socket.IO · OpenEMR</dd>
+      <dt>스택</dt><dd>FastAPI · WebRTC · Coturn · OpenEMR</dd>
     </dl>
     <ul class="bullet">
       <li>WebRTC 기반 의사-환자 실시간 영상 진료 + 스마트폰 센서 바이탈 모니터링 시스템 백엔드 담당</li>
@@ -1225,12 +1225,12 @@ ollama create aiboo_q4km -f Modelfile</pre>
     <dl class="proj-meta-table">
       <dt>기간</dt><dd>2025</dd>
       <dt>역할</dt><dd>FastAPI 서빙 인프라 구축</dd>
-      <dt>Stack</dt><dd>GPT-SoVITS v3 · FastAPI · PyTorch · CUDA</dd>
+      <dt>스택</dt><dd>GPT-SoVITS · FastAPI · PyTorch</dd>
     </dl>
     <ul class="bullet">
       <li>GPT-SoVITS v3 기반 한국어 TTS 추론 서버 — 3~10초 레퍼런스 오디오로 few-shot 음성 클로닝</li>
       <li>FastAPI 기반 다국어(ko/en/ja/zh) 지원, 모델 동적 스위칭</li>
-      <li>모델 자체는 사전학습 활용, 서빙 인프라가 본인 기여</li>
+      <li>모델 자체는 사전학습 활용, 서빙 인프라가 주요 기여</li>
     </ul>
 
     <p style="margin-top: 30px; font-size: 9pt; color: var(--c-muted);">
@@ -1240,7 +1240,7 @@ ollama create aiboo_q4km -f Modelfile</pre>
     </p>
 
     <p style="margin-top: 30px; font-size: 8.5pt; color: var(--c-dim); text-align: center;">
-      박진형 · 경력기술서 · Last updated 2026.04
+      박진형 · 경력기술서 · 최종 수정 2026.04
     </p>
   </section>
 
