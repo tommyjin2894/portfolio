@@ -2,7 +2,8 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>박진형 — 이력서 (모빌린트 DL Research Engineer)</title>
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+<title>박진형 — 이력서</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -267,8 +268,8 @@
   <header>
     <div class="name-block">
       <h1>박진형</h1>
-      <div class="role">AI 엔지니어 · 딥러닝 모델 경량화 · NPU 포팅 · 컴퓨터비전</div>
-      <div class="target">For: Mobilint — Deep Learning Research Engineer</div>
+      <div class="role">AI 엔지니어 · MLOps 파이프라인 · Edge AI 배포 · 산업 현장 AI 운영</div>
+      <div class="target">For: MakinaRocks — FDE / MLOps Engineer</div>
     </div>
     <div class="contact">
       <div><span class="label">이메일</span><a href="mailto:tommyjin2894@gmail.com">tommyjin2894@gmail.com</a></div>
@@ -283,12 +284,10 @@
   <section>
     <h2>요약</h2>
     <p class="summary">
-      <strong>NPU 2종(Kneron KL630 · Rockchip RK3588)에 컴퓨터비전 모델 직접 포팅</strong> — Netron + ONNX Python API로 출력 헤드(NMS · detect) 노드를 직접 조회·절단·재연결,
-      Python 추론으로 동등 동작 검증 후 NPU에 올림. <strong>딥러닝 핵심 연산을 그래프 수준에서 다룬 경험</strong>.
-      Kneron ktc(BIE → NEF) · RKNN Toolkit(ONNX → RKNN INT8) · HuggingFace → GGUF Q4_K_M 등 <strong>다양한 양자화 / 변환 파이프라인을 환경별로 직접 구성</strong>.
-      Qwen 4크기(0.5B / 1.5B / 3-1.7B / 3-4B)를 비교 학습해 응답 품질 스윗 스팟 탐색.
-      <strong>학습-변환-배포-운영을 단독 책임</strong> — 보훈부 노인 케어 음성 비서 1인 용역 단독 개발 (2026.05 1차 15대 실투입 예정, 70대 확장 협의 중).
-      <strong>KDT 부트캠프 경량화 AI 프로젝트 대상</strong> (서울대 박사과정 심사위원 평가).
+      <strong>공공기관 산업 현장에 AI 서비스를 배포·운영하는 일을 1인 용역으로 단독 책임</strong>해온 AI 엔지니어 — 보훈부 노인 케어 음성 비서를 SW 전 영역(BE/FE/Jetson 펌웨어/ESP32 펌웨어) 단독 개발, <strong>2026.05 1차 15대 실투입 예정 (70대 확장 협의 중)</strong>.
+      <strong>학습 → ONNX 변환 → 양자화 → 서빙 → 운영까지 전 구간을 직접 자동화</strong> — 합성 데이터 생성 / Qwen LoRA 학습 / HuggingFace → GGUF Q4_K_M → Ollama 변환 / PM2 3 서비스 분리 운영 / SQLite WAL 동시 쓰기 처리 / OSS fork 통합 리팩토링.
+      <strong>PyTorch · ONNX 깊이</strong> — Netron + ONNX Python API로 NPU 미지원 노드를 직접 조회·절단·재연결 후 Python 추론으로 동등 동작 검증 (KL630 · RK3588 두 NPU 포팅).
+      <strong>현재 K8s · MLflow · Triton · vLLM 등 엔터프라이즈 MLOps 스택은 미경험</strong> — 동일한 일을 가벼운 스택(Docker · PM2 · Ollama · 자체 자동화 스크립트)으로 수행한 경험을 기반으로, MLOps 표준 도구 학습 중.
     </p>
   </section>
 
@@ -297,118 +296,108 @@
     <h2>기술 스택</h2>
     <div class="stack-grid">
       <div class="stack-cat">언어</div>
-      <div class="stack-items">Python (주력) · C / C++ (NPU 후처리 SDK 통합 수준)</div>
+      <div class="stack-items">Python (주력) · C (NPU 후처리 SDK 통합 수준)</div>
 
       <div class="stack-cat">DL 프레임워크</div>
-      <div class="stack-items">PyTorch · PyTorch Lightning · PEFT · TRL · Transformers (Hugging Face)</div>
+      <div class="stack-items">PyTorch · PyTorch Lightning · ONNX · ONNX Runtime · PEFT · TRL · Transformers</div>
 
-      <div class="stack-cat">모델 경량화</div>
-      <div class="stack-items"><strong>ONNX 그래프 편집</strong> · INT8 / FP16 양자화 · GGUF Q4_K_M · LoRA · llama.cpp · CTranslate2</div>
+      <div class="stack-cat">서빙 / 배포</div>
+      <div class="stack-items">Ollama (로컬 LLM) · llama.cpp · CTranslate2 (Jetson 소스 빌드) · FastAPI · aiohttp</div>
 
-      <div class="stack-cat">NPU SDK</div>
-      <div class="stack-items">Kneron Toolchain (ktc · BIE · NEF) · RKNN Toolkit · ONNX Runtime · Netron</div>
+      <div class="stack-cat">파이프라인 자동화</div>
+      <div class="stack-items">자체 자동화 스크립트 — 합성 데이터 생성 / LoRA 학습 / HF→GGUF 변환 / Ollama 등록 / 다중 체크포인트 ONNX 일괄 export</div>
 
-      <div class="stack-cat">비전 / 모델</div>
-      <div class="stack-items">YOLOv5 · OpenCV · Transformer (Qwen 0.5B~4B)</div>
+      <div class="stack-cat">운영 인프라</div>
+      <div class="stack-items">Docker · PM2 (멀티 서비스 분리) · Nginx · SQLite (WAL 모드 동시 쓰기) · MQTT · WebSocket</div>
+
+      <div class="stack-cat">모델 변환</div>
+      <div class="stack-items">ONNX 그래프 편집 (Netron + ONNX Python API) · INT8 / FP16 / Q4_K_M 양자화 · Kneron Toolchain · RKNN Toolkit</div>
 
       <div class="stack-cat">엣지 환경</div>
-      <div class="stack-items">Jetson Orin (CUDA 12.6 · CTranslate2 소스 빌드) · Kneron KL630 · Rockchip RK3588 · ESP-IDF (ESP32)</div>
+      <div class="stack-items">Jetson Orin (JetPack 6 · CUDA 12.6) · Kneron KL630 · Rockchip RK3588 · ESP-IDF (ESP32)</div>
 
-      <div class="stack-cat">백엔드</div>
-      <div class="stack-items">FastAPI · aiohttp · WebSocket · Docker · PM2 · SQLite (보조 영역)</div>
+      <div class="stack-cat">학습 중</div>
+      <div class="stack-items">Kubernetes · MLflow · Triton Server · Airflow · vLLM (실무 미경험, MLOps 방향성으로 학습 진행 중)</div>
     </div>
   </section>
 
-  <!-- Featured Projects (모빌린트 fit 순서: NPU → 경량화 → 비전 → AIBOO → 음성) -->
+  <!-- Featured Projects (마키나락스 FDE/MLOps fit: 운영·자동화·배포 우선 순서) -->
   <section>
     <h2>주요 프로젝트</h2>
 
     <div class="proj">
       <div class="proj-head">
         <span class="proj-num">01</span>
-        <span class="proj-title">Multi-NPU 모델 포팅 (Kneron KL630 + Rockchip RK3588) — 그래프 수술</span>
-        <span class="proj-meta">2025.02 ~ 09</span>
+        <span class="proj-title">AIBOO — Jetson Orin 음성 비서 (산업 현장 AI 배포·운영, 1인 용역 단독)</span>
+        <span class="proj-meta">2025.02 ~ 현재 · 보훈부 노인 케어</span>
       </div>
       <div class="proj-desc">
-        Kneron KL630 / Rockchip RK3588 두 NPU에 YOLO 객체 탐지 모델 포팅 — 양쪽 다 추론 검증 완료.
-        Kneron Toolchain(ktc): ONNX → BIE → NEF 변환, RKNN Toolkit: ONNX → RKNN (Toolkit 기본 INT8 양자화 활용).
-        <strong>출력단 후처리(NMS · detect 레이어)가 NPU 미지원 → Netron으로 그래프 시각화하여 노드 ID 직접 조회 → onnx Python API로 노드 절단·재연결 → Python 추론으로 모델 본체 동등 동작 검증</strong>,
-        잘려나간 후처리는 SDK 레퍼런스 C 코드를 임베디드 환경에 맞게 통합. <strong>딥러닝 핵심 연산을 그래프 수준에서 직접 손댄 경험</strong>.
+        <strong>공공기관(보훈부) 산업 현장에 AI 서비스를 배포·운영하는 일을 1인 용역으로 단독 책임</strong> — SW 전 영역(BE/FE/Jetson 펌웨어/ESP32 펌웨어) 단독, HW 전기/전자는 외부 지원.
+        <strong>2026.05 1차 15대 실투입 예정 (70대 확장 협의 중)</strong>. xiaozhi-esp32-server fork(Docker 4컨테이너)를 단일 Python 프로세스로 통합 리팩토링 — 메모리 약 750MB 절감.
+        <strong>PM2 3 서비스 분리</strong>(aiboo / mcp / homecare) — 다른 개발자의 homecare 센서 모듈을 Docker 미사용·PM2 통합 형태로 인계 운영.
+        SQLite WAL 모드로 비동기 동시 쓰기 락 충돌 완화. Jetson 환경에서 CTranslate2 4.7.1 CUDA 소스 빌드 + cuBLAS 호환성 디버깅.
+        케어센터 측 제공 API 사양에 맞춰 <strong>연동 클라이언트·라우팅 엔드포인트 직접 구현</strong> (긴급 메시지 자동 전송 등).
       </div>
-      <div class="proj-tech">스택: Kneron Toolchain · RKNN Toolkit · ONNX · Netron · ONNX Python API · C</div>
+      <div class="proj-tech">스택: Jetson Orin · CTranslate2 · aiohttp · Faster-Whisper · Qwen · MQTT · PM2 · SQLite WAL · ESP-IDF</div>
     </div>
 
     <div class="proj">
       <div class="proj-head">
         <span class="proj-num">02</span>
-        <span class="proj-title">KDT 경량화 AI 프로젝트 — 대상 수상</span>
-        <span class="proj-meta">2024 · 부트캠프 졸업 프로젝트</span>
+        <span class="proj-title">LLM 풀 파이프라인 자체 자동화 (학습 → 변환 → 양자화 → 서빙)</span>
+        <span class="proj-meta">2025.12 ~ 현재 · AIBOO LLM 모듈</span>
       </div>
       <div class="proj-desc">
-        KDT AI 부트캠프 4기(이스트소프트·KDT) 졸업 프로젝트로 <strong>경량화 AI</strong> 주제 진행.
-        <strong>대상 수상</strong> — 서울대 박사과정 심사위원 평가.
-        부트캠프 입학 30명 → 수료 20명 중 <strong>최우수 수강생</strong>으로 동시 선정.
-        (현재 회사 프로젝트는 비공개, KDT 프로젝트는 GitHub 공개 — 링크는 별첨 사이트 참조)
+        외부 LLM API 미사용 (망분리·정책 제약) → <strong>상위 모델(gpt-oss / Qwen 상위급) 응답 샘플링으로 합성 데이터셋 직접 구축</strong>.
+        PEFT(LoRA r=8, α=16) + TRL(SFTTrainer)로 Qwen 4크기(0.5B / 1.5B / 3-1.7B / 3-4B) 비교 학습 — 스윗 스팟 탐색.
+        <strong>HuggingFace → adapter merge → GGUF Q4_K_M → Ollama 등록까지 자체 자동화 스크립트로 일괄 처리</strong> (MLflow 미사용, 동등 효과를 가벼운 스택으로 구현).
       </div>
-      <div class="proj-tech">스택: PyTorch · 경량화 · 컴퓨터비전</div>
+      <div class="proj-tech">스택: Qwen · PEFT · TRL · llama.cpp · GGUF · Ollama · 자체 자동화</div>
     </div>
 
     <div class="proj">
       <div class="proj-head">
         <span class="proj-num">03</span>
-        <span class="proj-title">Fire/PPE 6클래스 Detection + RTSP 모니터링</span>
-        <span class="proj-meta">2025.02 ~ 09 · Project 01과 연계</span>
+        <span class="proj-title">MCP 도구 릴레이 서버 — 3계층 WebSocket + stdio 자동 재연결</span>
+        <span class="proj-meta">2026.03 ~ 현재 · AIBOO 도구 통합</span>
       </div>
       <div class="proj-desc">
-        YOLOv5s 6클래스 학습 (<strong>Kaggle / 웹 공개 데이터셋 활용 · 자체 라벨링 없음 · 라벨 정합 직접</strong>) — mAP@0.5 84.7%.
-        RTSP 멀티 스트림 + Streamlit 실시간 대시보드. 학습된 모델이 Project 01의 KL630 NPU 포팅 대상.
+        FastMCP 라이브러리 기반 — 기존 챗봇 서버 코드 미변경 채로 도구 영역만 분리하기 위한 새 서버.
+        소비자 ↔ 서버 ↔ 파이프 ↔ stdio 도구 <strong>3계층 릴레이 구조</strong> 직접 설계.
+        JSON-RPC 요청 ID 매핑 / <strong>exponential backoff 자동 재연결(1s → 30s cap)</strong> / 토큰 인증 / 자체 도구 구현(calculator, 위치 기반 추천).
       </div>
-      <div class="proj-tech">스택: YOLOv5 · OpenCV · Streamlit · W&amp;B · RTX 4090</div>
+      <div class="proj-tech">스택: FastAPI · WebSocket · FastMCP · Gemini · Kakao Local API</div>
     </div>
 
     <div class="proj">
       <div class="proj-head">
         <span class="proj-num">04</span>
-        <span class="proj-title">Qwen LoRA 파인튜닝 + 합성 데이터 SFT (4크기 비교 학습)</span>
-        <span class="proj-meta">2025.12 ~ 현재 · AIBOO LLM 모듈</span>
+        <span class="proj-title">Multi-NPU 모델 포팅 + ONNX 그래프 수술</span>
+        <span class="proj-meta">2025.02 ~ 09</span>
       </div>
       <div class="proj-desc">
-        망분리 · 외부 API 불가 환경 → <strong>상위 모델(gpt-oss / Qwen 상위급) 응답 샘플링으로 합성 데이터셋 직접 구축</strong>
-        (logits distillation 대신 출력 텍스트 기반 SFT).
-        PEFT(LoRA r=8, α=16) + TRL(SFTTrainer)로 <strong>Qwen 4크기(0.5B / 1.5B / 3-1.7B / 3-4B) 비교 학습 — 응답 품질 vs 모델 크기 스윗 스팟 탐색</strong>,
-        HuggingFace → GGUF Q4_K_M → Ollama 변환 자동화.
+        Kneron KL630 / Rockchip RK3588 두 NPU에 YOLO 객체 탐지 모델 포팅. 양쪽 다 추론 검증 완료.
+        <strong>출력단 후처리(NMS · detect)가 NPU 미지원 → Netron + ONNX Python API로 노드 ID 직접 조회·절단·재연결 → Python 추론 동등 동작 검증</strong>,
+        잘려나간 후처리는 SDK 레퍼런스 C 코드를 임베디드 환경에 통합. <strong>모델 변환·양자화·검증 파이프라인을 환경별로 직접 구성</strong>.
       </div>
-      <div class="proj-tech">스택: Qwen · PEFT · TRL · llama.cpp · GGUF · Ollama</div>
+      <div class="proj-tech">스택: Kneron Toolchain · RKNN Toolkit · ONNX · Netron · ONNX Python API</div>
     </div>
 
     <div class="proj">
       <div class="proj-head">
         <span class="proj-num">05</span>
-        <span class="proj-title">AIBOO — Jetson Orin 음성 비서 (보훈부 1인 용역 단독)</span>
-        <span class="proj-meta">2025.02 ~ 현재</span>
+        <span class="proj-title">Telemedicine 백엔드 (1:N 화상 진료 PoC) + Piper TTS 한국어 G2P</span>
+        <span class="proj-meta">2025</span>
       </div>
       <div class="proj-desc">
-        Jetson Orin <strong>CUDA 12.6 환경에서 CTranslate2 4.7.1 소스 빌드</strong>로 PyPI 사전 빌드 미동작 이슈 해결.
-        PyTorch 2.11에서 cuBLAS 충돌 → 버전 조합 재현 테스트로 2.9.1 다운그레이드. Docker 4컨테이너 → 단일 Python 통합 — 메모리 약 750MB 절감.
-        <strong>2026.05 1차 15대 실투입 예정</strong> (70대 확장 협의 중) — SW 전 영역(BE/FE/펌웨어/ESP32) 책임, HW 전기/전자는 외부 지원.
+        <strong>Telemedicine</strong> (2025년 약 3개월, PoC·시연 단계 완료) — WebRTC 기반 의사 1인 ↔ 환자 다수 화상 진료 백엔드 단독 + <strong>Coturn TURN/STUN 서버 셋업</strong> + FastAPI 시그널링.
+        본인 코드를 후속 개발자가 다른 언어로 인계 리팩토링 진행 중.
+        <strong>Piper TTS 한국어 G2P 토크나이저 직접 통합</strong> — espeak-ng로 부족한 한국어 음소 처리를 위해 학습/추론 양쪽에 G2P 결합 (공식 가이드 부재 영역).
       </div>
-      <div class="proj-tech">스택: Jetson Orin · CTranslate2 · aiohttp · Faster-Whisper · Qwen · MQTT · ESP-IDF</div>
+      <div class="proj-tech">스택: FastAPI · WebRTC · Coturn · WebSocket · PyTorch Lightning · 한국어 G2P</div>
     </div>
 
-    <div class="proj">
-      <div class="proj-head">
-        <span class="proj-num">06</span>
-        <span class="proj-title">Piper TTS 한국어 G2P 토크나이저 통합</span>
-        <span class="proj-meta">2025.11</span>
-      </div>
-      <div class="proj-desc">
-        사전학습 한국어 medium 모델 fine-tuning + <strong>espeak-ng로 부족한 한국어 음소 처리를 위해 한국어 G2P 토크나이저 직접 통합</strong>.
-        체크포인트 15개 일괄 ONNX export + 동일 문장 wav 일괄 합성 청취 비교 평가.
-      </div>
-      <div class="proj-tech">스택: PyTorch Lightning · 한국어 G2P · ONNX · espeak-ng</div>
-    </div>
-
-    <p style="margin-top: 8px; font-size: 8pt; color: var(--c-dim); text-align: right;">상세 내용은 별첨 <strong>경력기술서 (모빌린트 버전)</strong> 참조.</p>
+    <p style="margin-top: 8px; font-size: 8pt; color: var(--c-dim); text-align: right;">상세 내용은 별첨 <strong>경력기술서 (마키나락스 버전)</strong> 참조.</p>
 
   </section>
 
@@ -457,7 +446,7 @@
 
   <!-- Footer -->
   <footer>
-    <span>박진형 · AI 엔지니어 · 모빌린트 DL Research Engineer 지원용</span>
+    <span>박진형 · AI 엔지니어 · 마키나락스 FDE / MLOps Engineer 지원용</span>
     <span>최종 수정: 2026.04</span>
   </footer>
 

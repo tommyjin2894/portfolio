@@ -2,7 +2,8 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>박진형 · 경력기술서 (모빌린트 DL Research Engineer 지원용)</title>
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+<title>박진형 · 경력기술서</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -419,8 +420,8 @@
     <div style="display: flex; justify-content: space-between; align-items: baseline;">
       <div>
         <h1 style="font-size: 18pt; font-weight: 800; letter-spacing: -.02em;">박진형 · 경력기술서</h1>
-        <p style="font-family: var(--font-mono); font-size: 9pt; color: var(--c-accent); margin-top: 2px;">AI 엔지니어 · 딥러닝 모델 경량화 · NPU 포팅 · 컴퓨터비전</p>
-        <p style="font-family: var(--font-mono); font-size: 7.5pt; color: var(--c-dim); margin-top: 2px; text-transform: uppercase; letter-spacing: .05em;">For: Mobilint — Deep Learning Research Engineer</p>
+        <p style="font-family: var(--font-mono); font-size: 9pt; color: var(--c-accent); margin-top: 2px;">AI 엔지니어 · MLOps 파이프라인 · Edge AI 배포 · 산업 현장 AI 운영</p>
+        <p style="font-family: var(--font-mono); font-size: 7.5pt; color: var(--c-dim); margin-top: 2px; text-transform: uppercase; letter-spacing: .05em;">For: MakinaRocks — FDE / MLOps Engineer</p>
       </div>
       <div style="text-align: right; font-size: 8.5pt; color: var(--c-muted); line-height: 1.6;">
         <div>tommyjin2894@gmail.com · 010-2817-2894</div>
@@ -428,7 +429,8 @@
       </div>
     </div>
     <p style="margin-top: 8px; font-size: 9pt; color: var(--c-dim);">
-      인적사항 · 학력 · 수상 · 경력 전체는 별첨 <strong>이력서</strong> 참조. 본 문서는 모빌린트 JD에 맞춰 <strong>NPU 포팅 · ONNX 그래프 수술 · 모델 경량화 · 컴퓨터비전</strong> 관련 프로젝트를 우선 배치한 상세 설명입니다.
+      인적사항 · 학력 · 수상 · 경력 전체는 별첨 <strong>이력서</strong> 참조. 본 문서는 마키나락스 FDE 본부의 직무(<strong>고객 산업 현장 AI 배포·운영, 학습→변환→서빙 파이프라인 자동화, 시스템 아키텍처 구축</strong>)에 맞춰 정렬한 핵심 프로젝트 6개 + 보조 프로젝트 2개의 상세 설명입니다.
+      엔터프라이즈 MLOps 스택(K8s · MLflow · Triton · Airflow · vLLM)은 실무 미경험 — 동등한 일을 가벼운 자체 자동화로 수행한 경험을 기반으로 학습 진행 중.
     </p>
   </header>
 
@@ -438,10 +440,10 @@
   <section>
     <div class="proj-header">
       <div class="proj-num-large">PROJECT 01</div>
-      <h1 class="proj-h1">AIBOO — Edge AI 음성 비서 (Jetson Orin)</h1>
+      <h1 class="proj-h1">AIBOO — 산업 현장 AI 배포·운영 (Jetson Orin · 보훈부 1인 용역 단독)</h1>
       <p class="proj-tagline">
         Jetson Orin 기반 음성 비서. xiaozhi-esp32-server 계열 오픈소스 fork를 단일 Python 서버로 리팩토링하고,
-        센서·건강·스케줄·긴급·정서지원 도메인 기능을 추가. <strong>1인 용역 단독 배당, SW 전 영역 책임</strong>.
+        센서·건강·스케줄·긴급·정서지원 도메인 기능을 추가. <strong>공공기관 산업 현장에 AI 서비스를 배포·운영하는 일을 1인 용역으로 단독 책임</strong> — SW 전 영역(BE/FE/펌웨어/ESP32)을 직접 만들고, 케어센터 외부 시스템 연동까지 인계 가능 형태로 정리.
       </p>
       <dl class="proj-meta-table">
         <dt>기간</dt><dd>2025.02 ~ 현재 — <strong>2026.05 보훈부 1차 15대 실투입 예정</strong> (70대 확장 협의 중)</dd>
@@ -597,11 +599,9 @@
   <section class="proj-section">
     <div class="proj-header">
       <div class="proj-num-large">PROJECT 02</div>
-      <h1 class="proj-h1">Multi-NPU 모델 포팅 (Kneron KL630 + Rockchip RK3588) — ONNX 그래프 수술</h1>
+      <h1 class="proj-h1">Multi-NPU 모델 포팅 (Kneron KL630 + Rockchip RK3588)</h1>
       <p class="proj-tagline">
-        서로 다른 NPU 두 종에 컴퓨터비전 객체 탐지 모델 포팅 — 양자화 및 변환 작업.
-        <strong>출력 헤드(NMS · detect)가 NPU 미지원 → ONNX 그래프 노드를 직접 절단·재연결하여 모델 본체만 NPU에 올림 + 후처리는 CPU 측에 분리</strong>.
-        딥러닝 핵심 연산을 그래프 수준에서 직접 손댄 경험.
+        서로 다른 NPU 두 종에 객체 탐지 모델 포팅 — 양자화 및 변환 작업.
       </p>
       <dl class="proj-meta-table">
         <dt>기간</dt><dd>2025.02 ~ 2025.09</dd>
@@ -961,11 +961,11 @@ for model in glob("voices/*.onnx"):
   <section class="proj-section">
     <div class="proj-header">
       <div class="proj-num-large">PROJECT 05</div>
-      <h1 class="proj-h1">Qwen LoRA 파인튜닝 + 합성 데이터 파이프라인</h1>
+      <h1 class="proj-h1">LLM 풀 파이프라인 자체 자동화 (학습 → 변환 → 양자화 → 서빙)</h1>
       <p class="proj-tagline">
         AIBOO 음성 비서의 LLM 모듈 후보로 Qwen 시리즈를 LoRA 파인튜닝.
-        외부 LLM API 미사용 — <strong>상위 모델(gpt-oss / Qwen 상위급) 응답 샘플링으로 합성 데이터셋 직접 구축</strong>
-        (logits distillation 대신 출력 텍스트 기반 SFT 방식).
+        외부 LLM API 미사용 — <strong>상위 모델(gpt-oss / Qwen 상위급) 응답 샘플링으로 합성 데이터셋 직접 구축</strong> (logits distillation 대신 출력 텍스트 기반 SFT).
+        <strong>합성 데이터 → 학습 → adapter merge → GGUF Q4_K_M 양자화 → Ollama 등록</strong>까지 자체 자동화 스크립트로 일괄 처리 — MLflow / Kubeflow 미사용, 동등 효과를 가벼운 스택으로 구현.
       </p>
       <dl class="proj-meta-table">
         <dt>기간</dt><dd>2025.12 ~ 현재</dd>
@@ -1255,7 +1255,7 @@ ollama create aiboo_q4km -f Modelfile</pre>
     </p>
 
     <p style="margin-top: 30px; font-size: 8.5pt; color: var(--c-dim); text-align: center;">
-      박진형 · 경력기술서 · 모빌린트 DL Research Engineer 지원용 · 최종 수정 2026.04
+      박진형 · 경력기술서 · 마키나락스 FDE / MLOps Engineer 지원용 · 최종 수정 2026.04
     </p>
   </section>
 

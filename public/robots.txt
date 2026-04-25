@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Allow: /index.html
+Allow: /resume_base.html
+Allow: /career_base.html
+Allow: /style.css
+Allow: /script.js

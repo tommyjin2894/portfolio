@@ -1,0 +1,10 @@
+# Cloudflare Pages — 커스텀 HTTP 헤더 설정
+# 회사 fit 버전 (public/v/*)은 검색엔진·캐시·아카이브 모두 차단
+
+/v/*
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet, noimageindex
+  Cache-Control: private, no-cache, no-store, must-revalidate
+  Referrer-Policy: no-referrer
+
+/robots.txt
+  Cache-Control: public, max-age=3600

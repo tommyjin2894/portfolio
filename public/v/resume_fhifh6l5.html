@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+<title>박진형 — 이력서</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --c-text: #1a1a30;
+    --c-muted: #4a4a60;
+    --c-dim: #6a6a84;
+    --c-accent: #5548d9;
+    --c-line: #d8d8e0;
+    --c-bg-soft: #f5f5fa;
+    --font-kr: 'Noto Sans KR', 'Pretendard', -apple-system, sans-serif;
+    --font-en: 'Inter', -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  @page {
+    size: A4;
+    margin: 12mm 14mm;
+  }
+  @page { @top-left { content: none; } @top-center { content: none; } @top-right { content: none; } @bottom-left { content: none; } @bottom-center { content: none; } @bottom-right { content: none; } }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    font-family: var(--font-kr);
+    color: var(--c-text);
+    background: white;
+    font-size: 8.8pt;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    word-break: keep-all;
+    orphans: 3;
+    widows: 3;
+  }
+
+  .page {
+    max-width: 210mm;
+    margin: 0 auto;
+    padding: 12mm 14mm;
+    background: white;
+  }
+
+  /* ── Header ── */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 2px solid var(--c-text);
+    padding-bottom: 8px;
+    margin-bottom: 10px;
+  }
+  .name-block h1 {
+    font-size: 22pt;
+    font-weight: 800;
+    letter-spacing: -.02em;
+    line-height: 1.05;
+  }
+  .name-block .role {
+    font-family: var(--font-mono);
+    font-size: 9pt;
+    color: var(--c-accent);
+    margin-top: 3px;
+    font-weight: 500;
+  }
+  .name-block .target {
+    font-family: var(--font-mono);
+    font-size: 7.5pt;
+    color: var(--c-dim);
+    margin-top: 2px;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+  }
+  .contact {
+    text-align: right;
+    font-size: 8.5pt;
+    color: var(--c-muted);
+    line-height: 1.5;
+  }
+  .contact a { color: inherit; text-decoration: none; }
+  .contact .label {
+    color: var(--c-dim);
+    font-family: var(--font-mono);
+    font-size: 8pt;
+    margin-right: 4px;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+  }
+
+  /* ── Section ── */
+  section { margin-bottom: 9px; }
+  .proj, .entry { page-break-inside: avoid; }
+
+  h2 {
+    font-size: 10pt;
+    font-weight: 800;
+    color: var(--c-text);
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    margin-bottom: 5px;
+    padding-bottom: 3px;
+    border-bottom: 1px solid var(--c-line);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  h2::before {
+    content: '';
+    width: 3px;
+    height: 12px;
+    background: var(--c-accent);
+    display: inline-block;
+  }
+
+  /* ── Summary ── */
+  .summary {
+    font-size: 9pt;
+    color: var(--c-muted);
+    line-height: 1.55;
+  }
+  .summary strong {
+    color: var(--c-text);
+    font-weight: 600;
+  }
+
+  /* ── Tech Stack ── */
+  .stack-grid {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 6px 10px;
+    font-size: 9pt;
+  }
+  .stack-cat {
+    color: var(--c-accent);
+    font-weight: 700;
+    font-family: var(--font-mono);
+    font-size: 8.5pt;
+    padding-top: 1px;
+  }
+  .stack-items {
+    color: var(--c-muted);
+    line-height: 1.6;
+  }
+
+  /* ── Timeline (Career / Education) ── */
+  .entry {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 10px;
+    margin-bottom: 5px;
+  }
+  .entry .when {
+    font-family: var(--font-mono);
+    font-size: 8pt;
+    color: var(--c-accent);
+    font-weight: 600;
+    padding-top: 1px;
+  }
+  .entry .body .org {
+    font-size: 9.5pt;
+    font-weight: 700;
+    color: var(--c-text);
+  }
+  .entry .body .role {
+    font-size: 8pt;
+    color: var(--c-dim);
+    margin-bottom: 1px;
+  }
+  .entry .body .desc {
+    font-size: 8.5pt;
+    color: var(--c-muted);
+    line-height: 1.45;
+  }
+  .entry .body .desc strong {
+    color: var(--c-text);
+    font-weight: 600;
+  }
+
+  /* ── Projects ── */
+  .proj {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2px;
+    padding: 4px 0;
+    border-bottom: 1px dashed var(--c-line);
+  }
+  .proj:last-child { border-bottom: none; }
+  .proj-head {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .proj-num {
+    font-family: var(--font-mono);
+    font-size: 8.5pt;
+    color: var(--c-accent);
+    font-weight: 700;
+  }
+  .proj-title {
+    font-size: 9pt;
+    font-weight: 700;
+    color: var(--c-text);
+  }
+  .proj-meta {
+    font-size: 7.5pt;
+    color: var(--c-dim);
+    font-family: var(--font-mono);
+  }
+  .proj-desc {
+    font-size: 8.3pt;
+    color: var(--c-muted);
+    line-height: 1.45;
+  }
+  .proj-desc strong { color: var(--c-text); font-weight: 600; }
+  .proj-tech {
+    font-size: 7.5pt;
+    color: var(--c-dim);
+    font-family: var(--font-mono);
+    margin-top: 1px;
+  }
+
+  /* ── Footer ── */
+  footer {
+    margin-top: 12px;
+    padding-top: 8px;
+    border-top: 1px solid var(--c-line);
+    font-size: 8pt;
+    color: var(--c-dim);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* ── Print ── */
+  @media print {
+    .no-print { display: none; }
+    body { font-size: 9.5pt; }
+    .page { padding: 0; max-width: none; }
+    a { color: inherit; }
+  }
+
+  .print-hint {
+    position: fixed;
+    top: 10px; right: 10px;
+    background: var(--c-accent);
+    color: white;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 9pt;
+    font-family: var(--font-mono);
+    box-shadow: 0 4px 12px rgba(85,72,217,.3);
+  }
+</style>
+</head>
+<body>
+
+<div class="print-hint no-print">Ctrl+P → PDF로 저장</div>
+
+<div class="page">
+
+  <!-- Header -->
+  <header>
+    <div class="name-block">
+      <h1>박진형</h1>
+      <div class="role">AI 엔지니어 · 딥러닝 모델 경량화 · NPU 포팅 · 컴퓨터비전</div>
+      <div class="target">For: Mobilint — Deep Learning Research Engineer</div>
+    </div>
+    <div class="contact">
+      <div><span class="label">이메일</span><a href="mailto:tommyjin2894@gmail.com">tommyjin2894@gmail.com</a></div>
+      <div><span class="label">전화</span>010-2817-2894</div>
+      <div><span class="label">GitHub</span><a href="https://github.com/tommyjin2894">github.com/tommyjin2894</a></div>
+      <div><span class="label">사이트</span><a href="https://portfolio.tmpark.space">portfolio.tmpark.space</a></div>
+      <div><span class="label">지역</span>경기 성남 · 1993년생 · 군필</div>
+    </div>
+  </header>
+
+  <!-- Summary -->
+  <section>
+    <h2>요약</h2>
+    <p class="summary">
+      <strong>NPU 2종(Kneron KL630 · Rockchip RK3588)에 컴퓨터비전 모델 직접 포팅</strong> — Netron + ONNX Python API로 출력 헤드(NMS · detect) 노드를 직접 조회·절단·재연결,
+      Python 추론으로 동등 동작 검증 후 NPU에 올림. <strong>딥러닝 핵심 연산을 그래프 수준에서 다룬 경험</strong>.
+      Kneron ktc(BIE → NEF) · RKNN Toolkit(ONNX → RKNN INT8) · HuggingFace → GGUF Q4_K_M 등 <strong>다양한 양자화 / 변환 파이프라인을 환경별로 직접 구성</strong>.
+      Qwen 4크기(0.5B / 1.5B / 3-1.7B / 3-4B)를 비교 학습해 응답 품질 스윗 스팟 탐색.
+      <strong>학습-변환-배포-운영을 단독 책임</strong> — 보훈부 노인 케어 음성 비서 1인 용역 단독 개발 (2026.05 1차 15대 실투입 예정, 70대 확장 협의 중).
+      <strong>KDT 부트캠프 경량화 AI 프로젝트 대상</strong> (서울대 박사과정 심사위원 평가).
+    </p>
+  </section>
+
+  <!-- Tech Stack -->
+  <section>
+    <h2>기술 스택</h2>
+    <div class="stack-grid">
+      <div class="stack-cat">언어</div>
+      <div class="stack-items">Python (주력) · C / C++ (NPU 후처리 SDK 통합 수준)</div>
+
+      <div class="stack-cat">DL 프레임워크</div>
+      <div class="stack-items">PyTorch · PyTorch Lightning · PEFT · TRL · Transformers (Hugging Face)</div>
+
+      <div class="stack-cat">모델 경량화</div>
+      <div class="stack-items"><strong>ONNX 그래프 편집</strong> · INT8 / FP16 양자화 · GGUF Q4_K_M · LoRA · llama.cpp · CTranslate2</div>
+
+      <div class="stack-cat">NPU SDK</div>
+      <div class="stack-items">Kneron Toolchain (ktc · BIE · NEF) · RKNN Toolkit · ONNX Runtime · Netron</div>
+
+      <div class="stack-cat">비전 / 모델</div>
+      <div class="stack-items">YOLOv5 · OpenCV · Transformer (Qwen 0.5B~4B)</div>
+
+      <div class="stack-cat">엣지 환경</div>
+      <div class="stack-items">Jetson Orin (CUDA 12.6 · CTranslate2 소스 빌드) · Kneron KL630 · Rockchip RK3588 · ESP-IDF (ESP32)</div>
+
+      <div class="stack-cat">백엔드</div>
+      <div class="stack-items">FastAPI · aiohttp · WebSocket · Docker · PM2 · SQLite (보조 영역)</div>
+    </div>
+  </section>
+
+  <!-- Featured Projects (모빌린트 fit 순서: NPU → 경량화 → 비전 → AIBOO → 음성) -->
+  <section>
+    <h2>주요 프로젝트</h2>
+
+    <div class="proj">
+      <div class="proj-head">
+        <span class="proj-num">01</span>
+        <span class="proj-title">Multi-NPU 모델 포팅 (Kneron KL630 + Rockchip RK3588) — 그래프 수술</span>
+        <span class="proj-meta">2025.02 ~ 09</span>
+      </div>
+      <div class="proj-desc">
+        Kneron KL630 / Rockchip RK3588 두 NPU에 YOLO 객체 탐지 모델 포팅 — 양쪽 다 추론 검증 완료.
+        Kneron Toolchain(ktc): ONNX → BIE → NEF 변환, RKNN Toolkit: ONNX → RKNN (Toolkit 기본 INT8 양자화 활용).
+        <strong>출력단 후처리(NMS · detect 레이어)가 NPU 미지원 → Netron으로 그래프 시각화하여 노드 ID 직접 조회 → onnx Python API로 노드 절단·재연결 → Python 추론으로 모델 본체 동등 동작 검증</strong>,
+        잘려나간 후처리는 SDK 레퍼런스 C 코드를 임베디드 환경에 맞게 통합. <strong>딥러닝 핵심 연산을 그래프 수준에서 직접 손댄 경험</strong>.
+      </div>
+      <div class="proj-tech">스택: Kneron Toolchain · RKNN Toolkit · ONNX · Netron · ONNX Python API · C</div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-head">
+        <span class="proj-num">02</span>
+        <span class="proj-title">KDT 경량화 AI 프로젝트 — 대상 수상</span>
+        <span class="proj-meta">2024 · 부트캠프 졸업 프로젝트</span>
+      </div>
+      <div class="proj-desc">
+        KDT AI 부트캠프 4기(이스트소프트·KDT) 졸업 프로젝트로 <strong>경량화 AI</strong> 주제 진행.
+        <strong>대상 수상</strong> — 서울대 박사과정 심사위원 평가.
+        부트캠프 입학 30명 → 수료 20명 중 <strong>최우수 수강생</strong>으로 동시 선정.
+        (현재 회사 프로젝트는 비공개, KDT 프로젝트는 GitHub 공개 — 링크는 별첨 사이트 참조)
+      </div>
+      <div class="proj-tech">스택: PyTorch · 경량화 · 컴퓨터비전</div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-head">
+        <span class="proj-num">03</span>
+        <span class="proj-title">Fire/PPE 6클래스 Detection + RTSP 모니터링</span>
+        <span class="proj-meta">2025.02 ~ 09 · Project 01과 연계</span>
+      </div>
+      <div class="proj-desc">
+        YOLOv5s 6클래스 학습 (<strong>Kaggle / 웹 공개 데이터셋 활용 · 자체 라벨링 없음 · 라벨 정합 직접</strong>) — mAP@0.5 84.7%.
+        RTSP 멀티 스트림 + Streamlit 실시간 대시보드. 학습된 모델이 Project 01의 KL630 NPU 포팅 대상.
+      </div>
+      <div class="proj-tech">스택: YOLOv5 · OpenCV · Streamlit · W&amp;B · RTX 4090</div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-head">
+        <span class="proj-num">04</span>
+        <span class="proj-title">Qwen LoRA 파인튜닝 + 합성 데이터 SFT (4크기 비교 학습)</span>
+        <span class="proj-meta">2025.12 ~ 현재 · AIBOO LLM 모듈</span>
+      </div>
+      <div class="proj-desc">
+        망분리 · 외부 API 불가 환경 → <strong>상위 모델(gpt-oss / Qwen 상위급) 응답 샘플링으로 합성 데이터셋 직접 구축</strong>
+        (logits distillation 대신 출력 텍스트 기반 SFT).
+        PEFT(LoRA r=8, α=16) + TRL(SFTTrainer)로 <strong>Qwen 4크기(0.5B / 1.5B / 3-1.7B / 3-4B) 비교 학습 — 응답 품질 vs 모델 크기 스윗 스팟 탐색</strong>,
+        HuggingFace → GGUF Q4_K_M → Ollama 변환 자동화.
+      </div>
+      <div class="proj-tech">스택: Qwen · PEFT · TRL · llama.cpp · GGUF · Ollama</div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-head">
+        <span class="proj-num">05</span>
+        <span class="proj-title">AIBOO — Jetson Orin 음성 비서 (보훈부 1인 용역 단독)</span>
+        <span class="proj-meta">2025.02 ~ 현재</span>
+      </div>
+      <div class="proj-desc">
+        Jetson Orin <strong>CUDA 12.6 환경에서 CTranslate2 4.7.1 소스 빌드</strong>로 PyPI 사전 빌드 미동작 이슈 해결.
+        PyTorch 2.11에서 cuBLAS 충돌 → 버전 조합 재현 테스트로 2.9.1 다운그레이드. Docker 4컨테이너 → 단일 Python 통합 — 메모리 약 750MB 절감.
+        <strong>2026.05 1차 15대 실투입 예정</strong> (70대 확장 협의 중) — SW 전 영역(BE/FE/펌웨어/ESP32) 책임, HW 전기/전자는 외부 지원.
+      </div>
+      <div class="proj-tech">스택: Jetson Orin · CTranslate2 · aiohttp · Faster-Whisper · Qwen · MQTT · ESP-IDF</div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-head">
+        <span class="proj-num">06</span>
+        <span class="proj-title">Piper TTS 한국어 G2P 토크나이저 통합</span>
+        <span class="proj-meta">2025.11</span>
+      </div>
+      <div class="proj-desc">
+        사전학습 한국어 medium 모델 fine-tuning + <strong>espeak-ng로 부족한 한국어 음소 처리를 위해 한국어 G2P 토크나이저 직접 통합</strong>.
+        체크포인트 15개 일괄 ONNX export + 동일 문장 wav 일괄 합성 청취 비교 평가.
+      </div>
+      <div class="proj-tech">스택: PyTorch Lightning · 한국어 G2P · ONNX · espeak-ng</div>
+    </div>
+
+    <p style="margin-top: 8px; font-size: 8pt; color: var(--c-dim); text-align: right;">상세 내용은 별첨 <strong>경력기술서 (모빌린트 버전)</strong> 참조.</p>
+
+  </section>
+
+  <!-- Career -->
+  <section>
+    <h2>경력</h2>
+    <div class="entry">
+      <div class="when">2025.02 — 현재</div>
+      <div class="body">
+        <div class="org">루커스 (Lukus) AI연구소</div>
+        <div class="role">연구원 · 1인 용역 단독 배당</div>
+        <div class="desc">
+          <strong>공공기관(보훈부) 노인 케어 AI 음성 비서</strong> Jetson Orin 환경 단독 개발 — SW 전 영역 책임, HW 전기/전자 외부 지원.
+          NPU 모델 포팅(KL630 · RK3588), Qwen LoRA 파인튜닝(4크기), 한국어 TTS G2P 통합, Jetson 환경 빌드/디버깅. 2026.05 1차 15대 실투입 예정.
+        </div>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="when">2021.07 — 2024.01</div>
+      <div class="body">
+        <div class="org">성한 디앤티 (Sunghan D&amp;T)</div>
+        <div class="role">주임 · 설계팀</div>
+        <div class="desc">건설기계 장비 설계 — 기계 설계, 도면 작성, 생산 관리.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education / Awards -->
+  <section>
+    <h2>학력 / 수상</h2>
+    <div class="entry">
+      <div class="when">~ 2021.02</div>
+      <div class="body">
+        <div class="org">강원대학교 (구. 강릉원주대학교) · 자동차공학과 (학사)</div>
+        <div class="desc">전공 평점 <strong>4.16 / 4.5</strong></div>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="when">2024</div>
+      <div class="body">
+        <div class="org">KDT AI 부트캠프 4기 — 이스트소프트 · 한국디지털트레이닝원 · 5개월</div>
+        <div class="desc"><strong>수료자 20명 중 최우수 수강생 + 경량화 AI 프로젝트 대상</strong> (서울대 박사과정 심사위원 평가)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <span>박진형 · AI 엔지니어 · 모빌린트 DL Research Engineer 지원용</span>
+    <span>최종 수정: 2026.04</span>
+  </footer>
+
+</div>
+
+</body>
+</html>
