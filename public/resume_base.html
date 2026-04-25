@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>박진형 — 이력서 (Nota NetsPresso)</title>
+<title>박진형 — 이력서</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -85,7 +85,9 @@
   }
 
   /* ── Section ── */
-  section { margin-bottom: 9px; page-break-inside: avoid; }
+  section { margin-bottom: 9px; }
+  .proj, .entry { page-break-inside: avoid; }
+
   h2 {
     font-size: 10pt;
     font-weight: 800;
@@ -143,7 +145,6 @@
     grid-template-columns: 100px 1fr;
     gap: 10px;
     margin-bottom: 5px;
-    page-break-inside: avoid;
   }
   .entry .when {
     font-family: var(--font-mono);
@@ -179,7 +180,6 @@
     gap: 2px;
     padding: 4px 0;
     border-bottom: 1px dashed var(--c-line);
-    page-break-inside: avoid;
   }
   .proj:last-child { border-bottom: none; }
   .proj-head {
@@ -236,7 +236,6 @@
     a { color: inherit; }
   }
 
-  /* ── Print toggle helper (visible on screen only) ── */
   .print-hint {
     position: fixed;
     top: 10px; right: 10px;
@@ -260,14 +259,14 @@
   <header>
     <div class="name-block">
       <h1>박진형</h1>
-      <div class="role">AI 엔지니어 · Edge AI / NPU 포팅 · 모델 변환</div>
+      <div class="role">AI 엔지니어 · Edge AI · NPU 포팅 · 모델 경량화</div>
     </div>
     <div class="contact">
       <div><span class="label">이메일</span><a href="mailto:tommyjin2894@gmail.com">tommyjin2894@gmail.com</a></div>
       <div><span class="label">전화</span>010-2817-2894</div>
       <div><span class="label">GitHub</span><a href="https://github.com/tommyjin2894">github.com/tommyjin2894</a></div>
       <div><span class="label">사이트</span><a href="https://portfolio.tmpark.space">portfolio.tmpark.space</a></div>
-      <div><span class="label">지역</span>경기도 성남</div>
+      <div><span class="label">지역</span>경기 성남 · 1993년생 · 군필</div>
     </div>
   </header>
 
@@ -275,11 +274,11 @@
   <section>
     <h2>요약</h2>
     <p class="summary">
-      모델 학습부터 엣지 배포까지 다루는 AI 엔지니어.
-      <strong>Kneron KL630 · Rockchip RK3588 두 NPU에 객체 탐지 모델 포팅</strong>,
-      <strong>Jetson Orin End-to-End 배포</strong> 담당.
-      ONNX 변환 후 NPU 미지원 연산은 CPU에서 후처리로 분리, 벤더 컴파일러별 양자화 설정·입력 shape 이슈를 반복 조정으로 해결.
-      Qwen LoRA → GGUF 변환 파이프라인을 실제 제품(공공기관 납품 예정)에 적용.
+      모델 학습부터 엣지 디바이스 배포까지 단독으로 운용하는 AI 엔지니어.
+      <strong>Kneron KL630 · Rockchip RK3588 두 NPU에 객체 탐지 모델 포팅</strong>
+      (Netron + ONNX Python API로 미지원 연산 노드 직접 절단·재연결, 후처리는 SDK 레퍼런스 통합).
+      <strong>상위 LLM 출력 샘플링 → 합성 데이터셋 → Qwen LoRA SFT → GGUF Q4_K_M → Ollama 서빙</strong>까지 LLM 풀 파이프라인 직접 구축.
+      <strong>보훈부 노인 케어 음성 비서 1인 용역 단독 개발</strong> — SW 전 영역(BE/FE/Jetson·ESP32 펌웨어) 책임, <strong>2026.05 1차 15대 실투입 예정</strong> (70대 확장 협의 중).
     </p>
   </section>
 
@@ -288,25 +287,25 @@
     <h2>기술 스택</h2>
     <div class="stack-grid">
       <div class="stack-cat">언어</div>
-      <div class="stack-items">Python</div>
+      <div class="stack-items">Python · C (NPU 후처리 SDK 통합 수준)</div>
 
       <div class="stack-cat">운영체제</div>
       <div class="stack-items">Linux (Arch · Ubuntu)</div>
 
-      <div class="stack-cat">모델 최적화</div>
-      <div class="stack-items">ONNX · GGUF · LoRA · llama.cpp · CTranslate2</div>
+      <div class="stack-cat">모델 경량화</div>
+      <div class="stack-items">ONNX 그래프 편집 · INT8 / FP16 양자화 · GGUF Q4_K_M · LoRA · llama.cpp · CTranslate2</div>
 
       <div class="stack-cat">NPU · 엣지</div>
-      <div class="stack-items">Kneron Toolchain (ktc) · RKNN Toolkit · Jetson Orin · ESP32</div>
+      <div class="stack-items">Kneron Toolchain (ktc) · RKNN Toolkit · Jetson Orin · ESP-IDF (ESP32)</div>
 
       <div class="stack-cat">AI / ML</div>
-      <div class="stack-items">PyTorch · PyTorch Lightning · Transformer (Qwen) · YOLOv5</div>
+      <div class="stack-items">PyTorch · PyTorch Lightning · Transformer (Qwen) · YOLOv5 · PEFT · TRL</div>
 
       <div class="stack-cat">음성</div>
-      <div class="stack-items">Faster-Whisper · Silero-VAD · Piper TTS</div>
+      <div class="stack-items">Faster-Whisper · Silero-VAD · Piper TTS (한국어 G2P 토크나이저 통합)</div>
 
       <div class="stack-cat">백엔드</div>
-      <div class="stack-items">FastAPI · Docker · Nginx · PM2</div>
+      <div class="stack-items">FastAPI · aiohttp · WebSocket · WebRTC · Docker · Nginx · PM2 · SQLite</div>
     </div>
   </section>
 
@@ -318,10 +317,12 @@
       <div class="when">2025.02 — 현재</div>
       <div class="body">
         <div class="org">루커스 (Lukus) AI연구소</div>
-        <div class="role">연구원</div>
+        <div class="role">연구원 · 1인 용역 단독 배당</div>
         <div class="desc">
-          <strong>공공기관(보훈부) 노인 케어 AI 음성 비서</strong> Jetson Orin 환경 단독 개발 (2026.04 납품 예정).
-          NPU 모델 포팅, Qwen LoRA 파인튜닝, CTranslate2 소스 빌드 등 엣지 최적화 전 구간 담당.
+          <strong>공공기관(보훈부) 노인 케어 AI 음성 비서</strong> Jetson Orin 환경 단독 개발 —
+          SW 전 영역(백엔드 · 프론트 · Jetson 펌웨어 · ESP32 펌웨어) 책임, HW 전기/전자는 외부 지원.
+          <strong>2026.05 1차 15대 실투입 예정</strong> (70대 확장 협의 중).
+          NPU 모델 포팅, Qwen LoRA 파인튜닝, 한국어 TTS 토크나이저 통합, Jetson 환경 빌드/디버깅.
         </div>
       </div>
     </div>
@@ -331,25 +332,25 @@
       <div class="body">
         <div class="org">성한 디앤티 (Sunghan D&amp;T)</div>
         <div class="role">주임 · 설계팀</div>
-        <div class="desc">건설기계 장비 설계 — 기계 설계 및 도면 작성, 생산 관리</div>
+        <div class="desc">건설기계 장비 설계 — 기계 설계, 도면 작성, 생산 관리.</div>
       </div>
     </div>
   </section>
 
   <!-- Education -->
   <section>
-    <h2>학력</h2>
+    <h2>학력 / 교육</h2>
     <div class="entry">
-      <div class="when">~ 졸업</div>
+      <div class="when">~ 2021.02</div>
       <div class="body">
-        <div class="org">강릉원주대학교 · 자동차공학과 (학사)</div>
+        <div class="org">강원대학교 (구. 강릉원주대학교) · 자동차공학과 (학사)</div>
         <div class="desc">전공 평점 <strong>4.16 / 4.5</strong></div>
       </div>
     </div>
     <div class="entry">
-      <div class="when">2024</div>
+      <div class="when">2024 (5개월)</div>
       <div class="body">
-        <div class="org">KDT AI 부트캠프</div>
+        <div class="org">KDT AI 부트캠프 4기</div>
         <div class="role">이스트소프트 주관 · 한국디지털트레이닝원</div>
       </div>
     </div>
@@ -361,7 +362,8 @@
     <div class="entry">
       <div class="when">2024</div>
       <div class="body">
-        <div class="org">KDT AI 부트캠프 — <strong>최우수 수강생</strong> · <strong>프로젝트 대상</strong></div>
+        <div class="org">KDT AI 부트캠프 — <strong>수료자 20명 중 최우수 수강생</strong></div>
+        <div class="desc"><strong>경량화 AI 프로젝트 대상</strong> (서울대 박사과정 심사위원 평가)</div>
       </div>
     </div>
   </section>
@@ -373,69 +375,73 @@
     <div class="proj">
       <div class="proj-head">
         <span class="proj-num">01</span>
-        <span class="proj-title">Multi-NPU 모델 포팅 (Kneron KL630 + Rockchip RK3588)</span>
-        <span class="proj-meta">2025.02 ~ 09</span>
+        <span class="proj-title">AIBOO — Jetson Orin 음성 비서 (보훈부 노인 케어)</span>
+        <span class="proj-meta">2025.02 ~ 현재 · 1인 용역 단독</span>
       </div>
       <div class="proj-desc">
-        Kneron KL630 / Rockchip RK3588 두 NPU에 YOLO 객체 탐지 모델 포팅. 양쪽 다 추론까지 돌아가는 상태로 마무리.
-        Kneron Toolchain(ktc) · RKNN Toolkit으로 양자화·컴파일 진행.
-        출력단 일부 연산이 NPU에서 지원되지 않아, 모델 끝단을 잘라 NPU에 올리고 그 뒤 후처리는 C로 작성. Python으로 동작 확인한 뒤 임베디드 Linux 환경에 적용.
+        Jetson Orin PyPI 사전 빌드 미동작 → <strong>CTranslate2 4.7.1 CUDA 12.6 소스 빌드</strong>로 해결.
+        PyTorch 2.11에서 cuBLAS 충돌 → 버전 조합 재현 테스트로 좁힌 뒤 <strong>2.9.1 다운그레이드로 해결</strong>.
+        xiaozhi-esp32-server fork(Docker 4컨테이너)를 단일 Python 프로세스로 통합 — 메모리 약 <strong>750MB 절감</strong>(btop/htop/nvidia-smi 기준).
+        다른 개발자가 만든 homecare 센서 모듈을 <strong>PM2 3 서비스로 통합 분리</strong>(aiboo / mcp / homecare).
+        ESP32 펌웨어는 m5chatbot-build 베이스에서 XVF3800 데이터시트 권장 I2C 시퀀스 이식.
+        케어센터 측 제공 API 사양에 맞춰 <strong>연동 클라이언트·라우팅 엔드포인트 직접 구현</strong>.
       </div>
-      <div class="proj-tech">스택: Kneron Toolchain · RKNN Toolkit · ONNX</div>
+      <div class="proj-tech">스택: Jetson Orin · CTranslate2 · aiohttp · Faster-Whisper · MQTT · ESP-IDF · PM2</div>
     </div>
 
     <div class="proj">
       <div class="proj-head">
         <span class="proj-num">02</span>
-        <span class="proj-title">AIBOO — Jetson Orin End-to-End 배포</span>
-        <span class="proj-meta">2025.02 ~ 현재 · 단독 개발</span>
+        <span class="proj-title">Multi-NPU 모델 포팅 (Kneron KL630 + Rockchip RK3588)</span>
+        <span class="proj-meta">2025.02 ~ 09</span>
       </div>
       <div class="proj-desc">
-        공공기관(보훈부) 노인 케어 음성 비서.
-        <strong>Jetson Orin 호환 CTranslate2 사전 빌드 부재 → CUDA 버전 맞춰 소스 빌드</strong>로 해결.
-        xiaozhi-esp32-server fork를 단일 Python 프로세스로 리팩토링 — 메모리 약 <strong>750MB 절감</strong>,
-        PM2로 서비스 3개 분리해 장애 격리 구성.
-        ESP32 펌웨어 빔포밍(XVF3800) 설정, Barge-in은 TTS cut 방식 구현.
+        Kneron KL630 / Rockchip RK3588 두 NPU에 YOLO 객체 탐지 모델 포팅. 양쪽 다 추론까지 마무리.
+        Kneron Toolchain(ktc): ONNX → BIE → NEF 변환, RKNN Toolkit: ONNX → RKNN (Toolkit 기본 INT8 양자화 활용).
+        <strong>출력단 후처리 영역(NMS · detect 레이어)이 NPU 미지원 → Netron으로 그래프 시각화 후 onnx Python API로 노드 ID 직접 조회·절단·재연결</strong>,
+        Python 추론으로 동등 동작 검증 후 <strong>잘려나간 후처리는 SDK 레퍼런스 C 코드를 임베디드 환경에 맞게 통합</strong>.
       </div>
-      <div class="proj-tech">스택: CTranslate2 · Jetson Orin · ESP-IDF · PM2</div>
+      <div class="proj-tech">스택: Kneron Toolchain · RKNN Toolkit · ONNX · Netron · C</div>
     </div>
 
     <div class="proj">
       <div class="proj-head">
         <span class="proj-num">03</span>
-        <span class="proj-title">Qwen LoRA 파인튜닝 + GGUF 변환 파이프라인</span>
+        <span class="proj-title">Qwen LoRA 파인튜닝 + 합성 데이터 SFT 파이프라인</span>
         <span class="proj-meta">2025.12 ~ 현재 · AIBOO LLM 모듈</span>
       </div>
       <div class="proj-desc">
-        외부 API 사용 불가 환경 → ollama 기반 로컬 LLM 샘플링으로 합성 데이터 생성.
-        PEFT(LoRA) + TRL(SFTTrainer)로 Qwen 4가지 크기(0.5B / 1.5B / 3-1.7B / 3-4B) 학습,
-        <strong>HuggingFace → GGUF Q4_K_M → Ollama 변환 자동화 스크립트</strong> 작성.
+        망분리 · 외부 API 불가 환경 → <strong>상위 모델(gpt-oss / Qwen 상위급) 응답 샘플링으로 합성 데이터셋 직접 구축</strong>
+        (logits distillation 대신 출력 텍스트 기반 SFT 방식).
+        PEFT(LoRA) + TRL(SFTTrainer)로 <strong>Qwen 4크기(0.5B / 1.5B / 3-1.7B / 3-4B) 비교 학습 — 응답 품질 스윗 스팟 탐색</strong>,
+        HuggingFace → GGUF Q4_K_M → Ollama 변환 자동화.
       </div>
-      <div class="proj-tech">스택: PEFT · TRL · llama.cpp · GGUF</div>
+      <div class="proj-tech">스택: Qwen · PEFT · TRL · llama.cpp · GGUF · Ollama</div>
     </div>
 
     <div class="proj">
       <div class="proj-head">
         <span class="proj-num">04</span>
-        <span class="proj-title">Piper TTS 한국어 Fine-tuning + 체크포인트 ONNX 일괄 변환</span>
+        <span class="proj-title">Piper TTS 한국어 Fine-tuning + G2P 토크나이저 통합</span>
         <span class="proj-meta">2025.11</span>
       </div>
       <div class="proj-desc">
         사전학습 한국어 medium 모델에 자체 데이터 추가 학습.
-        <strong>체크포인트 15개 일괄 ONNX export</strong> + 동일 문장 wav 일괄 합성 파이프라인 구성 (청취 비교용).
-        학습/변환을 반복 돌리며 export 자동화 필요성 체득.
+        <strong>espeak-ng 기본 phonemizer로는 한국어 음소 처리가 부족 → 한국어 G2P 토크나이저를 직접 통합</strong> (학습 / 추론 양쪽 파이프라인).
+        체크포인트 15개 일괄 ONNX export + 동일 문장 wav 일괄 합성 파이프라인 (청취 비교 평가).
       </div>
-      <div class="proj-tech">스택: PyTorch Lightning · ONNX · espeak-ng</div>
+      <div class="proj-tech">스택: PyTorch Lightning · 한국어 G2P · ONNX · espeak-ng</div>
     </div>
 
     <div class="proj">
       <div class="proj-head">
         <span class="proj-num">05</span>
-        <span class="proj-title">Fire/PPE Detection + RTSP 모니터링</span>
+        <span class="proj-title">Fire/PPE 6클래스 Detection + RTSP 모니터링</span>
         <span class="proj-meta">2025.02 ~ 09</span>
       </div>
       <div class="proj-desc">
-        YOLOv5s 6클래스 학습 <strong>mAP@0.5 84.7%</strong>, RTSP 카메라 연동 Streamlit 실시간 모니터링.
+        YOLOv5s 6클래스 학습 (<strong>Kaggle / 웹 공개 데이터셋 활용 · 자체 라벨링 없음</strong>) — mAP@0.5 84.7%, RTSP 카메라 연동 Streamlit 실시간 모니터링.
+        Project 02 (Kneron KL630 포팅 측)와 연계.
       </div>
       <div class="proj-tech">스택: YOLOv5 · OpenCV · Streamlit</div>
     </div>
@@ -446,7 +452,7 @@
 
   <!-- Footer -->
   <footer>
-    <span>박진형 · AI 엔지니어 · 이력서 (Nota NetsPresso — Edge AI Engineer)</span>
+    <span>박진형 · AI 엔지니어 · 이력서 (Edge AI · NPU 포팅 · 모델 경량화)</span>
     <span>최종 수정: 2026.04</span>
   </footer>
 

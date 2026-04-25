@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>박진형 · 경력기술서</title>
+<title>박진형 · 경력기술서 (모빌린트 DL Research Engineer 지원용)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -63,7 +63,7 @@
   .proj-header { page-break-after: avoid; break-after: avoid; }
 
   /* ── Prevent orphan headings ── */
-  h2.doc-h2, h3.doc-h3 {
+  h2.doc-h2, h2.doc-h2-sub, h3.doc-h3 {
     page-break-after: avoid;
     break-after: avoid;
   }
@@ -197,18 +197,26 @@
     border-bottom: 2px solid var(--c-text);
   }
   h2.doc-h2 {
-    font-size: 14pt;
+    font-size: 13pt;
     font-weight: 700;
     color: var(--c-text);
     margin: 20px 0 8px;
     padding-left: 10px;
     border-left: 4px solid var(--c-accent);
   }
-  h3.doc-h3 {
+  h2.doc-h2-sub {
     font-size: 11pt;
     font-weight: 700;
     color: var(--c-text);
-    margin: 14px 0 6px;
+    margin: 12px 0 6px;
+    padding-left: 8px;
+    border-left: 3px solid var(--c-accent);
+  }
+  h3.doc-h3 {
+    font-size: 10.5pt;
+    font-weight: 700;
+    color: var(--c-text);
+    margin: 12px 0 6px;
     text-transform: uppercase;
     letter-spacing: .05em;
     font-family: var(--font-mono);
@@ -411,7 +419,8 @@
     <div style="display: flex; justify-content: space-between; align-items: baseline;">
       <div>
         <h1 style="font-size: 18pt; font-weight: 800; letter-spacing: -.02em;">박진형 · 경력기술서</h1>
-        <p style="font-family: var(--font-mono); font-size: 9pt; color: var(--c-accent); margin-top: 2px;">AI 엔지니어 · 엣지 AI / LLM / 음성</p>
+        <p style="font-family: var(--font-mono); font-size: 9pt; color: var(--c-accent); margin-top: 2px;">AI 엔지니어 · 딥러닝 모델 경량화 · NPU 포팅 · 컴퓨터비전</p>
+        <p style="font-family: var(--font-mono); font-size: 7.5pt; color: var(--c-dim); margin-top: 2px; text-transform: uppercase; letter-spacing: .05em;">For: Mobilint — Deep Learning Research Engineer</p>
       </div>
       <div style="text-align: right; font-size: 8.5pt; color: var(--c-muted); line-height: 1.6;">
         <div>tommyjin2894@gmail.com · 010-2817-2894</div>
@@ -419,7 +428,7 @@
       </div>
     </div>
     <p style="margin-top: 8px; font-size: 9pt; color: var(--c-dim);">
-      인적사항 · 학력 · 경력 전체는 별첨 <strong>이력서</strong> 참조. 본 문서는 핵심 프로젝트 6개 + 보조 프로젝트 2개의 상세 설명입니다.
+      인적사항 · 학력 · 수상 · 경력 전체는 별첨 <strong>이력서</strong> 참조. 본 문서는 모빌린트 JD에 맞춰 <strong>NPU 포팅 · ONNX 그래프 수술 · 모델 경량화 · 컴퓨터비전</strong> 관련 프로젝트를 우선 배치한 상세 설명입니다.
     </p>
   </header>
 
@@ -432,11 +441,11 @@
       <h1 class="proj-h1">AIBOO — Edge AI 음성 비서 (Jetson Orin)</h1>
       <p class="proj-tagline">
         Jetson Orin 기반 음성 비서. xiaozhi-esp32-server 계열 오픈소스 fork를 단일 Python 서버로 리팩토링하고,
-        센서·건강·스케줄·긴급·정서지원 도메인 기능을 추가.
+        센서·건강·스케줄·긴급·정서지원 도메인 기능을 추가. <strong>1인 용역 단독 배당, SW 전 영역 책임</strong>.
       </p>
       <dl class="proj-meta-table">
-        <dt>기간</dt><dd>2025.02 ~ 현재 (2026.04 납품 예정)</dd>
-        <dt>역할</dt><dd>단독 개발</dd>
+        <dt>기간</dt><dd>2025.02 ~ 현재 — <strong>2026.05 보훈부 1차 15대 실투입 예정</strong> (70대 확장 협의 중)</dd>
+        <dt>역할</dt><dd>1인 용역 단독 배당 — SW 전 영역(BE/FE/Jetson 펌웨어/ESP32 펌웨어) 책임, HW 전기/전자는 외부 지원</dd>
         <dt>카테고리</dt><dd>엣지 AI · 음성</dd>
         <dt>스택</dt><dd>Jetson Orin · Faster-Whisper · Silero-VAD · Piper TTS · ESP-IDF</dd>
       </dl>
@@ -447,7 +456,8 @@
       공공기관(보훈부)의 노인 케어 사업 일환으로, 시니어 사용자가 음성 대화만으로
       건강 상태 점검 · 일정 관리 · 긴급 상황 알림 · 정서 지원 등을 받을 수 있는 AI 음성 비서.
       개인정보 보호와 망 분리 환경 운영이 요구되어 <strong>모든 추론(ASR/LLM/TTS)을 온디바이스에서 수행</strong>하는 것을
-      설계 전제로 함. 단독 개발자로 기획부터 구현·운영·납품 준비까지 전 과정을 담당.
+      설계 전제로 함. <strong>1인 용역 단독 배당</strong>으로 SW 전 영역 구현·운영·납품 준비까지 책임 (HW 전기/전자는 외부 지원).
+      2026.05 1차 15대 실투입 예정, 70대 확장 협의 중.
     </p>
 
     <h3 class="doc-h3">베이스 vs 주요 기여</h3>
@@ -457,10 +467,9 @@
           중국 커뮤니티에서 활발히 유지되는 음성 비서 오픈소스를 시작점으로 채택.</li>
       <li><strong>주요 기여 — aiboo-server-lite:</strong>
           Jetson Orin 단일 디바이스 환경에 맞춰 컨테이너를 <em>단일 Python 프로세스로 통합 리팩토링</em> + Jetson 전용 환경 셋업 +
-          도메인 기능 8종(센서·건강·스케줄·긴급·정서지원·i18n 등) 자체 구현 + ESP32 펌웨어 튜닝(빔포밍·I2S) 까지 단독 개발.
+          도메인 기능(센서/건강/스케줄/긴급/정서지원/i18n) 구현 + ESP32 펌웨어 튜닝(빔포밍·I2S) 까지 단독 개발.
       <li><strong>브랜치 분리 — <code>main</code> / <code>bobo</code>:</strong>
-          <code>main</code>은 일반 음성 비서 코어, <code>bobo</code>는 공공기관 도메인 특화 hooks(긴급 메시지 자동 전송, 케어센터 연동 등)
-          분리하여 코어 재사용성 확보.</li>
+          <code>main</code>은 일반 음성 비서 코어, <code>bobo</code>는 공공기관 도메인 특화 hooks(긴급 메시지 자동 전송, 케어센터 연동 등)로 분기.</li>
     </ul>
 
     <h3 class="doc-h3">시스템 구성</h3>
@@ -483,7 +492,7 @@
       <rect class="box" x="380" y="26" width="280" height="120" rx="6"/>
       <text class="label-sm" x="392" y="46">외부 연동</text>
       <text class="sub" x="400" y="66">· MCP 도구 서버 (Project 06)</text>
-      <text class="sub" x="400" y="83">· 케어센터 API</text>
+      <text class="sub" x="400" y="83">· 케어센터 API (사양 제공받아 연동)</text>
       <text class="sub" x="400" y="100">· Gemini / 외부 LLM·TTS provider</text>
 
       <path class="conn-thick" d="M 155 146 L 155 200" marker-end="url(#arr1)"/>
@@ -524,14 +533,15 @@
 
     <h3 class="doc-h3">주요 기여</h3>
     <ul class="bullet">
-      <li><strong>Docker 4컨테이너 → 단일 Python 통합 리팩토링</strong> — m5chatbot-server의 ASR/LLM/TTS/orchestrator 분리 컨테이너 구성을 단일 aiohttp 프로세스로 통합. PM2로 3개 핵심 서비스(aiboo/mcp/homecare)만 분리하여 장애 격리는 유지. 메모리 사용량 약 750MB 절감 (btop/htop/nvidia-smi 기준).</li>
-      <li><strong>Jetson Orin 환경 구축</strong> — JetPack 6 · CUDA 12.6 · Python 3.10 환경에서 PyTorch 2.9.1 (cuBLAS 충돌 회피 위해 2.11+ 사용 금지) + CTranslate2 4.7.1 CUDA 소스 빌드 + onnxruntime-gpu Jetson 전용 빌드 통합. PyPI 기본 패키지 미동작 이슈 해결.</li>
+      <li><strong>Docker 4컨테이너 → 단일 Python 통합 리팩토링</strong> — m5chatbot-server의 ASR/LLM/TTS/orchestrator 분리 컨테이너 구성을 단일 aiohttp 프로세스로 통합. <strong>PM2로 3개 핵심 서비스 (aiboo / mcp / homecare) 프로세스 단위 분리</strong> — homecare 센서 모듈은 사내 다른 개발자가 선행 개발한 코드를 Docker 미사용·PM2 통합 형태로 받아들여 운영. 메모리 사용량 약 750MB 절감 (btop/htop/nvidia-smi 기준).</li>
+      <li><strong>Jetson Orin 환경 구축</strong> — JetPack 6 · CUDA 12.6 · Python 3.10 환경에서 PyTorch 2.9.1 (cuBLAS 호환성 확보 위해 2.11+ 사용 금지) + CTranslate2 4.7.1 CUDA 소스 빌드 + onnxruntime-gpu Jetson 전용 빌드 통합. PyPI 기본 패키지 미동작 이슈 해결.</li>
       <li><strong>HTTP + WebSocket 통합 서버</strong> — 단일 포트 8003에서 대시보드 / Admin / OTA / 비전 분석(<code>/mcp/vision/explain</code>) / WebSocket(<code>/xiaozhi/v1/</code>) 모두 처리.</li>
-      <li><strong>도메인 기능 8종 자체 구현</strong> — 센서 모니터링 6종 (MQTT 임계값 경보) / 건강관리 (질문 수집 → sentiment 분석 → DB → 월간 달력 뷰) / 스케줄 알림 (daily/weekly/weekdays + 음성 CRUD) / 긴급 감지 (키워드 + 낙상 감지 → emergency 브로드캐스트) / 정서 지원 (시간대별 인사 + idle 대화 + 음악 재생) / i18n 84키 (ko/en).</li>
+      <li><strong>도메인 기능 구현</strong> — 센서 모니터링 (MQTT 임계값 경보) / 건강관리 (질문 수집 → sentiment 분석 → DB → 월간 달력 뷰) / 스케줄 알림 (daily/weekly/weekdays + 음성 CRUD) / 긴급 감지 (키워드 + 낙상 감지 → emergency 브로드캐스트) / 정서 지원 (시간대별 인사 + idle 대화 + 음악 재생) / i18n (ko/en, 84키).</li>
+      <li><strong>케어센터 연동 클라이언트·라우팅 엔드포인트 구현</strong> — 케어센터 측이 제공한 API 사양에 맞춰 Jetson 서버 측 연동 클라이언트 구현 (<code>bobo</code> 브랜치): 긴급 메시지 자동 전송, 케어센터 백엔드 연동 hooks, 인증·재시도·에러 처리.</li>
       <li><strong>VAD/ASR 튜너 페이지</strong> (<code>/tuner</code>) — 환경별 임계값 휴리스틱 튜닝 + DB 저장.</li>
-      <li><strong>Barge-in 구현</strong> — LLM 토큰 스트리밍 cancel 대신 TTS 재생을 잘라내는 방식. LLM streaming cancel은 model state 관리 복잡도가 높아 회피 → 자연스러운 대화 흐름 + 구현 단순성 확보.</li>
+      <li><strong>Barge-in 구현</strong> — 사용자 발화 감지 시 LLM 토큰 스트리밍 cancel 대신 TTS 재생을 잘라내는 방식 채택. 노인 케어 시나리오에서 동일 UX 달성 가능 + 구현 비용 낮음 → ROI 판단으로 cancel 미구현.</li>
       <li><strong>SQLite WAL 모드 적용</strong> — 비동기 컴포넌트(스케줄 / MQTT / WebSocket) 동시 쓰기 상황에서 기본 journal 모드 락 충돌이 발생, WAL 모드 전환으로 완화.</li>
-      <li><strong>ESP32 펌웨어 튜닝</strong> — m5chatbot-build 베이스에서 빔포밍 (XVF3800 I2C 제어) 적용, I2S Split (RX Slave + TX Master) 오디오 스트리밍 통합.</li>
+      <li><strong>ESP32 펌웨어 튜닝</strong> — m5chatbot-build 베이스에서 <strong>XVF3800 데이터시트 권장 I2C 시퀀스 이식</strong>, I2S Split (RX Slave + TX Master) 오디오 스트리밍 통합. 검증은 음성 파이프라인 동작 기준.</li>
     </ul>
   </section>
 
@@ -539,45 +549,45 @@
   <section class="proj-section">
     <h3 class="doc-h3">기술 선택</h3>
 
-    <h2 class="doc-h2" style="font-size:11pt;">Docker 4컨테이너 → 단일 Python</h2>
+    <h2 class="doc-h2-sub">Docker 4컨테이너 → 단일 Python</h2>
     <p>
       기존 m5chatbot-server는 ASR/LLM/TTS/orchestrator를 컨테이너 분리.
-      Jetson 환경에선 컨테이너 오버헤드와 GPU 리소스 분할이 비효율적이라 판단,
-      단일 프로세스 통합 + PM2 3서비스로 장애 격리는 유지하는 절충안 선택.
+      Jetson 환경에선 컨테이너 오버헤드와 GPU 리소스 분할이 부담돼서,
+      단일 프로세스 통합 + PM2 3서비스 프로세스 분리 형태로 변경.
     </p>
 
-    <h2 class="doc-h2" style="font-size:11pt;">Barge-in: TTS cut 전략</h2>
+    <h2 class="doc-h2-sub">Barge-in: TTS cut 전략</h2>
     <p>
-      사용자 발화 감지 시 LLM 토큰 스트리밍 cancel은 구현 복잡도가 커 보여 회피.
-      LLM은 그대로 두고 TTS 재생만 잘라내는 방식 채택 → 자연스러운 대화 흐름 확보 + 구현 단순화.
+      사용자 발화 감지 시 LLM 토큰 스트리밍 cancel 대신 TTS 재생을 잘라내는 방식 채택.
+      노인 케어 시나리오에서 두 방식 모두 동일 UX 달성 가능 + TTS cut 쪽이 구현 비용 낮음 → ROI 판단으로 cancel 미구현.
     </p>
 
-    <h2 class="doc-h2" style="font-size:11pt;">마이크 echo 처리 (AEC 미적용)</h2>
+    <h2 class="doc-h2-sub">마이크 echo 처리 (AEC 미적용)</h2>
     <p>
-      VAD threshold 동적 조정만으로 TTS 출력 시 self-trigger 회피 가능.
-      AEC(Acoustic Echo Cancellation)는 추가 구현 보류 — VAD 조정으로 충분히 동작했고, 단일 디바이스 환경에서 실효성 대비 구현 부담이 커 보여 후순위.
+      VAD threshold 동적 조정만으로 TTS 출력 시 self-trigger 제거 확인 (단일 디바이스·1인 발화 환경).
+      AEC(Acoustic Echo Cancellation)는 v1 범위 외로 결정 — 다중 마이크 / 다중 사용자 시나리오에서 v2 검토 과제로 보류.
     </p>
 
-    <h2 class="doc-h2" style="font-size:11pt;">응답 지연</h2>
+    <h2 class="doc-h2-sub">응답 지연</h2>
     <p>
-      발화 종료(VAD silence) → STT 결과 반환 약 1.5초 (Faster-Whisper FP16 기준).
+      발화 종료(VAD silence) → STT 결과 반환 <strong>체감 약 1.5초</strong> (Faster-Whisper FP16, beam_size 등 디코딩 파라미터는 청취 비교 기반 실측 튜닝).
       LLM TTFT는 provider별 상이 (Gemini 클라우드 / 로컬 Qwen).
-      정밀 측정 및 최적화는 운영 안정화 우선으로 후순위.
+      체계적 latency 벤치마크는 v1 범위 외, 납품 후 운영 데이터 기반 v2 과제로 보류.
     </p>
 
     <h3 class="doc-h3">트러블슈팅 (예시)</h3>
     <p><strong>PyTorch 2.11 + CTranslate2 cuBLAS 충돌</strong></p>
     <ul class="bullet">
       <li>증상: Faster-Whisper 추론에서 CUDA 에러 발생, STT 동작 불가</li>
-      <li>분석: onnxruntime 의심 → 격리 테스트로 PyTorch 단독 cuBLAS 호출 시 충돌 확인 → CTranslate2와의 cuBLAS 버전 호환성 이슈로 좁힘</li>
+      <li>분석: onnxruntime을 우선 의심하다가, <strong>PyTorch / CTranslate2 / onnxruntime 버전 조합을 바꿔가며 재현 테스트</strong> — PyTorch 2.11 + CTranslate2 조합에서 충돌 재현 확인</li>
       <li>해결: PyTorch 2.11 → 2.9.1 다운그레이드 (Jetson 전용 wheel 채널)</li>
-      <li>결과: 추론 정상 동작, 환경 셋업 가이드에 "PyTorch 2.11+ 사용 금지" 박제</li>
+      <li>결과: 추론 정상 동작, 환경 셋업 가이드에 "PyTorch 2.11+ 사용 금지" 명시. cuBLAS 버전 차이 정밀 분석은 미진행 — 동작 조합 확보가 v1 우선순위였음.</li>
     </ul>
 
     <h3 class="doc-h3">한계 및 회고</h3>
     <ul class="bullet">
-      <li>LLM TTFT, 종단 지연 정밀 측정 미실시 (안정화 우선)</li>
-      <li>다중 디바이스 동시 호출 시 자원 경합 미검증 (단일 디바이스 환경 가정)</li>
+      <li>LLM TTFT, 종단 latency 체계적 벤치마크 미실시 — v1 동작 검증 우선, 납품 후 운영 데이터 기반 v2 과제로 보류.</li>
+      <li>다중 디바이스 동시 호출 시 자원 경합 미검증 — 단일 디바이스 환경(1대 1인 사용자) 가정. 70대 확장 단계에서 클러스터 시나리오 검토 필요.</li>
     </ul>
   </section>
 
@@ -587,10 +597,11 @@
   <section class="proj-section">
     <div class="proj-header">
       <div class="proj-num-large">PROJECT 02</div>
-      <h1 class="proj-h1">Multi-NPU 모델 포팅 (Kneron KL630 + Rockchip RK3588)</h1>
+      <h1 class="proj-h1">Multi-NPU 모델 포팅 (Kneron KL630 + Rockchip RK3588) — ONNX 그래프 수술</h1>
       <p class="proj-tagline">
-        서로 다른 NPU 아키텍처에 객체 탐지 모델을 포팅하기 위한
-        양자화 및 그래프 변환 파이프라인 작업.
+        서로 다른 NPU 두 종에 컴퓨터비전 객체 탐지 모델 포팅 — 양자화 및 변환 작업.
+        <strong>출력 헤드(NMS · detect)가 NPU 미지원 → ONNX 그래프 노드를 직접 절단·재연결하여 모델 본체만 NPU에 올림 + 후처리는 CPU 측에 분리</strong>.
+        딥러닝 핵심 연산을 그래프 수준에서 직접 손댄 경험.
       </p>
       <dl class="proj-meta-table">
         <dt>기간</dt><dd>2025.02 ~ 2025.09</dd>
@@ -668,44 +679,45 @@
     <code>quantize_mode</code>, datapath/weight bitwidth, input/output bitwidth,
     <code>compiler_tiling</code>, <code>optimize</code> 등 주요 파라미터는 공식 문서 권장 조합 기반으로 세팅.</p>
 
-    <h3 class="doc-h3">미지원 연산 처리</h3>
+    <h3 class="doc-h3">미지원 연산 처리 (그래프 수술)</h3>
     <p>
-      미지원 연산(NMS 등 후처리)은 ONNX 그래프에서 해당 노드를 제거하여 모델 본체만 NPU로 포팅하고,
-      <strong>제거된 후처리 로직은 CPU 측 C 코드로 분리</strong>하여 정확도 유지.
+      미지원 연산(NMS · detect 등 출력 헤드 후처리)은 <strong>Netron으로 그래프 시각화 후 onnx Python API로 노드 ID 직접 조회 → 절단·재연결</strong>하여 모델 본체만 NPU에 올림.
+      절단 후 <strong>Python 추론으로 모델 본체 동등 동작을 수치 비교 검증</strong>한 뒤,
+      잘려나간 후처리 로직은 <strong>SDK 레퍼런스 C 코드를 임베디드 환경에 맞게 통합</strong> (anchor decode · sigmoid · NMS 등은 Kneron/RKNN 제공 레퍼런스 활용).
     </p>
 
     <h3 class="doc-h3">2. Rockchip RK3588 (AIO3588Q)</h3>
     <ul class="bullet">
       <li>대상 모델: YOLO-World (Open-Vocabulary 객체 탐지)</li>
-      <li>변환 파이프라인: ONNX → RKNN, INT8 양자화로 모델 크기 축소</li>
+      <li>변환 파이프라인: ONNX → RKNN (RKNN Toolkit 기본 INT8 양자화 활용 — 정밀도는 Toolkit 권장 기본값, calibration set은 학습 데이터 일부 사용)</li>
       <li>AIO3588Q에서 실시간 객체 탐지 추론 검증</li>
     </ul>
 
-    <h3 class="doc-h3">Kneron vs Rockchip — 난이도 비교</h3>
+    <h3 class="doc-h3">Kneron vs Rockchip — 절차 차이</h3>
     <p>
-      두 NPU 모두 PyTorch → ONNX → 자체 toolchain 변환이라는 공통 패턴을 따르지만, 실제 작업 난이도는 크게 달랐습니다.
-      <strong>Kneron KL630이 훨씬 까다로웠습니다.</strong>
-      RKNN은 toolkit이 비교적 잘 정리되어 있고 미지원 연산도 적어 변환 자체는 1~2일이면 충분했지만,
-      Kneron은 BIE → NEF로 이어지는 변환 단계가 많고, 변환 실패 시 공식 문서 기반으로 설정을 여러 번 조정해야 했으며,
-      미지원 연산은 CPU 측에서 별도 후처리로 옮겨야 하는 복잡성이 있었습니다.
+      두 NPU 모두 PyTorch → ONNX → 자체 toolchain 변환이라는 공통 패턴이지만, 절차 구성이 달랐다.
+      RKNN은 toolkit이 비교적 정리되어 있어 변환 자체는 짧게 끝났고,
+      Kneron은 BIE → NEF로 이어지는 단계가 많아 변환 실패 시 공식 문서 기반으로 설정을 반복 조정.
+      미지원 연산은 모델 그래프에서 제거하고 CPU 측 후처리로 분리.
     </p>
 
     <h3 class="doc-h3">트러블슈팅 (예시) — KL630 미지원 연산 처리</h3>
     <ul class="bullet">
       <li>증상: YOLOv5s를 BIE로 변환하는 과정에서 출력 헤드의 후처리 영역(NMS 등)에 KL630 미지원 연산이 포함되어 변환 실패</li>
       <li>분석: ONNX 그래프 상 출력 헤드의 후처리 부분(detect 레이어, NMS)이 KL630 NPU에서 미지원 연산으로 구성되어 있음을 확인</li>
-      <li>해결: ONNX 툴로 해당 노드들을 그래프에서 제거 (모델 본체만 NPU 변환) +
-          잘려나간 후처리 로직을 <strong>CPU 측 C 코드로 분리</strong>하여 정확도 보존</li>
+      <li>해결: <strong>Netron으로 그래프 시각화 → 절단 위치 노드 ID 직접 조회 → onnx Python API로 노드 제거·재연결</strong> (모델 본체만 NPU 변환) →
+          <strong>Python 추론으로 모델 본체 동등 동작 수치 비교 검증</strong> →
+          잘려나간 후처리 로직은 <strong>SDK 레퍼런스 C 코드를 임베디드 환경에 맞게 통합</strong> (anchor decode·sigmoid·NMS는 SDK 제공 레퍼런스 활용)</li>
       <li>결과: NPU 추론 + CPU 후처리 조합으로 정상 동작, 변환된 모델 크기/성능 모두 만족</li>
     </ul>
 
     <h3 class="doc-h3">환경</h3>
-    <p>Docker 기반 KL630 전용 크로스 컴파일 환경 — 재현성 확보, 팀 간 일관성.</p>
+    <p>Docker 기반 KL630 전용 크로스 컴파일 환경 — 재현 가능하게 구성.</p>
 
     <h3 class="doc-h3">한계 및 회고</h3>
     <ul class="bullet">
-      <li>양자화 전후 mAP 손실 정량 비교 데이터 미보존 (이후 W&amp;B 등 실험 추적 도구 필요성 인지)</li>
-      <li>KL630 calibration dataset 구성에 대한 체계적 비교 미실시</li>
+      <li>양자화 전후 mAP 정량 비교는 v1 범위 외 — W&amp;B 등 실험 추적 도구 도입과 함께 v2 과제로 보류.</li>
+      <li>C 후처리 코드는 SDK 레퍼런스 통합 수준 — anchor decode·dequantization 직접 작성 경험은 추가 학습 영역.</li>
     </ul>
   </section>
 
@@ -715,10 +727,10 @@
   <section class="proj-section">
     <div class="proj-header">
       <div class="proj-num-large">PROJECT 03</div>
-      <h1 class="proj-h1">Piper TTS 한국어 Fine-tuning 실험</h1>
+      <h1 class="proj-h1">Piper TTS 한국어 Fine-tuning + G2P 토크나이저 통합</h1>
       <p class="proj-tagline">
-        사전학습 Piper TTS 한국어 medium 모델에 자체 데이터셋으로 추가 학습하여
-        음질을 개선하는 실험 프로젝트. 학습 자동화 + 다중 체크포인트 정성 비교 평가.
+        사전학습 Piper TTS 한국어 medium 모델 fine-tuning + <strong>espeak-ng 기본 phonemizer로 부족한 한국어 음소 처리를 위해 한국어 G2P 토크나이저 직접 통합</strong>.
+        학습 자동화 + 다중 체크포인트 정성 비교 평가.
       </p>
       <dl class="proj-meta-table">
         <dt>기간</dt><dd>2025.11 부근</dd>
@@ -732,6 +744,7 @@
     <ul class="bullet">
       <li><strong>베이스 모델:</strong> rhasspy/piper의 <code>ko_KR-korean-medium</code> 사전학습 체크포인트</li>
       <li>자체 한국어 음성 데이터셋으로 fine-tuning</li>
+      <li><strong>한국어 G2P 토크나이저 직접 통합</strong> — Piper 기본 espeak-ng phonemizer로는 한국어 음소 처리가 부족 → 학습/추론 양쪽 파이프라인에 한국어 G2P 결합 (공식 가이드 부재 영역, 직접 코드 작성 통합)</li>
       <li>학습 재개 자동화 (체크포인트 체이닝)</li>
       <li>다중 체크포인트 일괄 ONNX export → 동일 텍스트 합성 → 정성 비교</li>
     </ul>
@@ -802,16 +815,15 @@ for model in glob("voices/*.onnx"):
 
     <h3 class="doc-h3">결과</h3>
     <ul class="bullet">
-      <li>한국어 합성 가능한 ONNX 체크포인트 15개 확보</li>
+      <li>한국어 합성용 ONNX 체크포인트 15개 export</li>
       <li>평가는 본인 청취 기준 정성 평가 (공식 MOS 미실시)</li>
       <li>실제 배포는 이루어지지 않음</li>
     </ul>
 
     <h3 class="doc-h3">한계 및 회고</h3>
     <ul class="bullet">
-      <li>MOS, RTF 등 정량 평가 미실시 (시간 제약)</li>
-      <li>한국어 전용 phonemizer 검토 미완 (espeak-ng <code>en-us</code> voice 사용)</li>
-      <li>데이터셋 규모/품질 통제 변수 부족 — 동일 문장 합성 청취만으로 비교</li>
+      <li>MOS·RTF 정량 평가 미실시 — 동일 문장 합성 청취 비교로 대체. v2에서 평가 도구 도입 검토.</li>
+      <li>실제 운영 배포 미진행 — 본 실험은 한국어 G2P 통합 가능성 검증 단계까지 진행.</li>
     </ul>
   </section>
 
@@ -823,12 +835,12 @@ for model in glob("voices/*.onnx"):
       <div class="proj-num-large">PROJECT 04</div>
       <h1 class="proj-h1">Fire/PPE 6클래스 객체 탐지 + RTSP 모니터링</h1>
       <p class="proj-tagline">
-        산업 현장 안전을 위한 YOLOv5s 6클래스 객체 탐지 모델 학습 +
-        RTSP 카메라 연동 실시간 모니터링 시스템 구축.
+        산업 현장 안전용 YOLOv5s 6클래스 객체 탐지 모델 학습 +
+        RTSP 스트림을 받아 Streamlit 페이지에서 표시.
       </p>
       <dl class="proj-meta-table">
         <dt>기간</dt><dd>2025.02 ~ 2025.09</dd>
-        <dt>역할</dt><dd>모델 학습 + 모니터링 시스템 구축</dd>
+        <dt>역할</dt><dd>모델 학습 + 모니터링 페이지 구현</dd>
         <dt>연계</dt><dd>Project 02 (Multi-NPU 포팅 — Kneron KL630 배포 측)</dd>
         <dt>카테고리</dt><dd>비전 · 모델 학습</dd>
         <dt>스택</dt><dd>YOLOv5 · OpenCV · Streamlit · W&amp;B</dd>
@@ -893,29 +905,29 @@ for model in glob("voices/*.onnx"):
 
     <h3 class="doc-h3">모델 학습</h3>
 
-    <h2 class="doc-h2" style="font-size:11pt;">클래스 (6개)</h2>
+    <h2 class="doc-h2-sub">클래스 (6개)</h2>
     <p>화재, 연기, 안전모, 안전조끼, 사람, 머리</p>
 
-    <h2 class="doc-h2" style="font-size:11pt;">데이터셋</h2>
+    <h2 class="doc-h2-sub">데이터셋</h2>
     <ul class="bullet">
-      <li>캐글 등 여러 공개 데이터셋 직접 수집·통합</li>
-      <li>출처별 라벨 정의 차이를 통일된 6클래스로 매핑</li>
+      <li><strong>Kaggle / 웹 공개 데이터셋 활용 — 자체 라벨링은 하지 않음</strong></li>
+      <li>출처별 라벨 정의 차이를 통일된 6클래스로 직접 매핑·정합 (라벨 정합·통합이 본인 작업)</li>
     </ul>
 
-    <h2 class="doc-h2" style="font-size:11pt;">클래스 불균형 처리</h2>
+    <h2 class="doc-h2-sub">클래스 불균형 처리</h2>
     <ul class="bullet">
       <li>희소 클래스(예: 안전조끼) 데이터를 복제 + 간단한 변형으로 균형 보정</li>
       <li>어드밴스드 기법(focal loss, weighted sampler 등)은 미적용 — 단순 복제로 충분한 효과 확인</li>
     </ul>
 
-    <h2 class="doc-h2" style="font-size:11pt;">학습 환경</h2>
+    <h2 class="doc-h2-sub">학습 환경</h2>
     <ul class="bullet">
       <li>모델: YOLOv5s, 입력 해상도: 416×416</li>
       <li>GPU: NVIDIA RTX 4090</li>
       <li>모니터링: TensorBoard, Weights &amp; Biases</li>
     </ul>
 
-    <h2 class="doc-h2" style="font-size:11pt;">결과</h2>
+    <h2 class="doc-h2-sub">결과</h2>
     <p><strong>mAP@0.5: 84.7%</strong> (YOLOv5 학습 출력 기준)</p>
   </section>
 
@@ -926,7 +938,7 @@ for model in glob("voices/*.onnx"):
     <ul class="bullet">
       <li>학습한 YOLO 모델을 RTSP 멀티 스트림에 연결</li>
       <li>OpenCV로 영상 캡처 → 추론 → 감지 박스 오버레이</li>
-      <li>Streamlit 기반 실시간 영상 + 감지 로그 대시보드 구축</li>
+      <li>Streamlit 페이지에서 영상 + 감지 로그 표시</li>
       <li>Telnet 기반 카메라 원격 제어</li>
     </ul>
 
@@ -939,8 +951,7 @@ for model in glob("voices/*.onnx"):
 
     <h3 class="doc-h3">한계 및 회고</h3>
     <ul class="bullet">
-      <li>클래스 불균형 처리에 focal loss / weighted sampler 등 표준 기법 비교 실험은 미실시</li>
-      <li>TensorRT/RKNN 등 엣지 디바이스 변환은 별도 프로젝트(Multi-NPU 포팅)에서 다룸</li>
+      <li>클래스 불균형 처리에 focal loss / weighted sampler 등 표준 기법 비교 실험은 미실시.</li>
     </ul>
   </section>
 
@@ -953,7 +964,8 @@ for model in glob("voices/*.onnx"):
       <h1 class="proj-h1">Qwen LoRA 파인튜닝 + 합성 데이터 파이프라인</h1>
       <p class="proj-tagline">
         AIBOO 음성 비서의 LLM 모듈 후보로 Qwen 시리즈를 LoRA 파인튜닝.
-        외부 LLM API 미사용 — ollama 기반 자체 합성 데이터 생성 파이프라인.
+        외부 LLM API 미사용 — <strong>상위 모델(gpt-oss / Qwen 상위급) 응답 샘플링으로 합성 데이터셋 직접 구축</strong>
+        (logits distillation 대신 출력 텍스트 기반 SFT 방식).
       </p>
       <dl class="proj-meta-table">
         <dt>기간</dt><dd>2025.12 ~ 현재</dd>
@@ -1047,8 +1059,8 @@ for model in glob("voices/*.onnx"):
 
     <h3 class="doc-h3">1. 합성 데이터 생성 파이프라인</h3>
     <ul class="bullet">
-      <li><strong>방식:</strong> 로컬 오픈소스 LLM(ollama 기반)에 다양한 프롬프트를 샘플링해 합성 학습 데이터 생성</li>
-      <li><strong>외부 API 미사용</strong> — 학습 데이터셋 구축에 외부 LLM API를 쓰지 않음 (정책/비용 회피)</li>
+      <li><strong>방식:</strong> <strong>상위 모델(gpt-oss / Qwen 상위급)을 ollama로 로컬 구동</strong>, 다양한 프롬프트로 응답 샘플링해 합성 학습 데이터 직접 구축. logits distillation이 아니라 <strong>출력 텍스트 기반 SFT 방식</strong> (Self-Instruct 계열에 가까움)</li>
+      <li><strong>외부 API 미사용</strong> — 망분리·정책 제약으로 상용 LLM API 사용 불가, 모든 데이터셋을 로컬 추론으로 생성</li>
       <li><strong>다양성 확보 장치:</strong> 15개 상황 카테고리 + 8개 감정 톤 배치마다 랜덤 조합 / 중복 instruction 자동 필터링 / 길이·표현·이모지 다양성 강제 프롬프트</li>
       <li><strong>STT 스타일 강제:</strong> 구두점 최소, 구어체, 간투사("어/음/그/아"), 띄어쓰기 불완전 등 — 음성 입력에 최적화</li>
     </ul>
@@ -1056,15 +1068,16 @@ for model in glob("voices/*.onnx"):
     <h3 class="doc-h3">2. 페르소나 학습 — "아이부"</h3>
     <ul class="bullet">
       <li>200% 과몰입 공감 캐릭터 (감정 우선, 반말, 이모지 적극)</li>
-      <li><strong>도메인 적용(노인 케어)은 시스템 프롬프트 단계에서 처리</strong> — 페르소나는 학습으로, 도메인은 프롬프트로 분리하여 재사용성 확보</li>
+      <li><strong>도메인 적용(노인 케어)은 시스템 프롬프트 단계에서 처리</strong> — 페르소나는 학습으로, 도메인은 프롬프트로 분리</li>
       <li>학습 데이터 example: <code>{"instruction": "어 오늘 회사에서 완전 깨졌어", "output": "아 진짜? ㅠㅠ 고생한 너 생각하니까 내가 다 속상하고 화난다 진짜!"}</code></li>
     </ul>
   </section>
 
   <!-- Qwen LoRA continued -->
   <section class="proj-section">
-    <h3 class="doc-h3">3. 모델 학습 (src/train_qwen.py)</h3>
+    <h3 class="doc-h3">3. 모델 학습 (src/train_qwen.py) — 4크기 비교 학습</h3>
     <ul class="bullet">
+      <li><strong>4크기 비교 학습 이유:</strong> 너무 작은 모델은 추론 시 엉뚱한 응답이 자주 나오고, 너무 큰 모델은 Jetson 추론 비용 부담 — <strong>응답 품질 vs 모델 크기 스윗 스팟 탐색을 위해 직접 비교 학습 후 선택</strong>하는 방식 채택</li>
       <li><strong>베이스:</strong> Qwen2.5-0.5B-Instruct (master), 브랜치별 다른 크기 학습 (Qwen 1.5B / Qwen3 1.7B / Qwen3 4B Q4_K_M)</li>
       <li><strong>방식:</strong> 표준 LoRA + SFTTrainer (TRL 라이브러리)</li>
       <li><strong>LoRA 설정:</strong> <code>r=8</code>, <code>lora_alpha=16</code>, <code>lora_dropout=0.1</code>, target_modules: <code>q_proj, k_proj, v_proj, o_proj, gate_proj</code></li>
@@ -1102,7 +1115,7 @@ ollama create aiboo_q4km -f Modelfile</pre>
 
     <h3 class="doc-h3">평가</h3>
     <ul class="bullet">
-      <li>인간 청취 기반 정성 평가 (시간 제약으로 정량 metric 미실시)</li>
+      <li>응답 품질 정성 평가 (시간 제약으로 perplexity 등 정량 metric 미실시)</li>
       <li>9:1 train/test 분리</li>
     </ul>
 
@@ -1114,8 +1127,8 @@ ollama create aiboo_q4km -f Modelfile</pre>
 
     <h3 class="doc-h3">한계 및 회고</h3>
     <ul class="bullet">
-      <li>QLoRA(4bit) 시도했으나 메모리 환경 문제로 일반 LoRA로 전환 — 더 큰 베이스 모델 학습은 보류</li>
-      <li>정량 평가 부재 — 모델 간 우열 정량 비교 데이터 없음</li>
+      <li>QLoRA 적용은 학습 환경 메모리 제약으로 v1 범위 외, v2 검토.</li>
+      <li>모델 4크기 간 정량 비교(perplexity / LLM-as-judge)는 v2 과제 — 현재는 정성 평가 기반 스윗 스팟 결정.</li>
     </ul>
   </section>
 
@@ -1139,7 +1152,7 @@ ollama create aiboo_q4km -f Modelfile</pre>
       </dl>
     </div>
 
-    <h3 class="doc-h3">아키텍처</h3>
+    <h3 class="doc-h3">구성</h3>
     <svg class="svg-diagram" viewBox="0 0 680 380" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <marker id="arr6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
@@ -1209,28 +1222,30 @@ ollama create aiboo_q4km -f Modelfile</pre>
       <p>핵심 프로젝트 6개 외에 보조적으로 진행한 프로젝트 (참고용).</p>
     </div>
 
-    <h2 class="doc-h2">Telemedicine 백엔드</h2>
+    <h2 class="doc-h2">Telemedicine 백엔드 (1대 다 영상 진료 PoC)</h2>
     <dl class="proj-meta-table">
-      <dt>기간</dt><dd>2025.07 ~ 09</dd>
-      <dt>역할</dt><dd>백엔드 + TURN 서버 구축</dd>
-      <dt>스택</dt><dd>FastAPI · WebRTC · Coturn · OpenEMR</dd>
+      <dt>기간</dt><dd>2025년 약 3개월</dd>
+      <dt>상태</dt><dd>PoC · 시연까지 완료 — 운영 배포 미진행, 현재 타 개발자가 다른 언어로 리팩토링 중</dd>
+      <dt>역할</dt><dd>백엔드 단독 + Coturn 서버 셋업</dd>
+      <dt>스택</dt><dd>FastAPI · WebRTC · Coturn · WebSocket 시그널링 · OpenEMR</dd>
     </dl>
     <ul class="bullet">
-      <li>WebRTC 기반 의사-환자 실시간 영상 진료 + 스마트폰 센서 바이탈 모니터링 시스템 백엔드 담당</li>
-      <li>FastAPI + Socket.IO 시그널링 서버 + Coturn TURN/STUN 서버 셋업 (NAT 트래버설)</li>
+      <li>WebRTC 기반 <strong>의사 1인 ↔ 환자 다수 화상 진료</strong> + 스마트폰 센서 바이탈 모니터링 시스템 백엔드 단독 개발</li>
+      <li><strong>Coturn 기반 TURN/STUN 서버 셋업</strong> (NAT 트래버설) + FastAPI + Socket.IO 시그널링 — 1:N 미디어 릴레이 구조 직접 설계·구현</li>
       <li>OpenEMR 인증 연동, WebPush 알림</li>
+      <li>본인 코드를 후속 개발자가 인계받아 다른 언어로 리팩토링 진행 중 — 코드 자체는 인계 가능 수준이었음</li>
     </ul>
 
     <h2 class="doc-h2">GPT-SoVITS 한국어 TTS 추론 서버</h2>
     <dl class="proj-meta-table">
       <dt>기간</dt><dd>2025</dd>
-      <dt>역할</dt><dd>FastAPI 서빙 인프라 구축</dd>
+      <dt>역할</dt><dd>FastAPI 서빙 서버 구현</dd>
       <dt>스택</dt><dd>GPT-SoVITS · FastAPI · PyTorch</dd>
     </dl>
     <ul class="bullet">
       <li>GPT-SoVITS v3 기반 한국어 TTS 추론 서버 — 3~10초 레퍼런스 오디오로 few-shot 음성 클로닝</li>
       <li>FastAPI 기반 다국어(ko/en/ja/zh) 지원, 모델 동적 스위칭</li>
-      <li>모델 자체는 사전학습 활용, 서빙 인프라가 주요 기여</li>
+      <li>모델은 사전학습 활용, FastAPI 서빙 서버 부분 구현</li>
     </ul>
 
     <p style="margin-top: 30px; font-size: 9pt; color: var(--c-muted);">
@@ -1240,7 +1255,7 @@ ollama create aiboo_q4km -f Modelfile</pre>
     </p>
 
     <p style="margin-top: 30px; font-size: 8.5pt; color: var(--c-dim); text-align: center;">
-      박진형 · 경력기술서 · 최종 수정 2026.04
+      박진형 · 경력기술서 · 모빌린트 DL Research Engineer 지원용 · 최종 수정 2026.04
     </p>
   </section>
 
