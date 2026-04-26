@@ -268,8 +268,7 @@
   <header>
     <div class="name-block">
       <h1>박진형</h1>
-      <div class="role">AI 엔지니어 · MLOps 파이프라인 · Edge AI 배포 · 산업 현장 AI 운영</div>
-      <div class="target">For: MakinaRocks — FDE / MLOps Engineer</div>
+      <div class="role">AI 엔지니어 · MLOps 파이프라인 · Edge AI 배포 · 산업 현장 직접 개발</div>
     </div>
     <div class="contact">
       <div><span class="label">이메일</span><a href="mailto:tommyjin2894@gmail.com">tommyjin2894@gmail.com</a></div>
@@ -284,10 +283,9 @@
   <section>
     <h2>요약</h2>
     <p class="summary">
-      <strong>공공기관 산업 현장에 AI 서비스를 배포·운영하는 일을 1인 용역으로 단독 책임</strong>해온 AI 엔지니어 — 보훈부 노인 케어 음성 비서를 SW 전 영역(BE/FE/Jetson 펌웨어/ESP32 펌웨어) 단독 개발, <strong>2026.05 1차 15대 실투입 예정 (70대 확장 협의 중)</strong>.
-      <strong>학습 → ONNX 변환 → 양자화 → 서빙 → 운영까지 전 구간을 직접 자동화</strong> — 합성 데이터 생성 / Qwen LoRA 학습 / HuggingFace → GGUF Q4_K_M → Ollama 변환 / PM2 3 서비스 분리 운영 / SQLite WAL 동시 쓰기 처리 / OSS fork 통합 리팩토링.
-      <strong>PyTorch · ONNX 깊이</strong> — Netron + ONNX Python API로 NPU 미지원 노드를 직접 조회·절단·재연결 후 Python 추론으로 동등 동작 검증 (KL630 · RK3588 두 NPU 포팅).
-      <strong>현재 K8s · MLflow · Triton · vLLM 등 엔터프라이즈 MLOps 스택은 미경험</strong> — 동일한 일을 가벼운 스택(Docker · PM2 · Ollama · 자체 자동화 스크립트)으로 수행한 경험을 기반으로, MLOps 표준 도구 학습 중.
+      <strong>공공기관 현장에 들어갈 AI 서비스를 1인 용역으로 받아 직접 만들어본 1년</strong> — 보훈부 노인 케어 음성 비서를 소프트웨어 전 영역(백엔드 · 프론트 · Jetson 펌웨어 · ESP32 펌웨어) 혼자 개발, 2026.05 납품 예정.
+      <strong>모델 학습부터 변환·압축·로컬 서빙까지 자체 스크립트로 한 번에 돌아가게 자동화</strong> — 더 큰 LLM이 만든 응답으로 데이터셋 구축 → Qwen LoRA 학습 → 모델 합치기 → 압축 → 로컬 서빙 등록.
+      <strong>PyTorch · ONNX 직접 다뤄본 경험</strong> — NPU 두 종(KL630 · RK3588)에 객체 탐지 모델 포팅 시, 지원되지 않는 출력 후처리는 모델 그래프의 노드를 직접 잘라 분리.
     </p>
   </section>
 
@@ -315,28 +313,25 @@
 
       <div class="stack-cat">엣지 환경</div>
       <div class="stack-items">Jetson Orin (JetPack 6 · CUDA 12.6) · Kneron KL630 · Rockchip RK3588 · ESP-IDF (ESP32)</div>
-
-      <div class="stack-cat">학습 중</div>
-      <div class="stack-items">Kubernetes · MLflow · Triton Server · Airflow · vLLM (실무 미경험, MLOps 방향성으로 학습 진행 중)</div>
     </div>
   </section>
 
-  <!-- Featured Projects (마키나락스 FDE/MLOps fit: 운영·자동화·배포 우선 순서) -->
+  <!-- Featured Projects (FDE/MLOps 직무 톤: 운영·자동화·배포 우선 순서) -->
   <section>
     <h2>주요 프로젝트</h2>
 
     <div class="proj">
       <div class="proj-head">
         <span class="proj-num">01</span>
-        <span class="proj-title">AIBOO — Jetson Orin 음성 비서 (산업 현장 AI 배포·운영, 1인 용역 단독)</span>
-        <span class="proj-meta">2025.02 ~ 현재 · 보훈부 노인 케어</span>
+        <span class="proj-title">AIBOO — 공공기관 현장에 들어갈 음성 비서, 1인 용역으로 직접 개발</span>
+        <span class="proj-meta">2025.02 ~ 현재 · 1인 용역 · 보훈부 노인 케어</span>
       </div>
       <div class="proj-desc">
-        <strong>공공기관(보훈부) 산업 현장에 AI 서비스를 배포·운영하는 일을 1인 용역으로 단독 책임</strong> — SW 전 영역(BE/FE/Jetson 펌웨어/ESP32 펌웨어) 단독, HW 전기/전자는 외부 지원.
-        <strong>2026.05 1차 15대 실투입 예정 (70대 확장 협의 중)</strong>. xiaozhi-esp32-server fork(Docker 4컨테이너)를 단일 Python 프로세스로 통합 리팩토링 — 메모리 약 750MB 절감.
-        <strong>PM2 3 서비스 분리</strong>(aiboo / mcp / homecare) — 다른 개발자의 homecare 센서 모듈을 Docker 미사용·PM2 통합 형태로 인계 운영.
-        SQLite WAL 모드로 비동기 동시 쓰기 락 충돌 완화. Jetson 환경에서 CTranslate2 4.7.1 CUDA 소스 빌드 + cuBLAS 호환성 디버깅.
-        케어센터 측 제공 API 사양에 맞춰 <strong>연동 클라이언트·라우팅 엔드포인트 직접 구현</strong> (긴급 메시지 자동 전송 등).
+        <strong>실제 사용 현장에 들어갈 시스템을 1인 용역으로 받아 소프트웨어 전 영역 혼자 만들고 납품 직전까지 끌고 옴</strong> (회로 부분은 외부 지원), <strong>2026.05 납품 예정</strong>.
+        비슷한 오픈소스 음성 비서(컨테이너 4개 분리 구조)를 시작점으로 받아 단일 Python 서버로 통합 — 메모리 약 <strong>750MB 절감</strong>.
+        다른 개발자가 만든 홈케어 센서 모듈을 같은 운영 방식으로 흡수해 핵심 서비스 3개로 분리.
+        DB는 비동기 컴포넌트들이 동시 쓰기에 락 충돌이 생겨 WAL 모드로 정리. Jetson 환경에서 음성 인식 라이브러리 소스 빌드 + GPU 라이브러리 버전 호환성 디버깅.
+        외부 케어센터의 API 사양에 맞춰 <strong>연동 클라이언트와 라우팅 엔드포인트를 직접 구현</strong> (긴급 메시지 자동 전송 등).
       </div>
       <div class="proj-tech">스택: Jetson Orin · CTranslate2 · aiohttp · Faster-Whisper · Qwen · MQTT · PM2 · SQLite WAL · ESP-IDF</div>
     </div>
@@ -348,9 +343,10 @@
         <span class="proj-meta">2025.12 ~ 현재 · AIBOO LLM 모듈</span>
       </div>
       <div class="proj-desc">
-        외부 LLM API 미사용 (망분리·정책 제약) → <strong>상위 모델(gpt-oss / Qwen 상위급) 응답 샘플링으로 합성 데이터셋 직접 구축</strong>.
-        PEFT(LoRA r=8, α=16) + TRL(SFTTrainer)로 Qwen 4크기(0.5B / 1.5B / 3-1.7B / 3-4B) 비교 학습 — 스윗 스팟 탐색.
-        <strong>HuggingFace → adapter merge → GGUF Q4_K_M → Ollama 등록까지 자체 자동화 스크립트로 일괄 처리</strong> (MLflow 미사용, 동등 효과를 가벼운 스택으로 구현).
+        외부 API를 못 쓰는 환경이라 <strong>더 큰 LLM(gpt-oss · Qwen 상위급)이 만든 응답을 모아 학습 데이터셋을 직접 구축</strong>
+        (모델 내부 확률값 대신 출력 텍스트만 사용).
+        Qwen 4가지 크기(0.5B / 1.5B / 3-1.7B / 3-4B)를 LoRA로 비교 학습해 응답 품질 vs 크기 스윗 스팟 탐색.
+        <strong>데이터 생성 → 학습 → 모델 합치기 → 압축 → 로컬 서빙 등록까지 자체 스크립트로 한 번에 돌아가게 자동화</strong>.
       </div>
       <div class="proj-tech">스택: Qwen · PEFT · TRL · llama.cpp · GGUF · Ollama · 자체 자동화</div>
     </div>
@@ -362,9 +358,8 @@
         <span class="proj-meta">2026.03 ~ 현재 · AIBOO 도구 통합</span>
       </div>
       <div class="proj-desc">
-        FastMCP 라이브러리 기반 — 기존 챗봇 서버 코드 미변경 채로 도구 영역만 분리하기 위한 새 서버.
-        소비자 ↔ 서버 ↔ 파이프 ↔ stdio 도구 <strong>3계층 릴레이 구조</strong> 직접 설계.
-        JSON-RPC 요청 ID 매핑 / <strong>exponential backoff 자동 재연결(1s → 30s cap)</strong> / 토큰 인증 / 자체 도구 구현(calculator, 위치 기반 추천).
+        기존 챗봇 서버 코드를 건드리지 않고 외부 도구 호출 영역만 분리하기 위한 별도 서버.
+        클라이언트 ↔ 서버 ↔ 파이프 ↔ 도구 프로세스의 <strong>3계층 릴레이 구조</strong> 직접 설계 — 요청 ID 변환, 토큰 기반 인증, 끊긴 연결 자동 재시도(점진 backoff), 자체 도구(계산기·위치 기반 추천) 구현.
       </div>
       <div class="proj-tech">스택: FastAPI · WebSocket · FastMCP · Gemini · Kakao Local API</div>
     </div>
@@ -376,9 +371,8 @@
         <span class="proj-meta">2025.02 ~ 09</span>
       </div>
       <div class="proj-desc">
-        Kneron KL630 / Rockchip RK3588 두 NPU에 YOLO 객체 탐지 모델 포팅. 양쪽 다 추론 검증 완료.
-        <strong>출력단 후처리(NMS · detect)가 NPU 미지원 → Netron + ONNX Python API로 노드 ID 직접 조회·절단·재연결 → Python 추론 동등 동작 검증</strong>,
-        잘려나간 후처리는 SDK 레퍼런스 C 코드를 임베디드 환경에 통합. <strong>모델 변환·양자화·검증 파이프라인을 환경별로 직접 구성</strong>.
+        서로 다른 NPU 두 종(Kneron KL630 · Rockchip RK3588)에 YOLO 객체 탐지 모델을 직접 올림 — 양쪽 다 추론 검증 완료.
+        <strong>출력 헤드의 후처리(NMS · detect 등)가 NPU에서 지원되지 않아, 모델 그래프를 시각화 도구로 보고 해당 노드를 직접 잘라낸 뒤 다시 연결</strong>해 모델 본체만 NPU에 올리고, 잘려나간 후처리는 SDK 레퍼런스 코드를 임베디드 환경에 통합. <strong>모델 변환·양자화·검증 파이프라인을 환경별로 직접 구성</strong>.
       </div>
       <div class="proj-tech">스택: Kneron Toolchain · RKNN Toolkit · ONNX · Netron · ONNX Python API</div>
     </div>
@@ -390,14 +384,14 @@
         <span class="proj-meta">2025</span>
       </div>
       <div class="proj-desc">
-        <strong>Telemedicine</strong> (2025년 약 3개월, PoC·시연 단계 완료) — WebRTC 기반 의사 1인 ↔ 환자 다수 화상 진료 백엔드 단독 + <strong>Coturn TURN/STUN 서버 셋업</strong> + FastAPI 시그널링.
-        본인 코드를 후속 개발자가 다른 언어로 인계 리팩토링 진행 중.
-        <strong>Piper TTS 한국어 G2P 토크나이저 직접 통합</strong> — espeak-ng로 부족한 한국어 음소 처리를 위해 학습/추론 양쪽에 G2P 결합 (공식 가이드 부재 영역).
+        <strong>Telemedicine</strong> (2025년 약 3개월, PoC·시연 단계 완료) — WebRTC 기반 의사 1인 ↔ 환자 다수 화상 진료 백엔드를 직접 개발 + <strong>NAT 통과용 미디어 릴레이 서버(Coturn) 직접 셋업</strong> + 시그널링 서버 구현.
+        본인 코드를 후속 개발자가 다른 언어로 인계받아 리팩토링 진행 중.
+        <strong>Piper TTS 한국어 G2P 토크나이저 직접 통합</strong> — 기본 음소화 도구가 한국어 처리에 약해, 학습/추론 양쪽 파이프라인에 한국어 G2P를 직접 결합 (공식 가이드가 없는 영역).
       </div>
       <div class="proj-tech">스택: FastAPI · WebRTC · Coturn · WebSocket · PyTorch Lightning · 한국어 G2P</div>
     </div>
 
-    <p style="margin-top: 8px; font-size: 8pt; color: var(--c-dim); text-align: right;">상세 내용은 별첨 <strong>경력기술서 (마키나락스 버전)</strong> 참조.</p>
+    <p style="margin-top: 8px; font-size: 8pt; color: var(--c-dim); text-align: right;">상세 내용은 별첨 <strong>경력기술서</strong> 참조.</p>
 
   </section>
 
@@ -408,10 +402,10 @@
       <div class="when">2025.02 — 현재</div>
       <div class="body">
         <div class="org">루커스 (Lukus) AI연구소</div>
-        <div class="role">연구원 · 1인 용역 단독 배당</div>
+        <div class="role">연구원</div>
         <div class="desc">
-          <strong>공공기관(보훈부) 노인 케어 AI 음성 비서</strong> Jetson Orin 환경 단독 개발 — SW 전 영역 책임, HW 전기/전자 외부 지원.
-          NPU 모델 포팅(KL630 · RK3588), Qwen LoRA 파인튜닝(4크기), 한국어 TTS G2P 통합, Jetson 환경 빌드/디버깅. 2026.05 1차 15대 실투입 예정.
+          <strong>공공기관(보훈부) 노인 케어 AI 음성 비서</strong>를 Jetson 환경에서 직접 개발 — 1인 용역으로 받아 소프트웨어 전 영역 혼자, 회로는 외부 지원.
+          NPU 모델 포팅(KL630 · RK3588), Qwen LoRA 파인튜닝(4크기), 한국어 음성 합성 토크나이저 통합, Jetson 환경 빌드/디버깅. 2026.05 납품 예정.
         </div>
       </div>
     </div>
@@ -446,7 +440,7 @@
 
   <!-- Footer -->
   <footer>
-    <span>박진형 · AI 엔지니어 · 마키나락스 FDE / MLOps Engineer 지원용</span>
+    <span>박진형 · AI 엔지니어 · 이력서 (MLOps · Edge AI 배포 · 산업 현장 직접 개발)</span>
     <span>최종 수정: 2026.04</span>
   </footer>
 
