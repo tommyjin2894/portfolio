@@ -91,7 +91,8 @@ filterBtns.forEach(function (btn) {
     btn.classList.add('active');
 
     projectCards.forEach(function (card) {
-      if (filter === 'all' || card.dataset.category === filter) {
+      var categories = (card.dataset.category || '').split(/\s+/);
+      if (filter === 'all' || categories.indexOf(filter) !== -1) {
         card.classList.remove('hidden');
       } else {
         card.classList.add('hidden');

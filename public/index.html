@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>박진형 | AI Engineer</title>
-  <meta name="description" content="AI 모델 학습/최적화부터 엣지 디바이스 배포까지 — 박진형의 포트폴리오. 공공기관(보훈부) 노인 케어 음성 비서를 1인 용역으로 받아 소프트웨어 전 영역 혼자 개발, 2026.05 납품 예정.">
+  <title>박진형 | Edge AI Engineer</title>
+  <meta name="description" content="박진형 포트폴리오 — Edge AI / On-device AI 엔지니어. Jetson Orin, NPU, ONNX 변환, 로컬 LLM/TTS 배포 경험.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css?v=20260419b">
 </head>
 <body data-theme="dark">
@@ -48,11 +48,11 @@
       <p class="hero-greeting reveal">안녕하세요, 저는</p>
       <h1 class="hero-name reveal">
         <span class="hero-name-line">박진형</span>
-        <span class="hero-title-line">AI Engineer</span>
+        <span class="hero-title-line">Edge AI Engineer</span>
       </h1>
       <p class="hero-desc reveal">
-        AI 모델 학습·최적화부터 엣지 디바이스 배포까지<br>
-        온프레미스 환경의 <span class="accent">End-to-End AI 파이프라인</span>을 다룹니다.
+        모델 학습 이후의 변환, 최적화, 디바이스 배포, 운영 문제를 해결하는<br>
+        <span class="accent">Edge AI / On-device AI 엔지니어</span>입니다.
       </p>
       <div class="hero-cta reveal">
         <a href="#projects" class="btn btn-primary">프로젝트 보기</a>
@@ -115,16 +115,16 @@
       <div class="about-grid">
         <div class="about-text reveal">
           <p>
-            AI 모델을 학습하고 최적화하여 <strong>실제 하드웨어에 올리는 것</strong>까지가 제 일입니다.
+            AI 모델을 학습 이후 단계까지 끌고 가서 <strong>실제 하드웨어에서 동작하게 만드는 것</strong>이 제 일입니다.
           </p>
           <p>
             Jetson Orin, Kneron KL630, Rockchip RK3588 등 다양한 엣지 디바이스에서
-            YOLO 객체 탐지, 음성 합성(TTS), 대규모 언어 모델(LLM)을
-            <strong>실시간으로 구동</strong>시킨 경험이 있습니다.
+            YOLO 객체 탐지, 로컬 LLM, 음성 인식/합성 파이프라인을
+            <strong>변환·최적화·배포</strong>한 경험이 있습니다.
           </p>
           <p>
             현재 <strong>공공기관(보훈부) 노인 케어 AI 음성 비서</strong>를 Jetson 환경에서 직접 개발 중 —
-            1인 용역으로 받아 소프트웨어 전 영역(백엔드 · 프론트 · 펌웨어) 혼자 만들고 있으며 (회로는 외부 지원), <strong>2026.05 납품 예정</strong>.
+            1인 용역으로 백엔드, 대시보드, Jetson 런타임, ESP32 오디오 펌웨어 수정·튜닝, 케어센터 API 연동을 담당하고 있으며 <strong>2026.05 납품 예정</strong>.
           </p>
         </div>
         <div class="about-highlights reveal">
@@ -132,7 +132,7 @@
             <div class="highlight-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714a2.25 2.25 0 0 0 .659 1.591L19 14.5m-4.75-11.396c.25.023.5.05.75.082M5 14.5l-1.43 1.43a2.25 2.25 0 0 0 1.59 3.84h13.68a2.25 2.25 0 0 0 1.59-3.84L19 14.5"/></svg>
             </div>
-            <h3>Quantization & Optimization</h3>
+            <h3>Quantization &amp; Optimization</h3>
             <p>LoRA 파인튜닝, GGUF Q4_K_M, NPU INT8/16 mix — 환경에 맞는 양자화 전략 선택</p>
           </div>
           <div class="highlight-card">
@@ -239,76 +239,77 @@
       <div class="projects-grid">
 
         <!-- 01 AIBOO -->
-        <article class="project-card featured reveal" data-category="edge-ai">
+        <article class="project-card featured reveal" data-category="edge-ai voice-ai llm backend">
           <div class="project-number">01 <span class="featured-tag">FEATURED</span></div>
           <div class="project-badge">Edge AI · Voice</div>
           <h3 class="project-title">AIBOO Edge AI 음성 비서</h3>
           <p class="project-subtitle">공공기관(보훈부) 노인 케어 — Jetson Orin</p>
           <p class="project-desc">
-            비슷한 오픈소스 음성 비서를 시작점으로 받아 단일 Python 서버로 다시 정리한 시스템.
-            컨테이너 4개로 분리됐던 구조를 한 프로세스로 통합하고, 핵심 서비스 3개만 가벼운 프로세스 매니저로 분리. 센서·건강·스케줄·긴급·정서지원 같은 도메인 기능을 직접 붙임.
-            <strong>1인 용역</strong>으로 받아 소프트웨어 전 영역 혼자 개발 중 (회로는 외부 지원), <strong>2026.05 납품 예정</strong>.
+            공공기관 노인 케어 음성 비서를 1인 용역으로 개발.
+            오픈소스 음성 비서 구조를 베이스로 Jetson 단일 장치 운영에 맞게 런타임을 재구성하고,
+            ASR·LLM·TTS·MQTT 센서·스케줄·긴급 알림·케어센터 API 연동을 통합.
+            <strong>Docker 4컨테이너 → 단일 Python 프로세스</strong> 전환으로 런타임 메모리 약 <strong>750MB 절감</strong>.
           </p>
           <div class="project-metrics">
-            <span class="metric"><strong>공공기관 납품</strong></span>
+            <span class="metric"><strong>1인 용역</strong></span>
             <span class="metric"><strong>~750MB</strong> 메모리 절감</span>
-            <span class="metric"><strong>도메인 8종</strong></span>
+            <span class="metric"><strong>2026.05</strong> 납품 예정</span>
           </div>
           <div class="project-tech">
-            <span>Jetson Orin</span><span>aiohttp</span><span>Faster-Whisper</span><span>Qwen</span><span>MQTT</span><span>PM2</span>
+            <span>Jetson Orin</span><span>aiohttp</span><span>Faster-Whisper</span><span>Qwen</span><span>MQTT</span><span>SQLite WAL</span><span>PM2</span>
           </div>
         </article>
 
-        <!-- 02 Multi-NPU -->
-        <article class="project-card reveal" data-category="edge-ai">
+        <!-- 02 LLM Finetuning -->
+        <article class="project-card reveal" data-category="llm voice-ai">
           <div class="project-number">02</div>
+          <div class="project-badge">LLM</div>
+          <h3 class="project-title">Qwen LoRA 파인튜닝</h3>
+          <p class="project-subtitle">Self-Instruct 합성 데이터 + Ollama 서빙</p>
+          <p class="project-desc">
+            로컬 상위 OSS LLM을 이용해 Self-Instruct 방식의 합성 데이터셋을 구축하고 Qwen 계열 모델을 LoRA로 학습.
+            4가지 모델 크기를 비교하고, 어댑터 병합 → GGUF Q4_K_M 양자화 → Ollama 등록까지 자동화.
+          </p>
+          <div class="project-metrics">
+            <span class="metric"><strong>4개</strong> Qwen 크기</span>
+            <span class="metric"><strong>Q4_K_M</strong> 양자화</span>
+            <span class="metric"><strong>외부 API</strong> 미사용</span>
+          </div>
+          <div class="project-tech">
+            <span>Qwen</span><span>LoRA</span><span>TRL</span><span>GGUF</span><span>Ollama</span>
+          </div>
+        </article>
+
+        <!-- 03 Multi-NPU -->
+        <article class="project-card reveal" data-category="edge-ai model">
+          <div class="project-number">03</div>
           <div class="project-badge">Edge AI</div>
           <h3 class="project-title">Multi-NPU 모델 포팅</h3>
           <p class="project-subtitle">Kneron KL630 + Rockchip RK3588</p>
           <p class="project-desc">
-            서로 다른 NPU 아키텍처에 객체 탐지 모델 포팅 파이프라인 구성.
-            Kneron Toolchain(ktc) 양자화·컴파일, RKNN INT8 변환. 미지원 연산은 CPU에서 후처리로 분리.
+            NMS/detect 등 NPU 미지원 후처리 노드를 ONNX 그래프에서 제거하고,
+            모델 본체는 NPU에 올린 뒤 후처리는 CPU SDK 코드로 분리해 추론 파이프라인 구성.
+            Kneron KL630과 Rockchip RK3588 두 환경에서 변환 흐름을 검증.
           </p>
           <div class="project-metrics">
             <span class="metric"><strong>2개 NPU</strong> 포팅</span>
-            <span class="metric"><strong>KL630 + RK3588</strong></span>
-            <span class="metric"><strong>CPU 후처리</strong></span>
+            <span class="metric"><strong>ONNX</strong> 그래프 수술</span>
+            <span class="metric"><strong>CPU</strong> 후처리</span>
           </div>
           <div class="project-tech">
-            <span>Kneron ktc</span><span>RKNN</span><span>ONNX</span>
-          </div>
-        </article>
-
-        <!-- 03 Piper TTS -->
-        <article class="project-card reveal" data-category="voice-ai">
-          <div class="project-number">03</div>
-          <div class="project-badge">Voice AI</div>
-          <h3 class="project-title">Piper TTS 한국어 Fine-tuning</h3>
-          <p class="project-subtitle">사전학습 모델 적응 실험</p>
-          <p class="project-desc">
-            Piper `ko_KR-korean-medium` 베이스에 자체 데이터로 추가 학습.
-            학습 재개 자동화 (epoch 119 → 20003) + 15개 체크포인트 동일 문장 wav 일괄 합성 파이프라인.
-          </p>
-          <div class="project-metrics">
-            <span class="metric"><strong>20K</strong> epoch</span>
-            <span class="metric"><strong>15</strong> ckpt 비교</span>
-            <span class="metric"><strong>ONNX</strong> export</span>
-          </div>
-          <div class="project-tech">
-            <span>PyTorch Lightning</span><span>espeak-ng</span><span>ONNX</span>
+            <span>Kneron ktc</span><span>RKNN</span><span>ONNX</span><span>Netron</span><span>C</span>
           </div>
         </article>
 
         <!-- 04 Fire/PPE -->
-        <article class="project-card reveal" data-category="model">
+        <article class="project-card reveal" data-category="model edge-ai">
           <div class="project-number">04</div>
           <div class="project-badge">Vision · Model Training</div>
           <h3 class="project-title">Fire/PPE Detection + RTSP 모니터링</h3>
           <p class="project-subtitle">YOLOv5s 6클래스 학습 + 실시간 대시보드</p>
           <p class="project-desc">
-            화재·연기·안전모·조끼·사람·머리 6클래스 직접 학습.
-            다출처 데이터셋 통합·라벨 정합, 희소 클래스 복제+변형으로 불균형 처리.
-            RTSP 멀티 스트림 + Streamlit 실시간 대시보드.
+            화재·연기·안전모·조끼·사람·머리 6클래스 YOLOv5s 모델 학습으로 <strong>mAP@0.5 84.7%</strong> 달성.
+            다출처 데이터셋 라벨 정합, 희소 클래스 보강, RTSP 멀티 스트림 Streamlit 대시보드 구현.
           </p>
           <div class="project-metrics">
             <span class="metric"><strong>84.7%</strong> mAP@0.5</span>
@@ -320,45 +321,43 @@
           </div>
         </article>
 
-        <!-- 05 LLM Finetuning -->
-        <article class="project-card reveal" data-category="llm">
+        <!-- 05 MCP -->
+        <article class="project-card reveal" data-category="backend llm">
           <div class="project-number">05</div>
-          <div class="project-badge">LLM</div>
-          <h3 class="project-title">Qwen LoRA 파인튜닝</h3>
-          <p class="project-subtitle">합성 데이터 파이프라인 + Ollama 서빙</p>
-          <p class="project-desc">
-            ollama 기반 로컬 LLM 샘플링으로 자체 합성 데이터 생성 (외부 API 미사용).
-            PEFT(LoRA) + TRL(SFTTrainer) 학습. 4가지 모델 크기 브랜치별 운용,
-            HF → GGUF Q4_K_M → Ollama 변환 파이프라인 구축.
-          </p>
-          <div class="project-metrics">
-            <span class="metric"><strong>4개</strong> 모델 크기</span>
-            <span class="metric"><strong>외부 API</strong> 미사용</span>
-            <span class="metric"><strong>Q4_K_M</strong> 양자화</span>
-          </div>
-          <div class="project-tech">
-            <span>Qwen</span><span>LoRA</span><span>TRL</span><span>GGUF</span><span>Ollama</span>
-          </div>
-        </article>
-
-        <!-- 06 MCP -->
-        <article class="project-card reveal" data-category="backend">
-          <div class="project-number">06</div>
           <div class="project-badge">Backend</div>
           <h3 class="project-title">MCP 도구 릴레이 서버</h3>
           <p class="project-subtitle">FastMCP 기반 3계층 WebSocket 릴레이</p>
           <p class="project-desc">
-            소비자 ↔ 서버 ↔ 파이프 ↔ stdio 도구 3계층 구조.
-            JSON-RPC ID 변환 + exponential backoff 자동 재연결 + 토큰 기반 인증.
-            AI 에이전트로 53개 테스트 자동 생성.
+            소비자 ↔ 서버 ↔ 파이프 ↔ stdio 도구의 3계층 구조.
+            JSON-RPC ID 변환, 토큰 인증, exponential backoff 자동 재연결을 구현하고 AI 에이전트로 53개 테스트 케이스 생성.
           </p>
           <div class="project-metrics">
             <span class="metric"><strong>3계층</strong> 릴레이</span>
-            <span class="metric"><strong>53</strong> 자동 테스트</span>
+            <span class="metric"><strong>53</strong> 테스트</span>
             <span class="metric"><strong>토큰</strong> 인증</span>
           </div>
           <div class="project-tech">
-            <span>FastAPI</span><span>WebSocket</span><span>FastMCP</span><span>Gemini</span>
+            <span>FastAPI</span><span>WebSocket</span><span>FastMCP</span><span>pytest</span>
+          </div>
+        </article>
+
+        <!-- 06 Piper TTS -->
+        <article class="project-card reveal" data-category="voice-ai">
+          <div class="project-number">06</div>
+          <div class="project-badge">Voice AI</div>
+          <h3 class="project-title">Piper TTS 한국어 Fine-tuning</h3>
+          <p class="project-subtitle">한국어 G2P 토크나이저 통합 + 체크포인트 비교</p>
+          <p class="project-desc">
+            Piper 한국어 모델 fine-tuning, 한국어 G2P 토크나이저 통합,
+            15개 체크포인트 ONNX export 및 동일 문장 청취 평가 자동화.
+          </p>
+          <div class="project-metrics">
+            <span class="metric"><strong>15</strong> ckpt 비교</span>
+            <span class="metric"><strong>ONNX</strong> export</span>
+            <span class="metric"><strong>G2P</strong> 통합</span>
+          </div>
+          <div class="project-tech">
+            <span>PyTorch Lightning</span><span>한국어 G2P</span><span>ONNX</span>
           </div>
         </article>
 
@@ -368,8 +367,8 @@
       <div class="other-projects reveal">
         <h3>Other Projects</h3>
         <ul>
-          <li><strong>Telemedicine 백엔드</strong> (2025.07~09) — Python FastAPI + WebRTC 시그널링, Coturn TURN 서버 구축, OpenEMR 연동</li>
-          <li><strong>GPT-SoVITS 한국어 TTS 추론 서버</strong> (2025) — Few-shot 음성 클로닝, FastAPI + 다국어(ko/en/ja/zh) 지원</li>
+          <li><strong>Telemedicine 백엔드</strong> — WebRTC 기반 1:N 화상 진료 PoC 백엔드, Coturn/TURN 서버 및 WebSocket 시그널링 구현</li>
+          <li><strong>GPT-SoVITS 한국어 TTS 추론 서버</strong> — GPT-SoVITS 기반 한국어 TTS FastAPI 추론 서버 구현</li>
         </ul>
       </div>
     </div>
@@ -386,7 +385,7 @@
             <div class="timeline-date">2025.02 — 현재</div>
             <h3>루커스 (Lukus) AI연구소</h3>
             <p class="timeline-role">연구원</p>
-            <p>Edge AI 솔루션 개발 — Jetson/NPU 기반 AI 모델 최적화·배포, 음성 AI 파이프라인 구축, LLM 파인튜닝. 공공기관(보훈부) 노인 케어 AI 음성 비서를 1인 용역으로 받아 소프트웨어 전 영역 혼자 개발 중(회로는 외부 지원), 2026.05 납품 예정.</p>
+            <p>Edge AI 솔루션 개발 — Jetson/NPU 기반 AI 모델 변환·최적화·배포, 음성 AI 파이프라인 구축, LLM 파인튜닝. 공공기관(보훈부) 노인 케어 AI 음성 비서를 1인 용역으로 담당하며 백엔드, 대시보드, Jetson 런타임, ESP32 오디오 펌웨어 수정·튜닝, 케어센터 API 연동을 개발 중. 2026.05 납품 예정.</p>
           </div>
         </div>
         <div class="timeline-item reveal">
