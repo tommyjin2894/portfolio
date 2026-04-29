@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="박진형 경력기술서 — Edge AI Engineer, NPU Porting, On-device AI Deployment">
+<meta name="description" content="박진형 경력기술서 — Edge AI · On-device AI 배포에 집중하는 주니어 AI 엔지니어">
 <title>박진형 · 경력기술서</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -421,7 +421,7 @@
     <div style="display: flex; justify-content: space-between; align-items: baseline;">
       <div>
         <h1 style="font-size: 18pt; font-weight: 800; letter-spacing: -.02em;">박진형 · 경력기술서</h1>
-        <p style="font-family: var(--font-mono); font-size: 9pt; color: var(--c-accent); margin-top: 2px;">Edge AI Engineer · NPU Porting · On-device AI Deployment</p>
+        <p style="font-family: var(--font-mono); font-size: 9pt; color: var(--c-accent); margin-top: 2px;">Edge AI · On-device AI 배포에 집중하는 주니어 AI 엔지니어</p>
       </div>
       <div style="text-align: right; font-size: 8.5pt; color: var(--c-muted); line-height: 1.6;">
         <div>tommyjin2894@gmail.com · 010-2817-2894</div>
@@ -429,32 +429,19 @@
       </div>
     </div>
     <p style="margin-top: 8px; font-size: 9pt; color: var(--c-dim);">
-      인적사항 · 학력 · 경력 전체는 별첨 <strong>이력서</strong> 참조. 본 문서는 핵심 프로젝트 6개와 보조 프로젝트 2개를 면접 질문이 나오기 좋은 밀도로 정리한 기술 요약입니다.
+      인적사항·학력·경력 전체는 별첨 <strong>이력서</strong> 참조.
     </p>
   </header>
 
   <section>
     <h1 class="doc-h1">요약</h1>
     <p>
-      <strong>Edge AI / On-device AI 엔지니어.</strong>
+      Edge AI · On-device AI 배포에 집중하는 주니어 AI 엔지니어입니다.
       Jetson Orin, NPU, ONNX 변환, 로컬 LLM/TTS 배포 경험 보유.
       공공기관 노인 케어 음성 비서를 1인 용역으로 개발하며
-      ASR·LLM·TTS·센서·스케줄·긴급 알림·케어센터 연동을 단일 Jetson 시스템에 통합.
+      ASR·LLM·TTS·센서·스케줄·긴급 알림·케어센터 연동을 단일 Jetson 시스템에 통합했습니다.
       모델 학습 이후의 변환, 최적화, 디바이스 배포, 운영 문제를 해결하는 엔지니어를 지향합니다.
     </p>
-    <table>
-      <thead>
-        <tr><th>핵심 지표</th><th>내용</th></tr>
-      </thead>
-      <tbody>
-        <tr><td><strong>1인 용역</strong></td><td>공공기관 노인 케어 음성 비서 소프트웨어 전 영역 담당, 2026.05 납품 예정</td></tr>
-        <tr><td><strong>약 750MB 절감</strong></td><td>Docker 4컨테이너 음성 비서 구조를 단일 Python 런타임으로 재구성</td></tr>
-        <tr><td><strong>NPU 2종 포팅</strong></td><td>Kneron KL630, Rockchip RK3588에 객체 탐지 모델 변환 및 추론 파이프라인 구성</td></tr>
-        <tr><td><strong>4개 Qwen 크기</strong></td><td>합성 데이터 → LoRA → merge → GGUF Q4_K_M → Ollama 등록 자동화</td></tr>
-        <tr><td><strong>mAP@0.5 84.7%</strong></td><td>Fire/PPE YOLOv5s 6클래스 학습 및 RTSP 모니터링 구현</td></tr>
-        <tr><td><strong>53개 테스트</strong></td><td>MCP WebSocket 릴레이 서버 테스트 케이스 자동 생성</td></tr>
-      </tbody>
-    </table>
   </section>
 
   <!-- ============================== -->
@@ -470,38 +457,29 @@
       <dl class="proj-meta-table">
         <dt>기간</dt><dd>2025.02 ~ 현재 (2026.05 납품 예정)</dd>
         <dt>역할</dt><dd>1인 용역 — 백엔드, 대시보드, Jetson 런타임, ESP32 오디오 펌웨어 수정·튜닝, 케어센터 API 연동 담당</dd>
+        <dt>협업</dt><dd>회로/하드웨어는 별도 팀이 담당, 보훈부(발주처) 중간 보고 1회 진행 (납품 시 검수 예정)</dd>
         <dt>성과</dt><dd>Jetson Orin 런타임 메모리 약 <strong>750MB 절감</strong>, 단일 장치 ASR·LLM·TTS·센서·알림 통합</dd>
         <dt>스택</dt><dd>Jetson Orin · aiohttp · Faster-Whisper · CTranslate2 · Silero-VAD · Piper TTS · MQTT · SQLite · PM2 · ESP-IDF</dd>
       </dl>
     </div>
 
-    <h3 class="doc-h3">개요</h3>
+    <h3 class="doc-h3">개요와 문제</h3>
     <p>
-      시니어 사용자가 음성만으로 건강 점검, 일정 관리, 긴급 알림, 정서 지원을 받을 수 있는 온디바이스 음성 비서입니다.
-      외부 인터넷 의존을 낮춰야 하는 현장 조건에 맞춰 음성 인식, LLM, 음성 합성, 센서 이벤트 처리를 Jetson Orin 중심으로 통합했습니다.
+      고령 사용자를 위한 온디바이스 음성 비서. 외부 인터넷 의존을 낮춰야 하는 현장 조건에 맞춰 ASR·LLM·TTS·센서 이벤트를 Jetson Orin 중심으로 통합했습니다. 기존 베이스 구조는 Docker 4컨테이너로 분리되어 Jetson 단일 장치에서 메모리/운영 부담이 컸고, 공공기관 케어 도메인에 필요한 센서·스케줄·긴급 알림·케어센터 API 연동이 추가로 필요했습니다.
     </p>
-
-    <h3 class="doc-h3">문제</h3>
-    <ul class="bullet">
-      <li>기존 베이스 구조는 음성 인식·LLM·음성 합성·조율 컴포넌트가 Docker 4컨테이너로 분리되어 Jetson 단일 장치에서 메모리와 운영 부담이 컸습니다.</li>
-      <li>공공기관 케어 도메인에는 일반 음성 비서 기능 외에 센서, 스케줄, 긴급 알림, 케어센터 API 연동이 필요했습니다.</li>
-      <li>Jetson 환경에서는 PyPI 기본 빌드가 맞지 않는 라이브러리가 있어 런타임 버전 조합을 직접 고정해야 했습니다.</li>
-    </ul>
 
     <h3 class="doc-h3">핵심 기여</h3>
     <ul class="bullet">
       <li><strong>메모리 약 750MB 절감.</strong> 기존 Docker 4컨테이너 구조를 단일 Python 프로세스로 통합하고, <code>aiboo</code>/<code>mcp</code>/<code>homecare</code> 핵심 서비스만 PM2로 분리 운영.</li>
       <li><strong>단일 Jetson 시스템 통합.</strong> Faster-Whisper ASR, LLM provider, Piper TTS, MQTT 센서 이벤트, 스케줄, 긴급 알림, 케어센터 API 연동을 하나의 런타임 흐름으로 연결.</li>
-      <li><strong>Jetson 런타임 환경 구축.</strong> PyTorch, CTranslate2, ONNX Runtime의 검증된 버전 조합을 환경 가이드에 고정하고 CTranslate2 CUDA 빌드를 직접 구성.</li>
-      <li><strong>운영 데이터 저장 안정화.</strong> 스케줄, MQTT, WebSocket 컴포넌트의 동시 쓰기 상황을 고려해 SQLite WAL 모드를 적용.</li>
-      <li><strong>ESP32 오디오 스트리밍 수정·튜닝.</strong> ESP-IDF 기반 펌웨어에서 I2S Split 구성과 XVF3800 I2C 초기화 시퀀스를 반영해 마이크 입력/스피커 출력 흐름을 안정화.</li>
+      <li><strong>Jetson 런타임 환경 구축.</strong> PyTorch, CTranslate2, ONNX Runtime의 검증된 버전 조합을 환경 가이드에 고정하고 CTranslate2 CUDA 빌드를 직접 구성. 동시 쓰기 상황을 고려해 SQLite WAL 모드 적용.</li>
+      <li><strong>ESP32 오디오 스트리밍 수정·튜닝.</strong> ESP-IDF 기반 펌웨어에서 I2S Split 구성과 XVF3800 I2C 초기화 시퀀스를 반영해 마이크/스피커 흐름을 안정화.</li>
     </ul>
 
     <h3 class="doc-h3">성과/결과</h3>
     <ul class="bullet">
-      <li>공공기관 현장 투입 예정 시스템의 소프트웨어 전 영역을 담당했고, 2026.05 납품 단계까지 개발 진행.</li>
+      <li>공공기관 현장 투입 예정 시스템의 소프트웨어 영역을 End-to-End 담당, 2026.05 납품 단계까지 개발 진행.</li>
       <li>ASR·LLM·TTS·센서·스케줄·긴급 알림·케어센터 연동을 단일 Jetson Orin 장치에서 동작하도록 구성.</li>
-      <li>후속 단계에서는 운영 데이터 기반 latency/resource 계측 체계를 추가할 예정.</li>
     </ul>
   </section>
 
@@ -523,24 +501,11 @@
       </dl>
     </div>
 
-    <h3 class="doc-h3">개요</h3>
-    <p>
-      외부 LLM API에 의존하기 어려운 환경을 전제로, 로컬 상위 OSS LLM을 이용해 Self-Instruct 방식의 합성 데이터셋을 만들고 Qwen 계열 모델을 LoRA로 학습했습니다.
-      logits distillation이 아니라 출력 텍스트 기반 SFT 데이터셋을 구성한 흐름입니다.
-    </p>
-
     <h3 class="doc-h3">핵심 기여</h3>
     <ul class="bullet">
-      <li><strong>Self-Instruct 합성 데이터셋 구축.</strong> 로컬 상위 OSS LLM을 이용해 다양한 상황·감정 톤의 instruction/output 데이터를 생성하고 중복을 필터링.</li>
-      <li><strong>음성 입력 최적화.</strong> 구두점 최소화, 구어체, 간투사, 불완전한 띄어쓰기 등 STT 결과에 가까운 입력 스타일을 데이터 생성 단계에서 강제.</li>
-      <li><strong>4개 Qwen 크기 비교 학습.</strong> Qwen2.5 0.5B/1.5B, Qwen3 1.7B/4B 계열을 LoRA로 비교해 품질과 Jetson 추론 비용의 균형점을 탐색.</li>
-      <li><strong>로컬 서빙 자동화.</strong> LoRA 어댑터 merge → HF 모델 → GGUF 변환 → Q4_K_M 양자화 → Ollama Modelfile 등록까지 자체 스크립트로 연결.</li>
-    </ul>
-
-    <h3 class="doc-h3">성과/결과</h3>
-    <ul class="bullet">
-      <li>AIBOO LLM 모듈 후보를 외부 API 없이 반복 학습·변환·로컬 서빙할 수 있는 파이프라인 확보.</li>
-      <li>정성 평가 기반으로 후보 모델을 선별했고, 후속 단계에서 자체 eval set과 LLM-as-judge 기반 정량 평가 체계를 도입 예정.</li>
+      <li><strong>Self-Instruct 합성 데이터셋 구축.</strong> 로컬 OSS LLM으로 다양한 상황·감정 톤 instruction/output 데이터를 생성하고, 구두점 최소화·구어체·간투사 등 STT 결과에 가까운 입력 스타일을 데이터 생성 단계에서 강제. logits distillation이 아닌 출력 텍스트 기반 SFT.</li>
+      <li><strong>4개 Qwen 크기 비교 학습.</strong> Qwen2.5 0.5B/1.5B, Qwen3 1.7B/4B를 LoRA로 비교해 품질과 Jetson 추론 비용의 균형점을 탐색.</li>
+      <li><strong>로컬 서빙 자동화.</strong> LoRA merge → GGUF 변환 → Q4_K_M 양자화 → Ollama Modelfile 등록까지 자체 스크립트로 연결, AIBOO 음성 비서 톤에 맞는 후보 모델 선별 및 통합.</li>
     </ul>
   </section>
 
@@ -562,24 +527,11 @@
       </dl>
     </div>
 
-    <h3 class="doc-h3">문제</h3>
-    <p>
-      YOLO 계열 객체 탐지 모델의 출력 후처리(NMS/detect 등)는 NPU에서 바로 지원되지 않는 경우가 많습니다.
-      전체 모델을 그대로 변환하기보다, NPU가 처리할 본체와 CPU가 처리할 후처리를 분리해야 했습니다.
-    </p>
-
     <h3 class="doc-h3">핵심 기여</h3>
     <ul class="bullet">
-      <li><strong>ONNX 그래프 수술.</strong> NMS/detect 등 NPU 미지원 후처리 노드를 ONNX 그래프에서 제거하고 모델 본체 출력이 유지되도록 절단·재연결.</li>
-      <li><strong>Kneron KL630 변환.</strong> ONNX → BIE → NEF 파이프라인을 구성하고 ktc 양자화/컴파일 파라미터를 환경에 맞게 조정.</li>
-      <li><strong>Rockchip RK3588 변환.</strong> RKNN Toolkit 기반 INT8 변환과 추론 검증 흐름 구성.</li>
-      <li><strong>CPU 후처리 통합.</strong> SDK 레퍼런스 후처리(anchor decode, dequantization, sigmoid, NMS)를 임베디드 실행 환경에 맞게 통합.</li>
-    </ul>
-
-    <h3 class="doc-h3">성과/결과</h3>
-    <ul class="bullet">
-      <li>NPU 2종에 대해 모델 본체 NPU 추론 + CPU 후처리 분리 구조를 구성하고 추론 동작을 검증.</li>
-      <li>ONNX 그래프 편집과 NPU toolchain 변환 사이의 실무 제약을 직접 다룬 경험 확보.</li>
+      <li><strong>ONNX 그래프 수술.</strong> YOLO 객체 탐지 모델의 NMS/detect 등 NPU 미지원 후처리 노드를 ONNX 그래프에서 제거하고 모델 본체 출력이 유지되도록 절단·재연결.</li>
+      <li><strong>NPU 2종 변환 파이프라인.</strong> Kneron은 ONNX → BIE → NEF, Rockchip은 RKNN Toolkit INT8 변환으로 구성하고 ktc 양자화/컴파일 파라미터를 환경에 맞게 조정.</li>
+      <li><strong>CPU 후처리 통합.</strong> SDK 레퍼런스 후처리(anchor decode, dequantization, sigmoid, NMS)를 임베디드 실행 환경에 맞게 통합해 NPU 추론 + CPU 후처리 분리 구조 검증.</li>
     </ul>
   </section>
 
@@ -603,15 +555,9 @@
 
     <h3 class="doc-h3">핵심 기여</h3>
     <ul class="bullet">
-      <li><strong>mAP@0.5 84.7% 달성.</strong> 화재, 연기, 안전모, 안전조끼, 사람, 머리 6클래스 YOLOv5s 모델 학습.</li>
-      <li><strong>다출처 데이터셋 정합.</strong> Kaggle/웹 공개 데이터셋의 서로 다른 라벨 정의를 6클래스 체계로 매핑.</li>
-      <li><strong>희소 클래스 보강.</strong> 부족한 클래스는 복제와 변형을 적용해 학습 데이터 불균형을 완화.</li>
-      <li><strong>RTSP 모니터링.</strong> OpenCV 기반 실시간 추론과 Streamlit 대시보드를 연결해 영상/탐지 로그를 시각화.</li>
-    </ul>
-
-    <h3 class="doc-h3">성과/결과</h3>
-    <ul class="bullet">
-      <li>학습된 객체 탐지 모델은 Project 03의 Kneron KL630 포팅 대상 모델로 연계.</li>
+      <li><strong>mAP@0.5 84.7% 달성.</strong> 화재, 연기, 안전모, 안전조끼, 사람, 머리 6클래스 YOLOv5s 모델 학습. 학습된 모델은 Project 03 Kneron KL630 포팅 대상으로 연계.</li>
+      <li><strong>다출처 데이터셋 정합.</strong> Kaggle/웹 공개 데이터셋의 서로 다른 라벨 정의를 6클래스 체계로 매핑하고, 희소 클래스는 복제·변형으로 불균형 완화.</li>
+      <li><strong>RTSP 모니터링.</strong> OpenCV 기반 실시간 추론과 Streamlit 대시보드를 연결해 영상/탐지 로그 시각화.</li>
     </ul>
   </section>
 
@@ -635,11 +581,9 @@
 
     <h3 class="doc-h3">핵심 기여</h3>
     <ul class="bullet">
-      <li><strong>3계층 WebSocket 릴레이.</strong> 소비자, 서버, 파이프, stdio 도구를 분리해 AIBOO와 MCP 도구를 연결.</li>
-      <li><strong>JSON-RPC ID 변환.</strong> 여러 소비자의 요청 ID를 릴레이 내부 ID로 매핑하고 응답 시 원래 ID로 복구.</li>
-      <li><strong>연결 안정화.</strong> stdio ↔ WebSocket 파이프에 exponential backoff 자동 재연결을 적용.</li>
-      <li><strong>토큰 인증.</strong> 서버 키 기반 토큰 발급과 WebSocket endpoint 인증 처리.</li>
-      <li><strong>테스트 자동화.</strong> AI 에이전트를 활용해 서버/도구/파이프/유틸 모듈 대상 53개 테스트 케이스 생성.</li>
+      <li><strong>3계층 WebSocket 릴레이.</strong> 소비자, 서버, 파이프, stdio 도구를 분리해 AIBOO와 MCP 도구를 연결하고, JSON-RPC ID를 릴레이 내부 ID로 매핑/복구.</li>
+      <li><strong>연결/인증 안정화.</strong> stdio ↔ WebSocket 파이프에 exponential backoff 자동 재연결을 적용하고, 서버 키 기반 토큰 발급으로 endpoint 인증 처리.</li>
+      <li><strong>테스트 자동화.</strong> AI 에이전트를 활용해 서버/도구/파이프/유틸 모듈 대상 <strong>53개 테스트 케이스</strong> 생성.</li>
     </ul>
   </section>
 
@@ -651,7 +595,7 @@
       <div class="proj-num-large">PROJECT 06</div>
       <h1 class="proj-h1">Piper TTS 한국어 Fine-tuning + G2P 토크나이저 통합</h1>
       <p class="proj-tagline">
-        한국어 음성 AI 실험 경험. Piper 한국어 모델 fine-tuning, 한국어 G2P 토크나이저 통합, 다중 체크포인트 ONNX export 및 청취 평가 자동화.
+        Piper 한국어 medium 모델에 자체 데이터를 추가 학습하고, espeak-ng 기본 G2P를 한국어 G2P로 보강. 다중 체크포인트 ONNX export와 동일 문장 청취 비교까지 자동화.
       </p>
       <dl class="proj-meta-table">
         <dt>기간</dt><dd>2025.11</dd>
@@ -663,9 +607,9 @@
 
     <h3 class="doc-h3">핵심 기여</h3>
     <ul class="bullet">
-      <li>사전학습 Piper 한국어 medium 모델에 자체 데이터로 추가 학습.</li>
-      <li>한국어 음소 처리를 보강하기 위해 학습/추론 파이프라인에 한국어 G2P 토크나이저를 통합.</li>
-      <li>학습 체크포인트를 일괄 ONNX export하고 동일 문장 합성 결과를 비교하는 파이프라인 구성.</li>
+      <li><strong>한국어 medium 모델 fine-tuning.</strong> 사전학습 Piper 한국어 medium 모델에 자체 데이터로 추가 학습.</li>
+      <li><strong>한국어 G2P 통합.</strong> espeak-ng 기본 G2P가 한국어 음소 처리에 약한 부분을 한국어 G2P 토크나이저로 보강해 학습/추론 파이프라인에 통합.</li>
+      <li><strong>다중 체크포인트 평가 자동화.</strong> 학습 체크포인트를 일괄 ONNX export하고 동일 문장 합성 결과를 비교하는 파이프라인 구성.</li>
     </ul>
   </section>
 
@@ -675,7 +619,7 @@
   <section class="proj-section">
     <div class="other-projects-sep">
       <h1>보조 프로젝트</h1>
-      <p>메인 메시지를 보완하는 백엔드/음성 AI 프로젝트입니다.</p>
+      <p>메인 프로젝트 외에 진행한 백엔드/음성 AI 작업입니다.</p>
     </div>
 
     <ul class="bullet">
