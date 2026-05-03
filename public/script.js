@@ -83,23 +83,25 @@ document.querySelectorAll('[data-count]').forEach(function (el) {
 var filterBtns = document.querySelectorAll('.filter-btn');
 var projectCards = document.querySelectorAll('.project-card');
 
-filterBtns.forEach(function (btn) {
-  btn.addEventListener('click', function () {
-    var filter = btn.dataset.filter;
+if (filterBtns.length && projectCards.length) {
+  filterBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var filter = btn.dataset.filter;
 
-    filterBtns.forEach(function (b) { b.classList.remove('active'); });
-    btn.classList.add('active');
+      filterBtns.forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
 
-    projectCards.forEach(function (card) {
-      var categories = (card.dataset.category || '').split(/\s+/);
-      if (filter === 'all' || categories.indexOf(filter) !== -1) {
-        card.classList.remove('hidden');
-      } else {
-        card.classList.add('hidden');
-      }
+      projectCards.forEach(function (card) {
+        var categories = (card.dataset.category || '').split(/\s+/);
+        if (filter === 'all' || categories.indexOf(filter) !== -1) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
     });
   });
-});
+}
 
 // ========== Smooth scroll for anchor links ==========
 document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
