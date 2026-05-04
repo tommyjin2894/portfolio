@@ -20,6 +20,29 @@ themeBtn.addEventListener('click', function () {
   localStorage.setItem('theme', next);
 });
 
+// ========== Dynamic dates ==========
+var aiExp = document.getElementById('ai-exp');
+if (aiExp) {
+  var start = new Date(2025, 1, 1);
+  var now = new Date();
+  var months = (now.getFullYear() - start.getFullYear()) * 12 + (now.getMonth() - start.getMonth());
+  if (months < 1) months = 1;
+
+  var years = Math.floor(months / 12);
+  var remainingMonths = months % 12;
+  aiExp.textContent = years === 0
+    ? remainingMonths + 'mo'
+    : remainingMonths === 0
+      ? years + 'yr'
+      : years + 'yr ' + remainingMonths + 'mo';
+}
+
+var footerYear = document.getElementById('footer-year');
+if (footerYear) {
+  var currentYear = new Date().getFullYear();
+  footerYear.textContent = currentYear > 2025 ? '2025-' + currentYear : '2025';
+}
+
 // ========== Navigation scroll effect ==========
 window.addEventListener('scroll', function () {
   document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
